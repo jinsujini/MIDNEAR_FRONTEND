@@ -56,6 +56,7 @@ git clone https://github.com/username/repo-name.git
 cd repo-name
 npm i
 npm start
+ ```
 
 ## 💻 **배포**
 
