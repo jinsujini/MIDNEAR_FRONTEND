@@ -68,5 +68,5 @@ npm start
 
 ## 📂 **프로젝트 구조**
 
-📦 MIDNEAR_FRONTEND    ├── 📁 node_modules     ├── 📁 public    │ └── index.html # HTML 진입 파일    ├── 📁 src    │ ├── 📁 assets     │ ├── 📁 components     │ ├── App.js     │ └── index.js     ├── .gitignore    ├── package-lock.json일    ├── package.json     └── README.md
+📦 MIDNEAR_FRONTEND<br>    ├── 📁 node_modules<br>     ├── 📁 public<br>    │ └── index.html # HTML 진입 파일<br>    ├── 📁 src<br>    │ ├── 📁 assets<br>     │ ├── 📁 components<br>     │ ├── App.js<br>     │ └── index.js<br>     ├── .gitignore<br>    ├── package-lock.json<br>    ├── package.json<br>     └── README.md<br>
 
