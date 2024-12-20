@@ -1,0 +1,20 @@
+.footer{
+    display: flex;
+    margin: 0 10px;
+    justify-content: center;
+    align-items: center;
+    .info{
+        display: flex;
+        margin-left: 5px;
+        gap: 5px;
+        flex: 1;
+        p{font-weight: 600;}
+        span{ font-weight: 300;}
+    }
+    .doc{
+        display: flex;
+        width: 12.9rem;
+        gap: 30px;
+        p{font-weight: 600;}
+    }
+}

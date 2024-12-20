@@ -1,0 +1,37 @@
+
+//     color: var(--white);
+
+
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+:root {
+    --mainfont: "pretendard";
+
+    
+    --white: #fff;
+    --brown : #56320E;
+    --gray100 : #EBEBEB;
+    --gray200 : #E7E7E7;
+    --gray300 : #CECECE;
+    --gray400 : #A5A5A5;
+    --gray500 : #ADADAD;
+    --gray600 : #6D6D6D;
+    --gray700 : #6F6F6F;
+    --black: #000;
+    
+    // 투명
+    --none: #00000000;
+
+    // 폰트 세팅
+    font-family: var(--mainfont);
+    font-size: 12px;
+    line-height: 1.5;
+    font-weight: 400;
+
+    // 폰트 최적화
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+}

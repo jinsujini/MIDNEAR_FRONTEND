@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Home = () => {
+const Goods = () => {
   return (
     <div className='container'>
-      콘텐츠 영역
+      dddd
     </div>
   )
 }
 
-export default Home
+export default Goods
