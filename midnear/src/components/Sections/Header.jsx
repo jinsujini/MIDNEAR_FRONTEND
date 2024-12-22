@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom'; // Link를 import
+import { useNavigate, Link } from 'react-router-dom'; 
 import logo from "../../assets/img/logo/header_logo.svg";
 
 const Header = () => {
@@ -77,12 +77,12 @@ const Header = () => {
       </div>
 
       <div className="sc2">
-        <Link to="/search" className="SEARCH">SEARCH</Link>
-        <Link to="/login" className="LOGIN">LOGIN</Link>
-        <Link to="/account" className="ACCOUNT">ACCOUNT</Link>
-        <Link to="/bag" className="BAG">
+        <p className="SEARCH">SEARCH</p>
+        <p className="LOGIN">LOGIN</p>
+        <p className="ACCOUNT">ACCOUNT</p>
+        <p className="BAG">
           BAG <span>(1)</span>
-        </Link>
+        </p>
       </div>
     </div>
   );
