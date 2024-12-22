@@ -1,15 +1,18 @@
 .footer{
     display: flex;
-    margin: 0 10px;
+    margin: 0 1rem;
     justify-content: center;
     align-items: center;
+    height: 2.22vh;
+    font-size:0.83vh;
+    color: #444444;
     .info{
         display: flex;
         margin-left: 5px;
         gap: 5px;
         flex: 1;
-        p{font-weight: 600;}
-        span{ font-weight: 300;}
+        white-space: pre-wrap;
+
     }
     .doc{
         display: flex;
