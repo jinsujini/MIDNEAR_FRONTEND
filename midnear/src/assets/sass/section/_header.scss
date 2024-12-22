@@ -63,12 +63,15 @@
 
             }
 
-            .second:hover {
+            .second:hover, .newCloth:hover{
                 .second {
                     display: flex;
                 }
+                .newCloth {
+                    display: flex;
+                }
 
-                .second-sub {
+                div {
                     display: flex;
                 }
             }
@@ -82,13 +85,13 @@
             font-weight: bold;
         }
 
-        .second p:hover {
+        .second p:hover,.newCloth p:hover {
             font-weight: bold;
         }
 
 
 
-        .second {
+        .second, .newCloth {
             position: relative;
             display: flex;
             height: 4.63vh;
@@ -96,7 +99,7 @@
             align-items: center;
 
 
-            .second-sub {
+           div {
                 position: absolute;
                 flex-direction: column;
                 top: 4.63vh;
@@ -118,11 +121,11 @@
                 }
             }
 
-            .second-sub:first-child {
+            div:first-child {
                 padding-top: 0.65vh;
             }
 
-            .second-sub:last-child {
+            div:last-child {
                 padding-bottom: 0.65vh;
             }
         }

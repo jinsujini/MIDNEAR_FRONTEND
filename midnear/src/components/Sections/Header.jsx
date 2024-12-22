@@ -6,7 +6,8 @@ const Header = () => {
   const navigate = useNavigate();
   const [activeSub1, setActiveSub1] = useState(false);
   const [activeSub2, setActiveSub2] = useState(false);
-  const [activeSubCate, setActiveSubCate] = useState(false);
+  const [activeSubCate1, setActiveSubCate1] = useState(false);
+  const [activeSubCate2, setActiveSubCate2] = useState(false);
 
   const goHome = () => {
     navigate('/');
@@ -15,12 +16,16 @@ const Header = () => {
   const openCate1 = () => {
     setActiveSub1(!activeSub1);
   }
-  const openSubCate = () =>{
-    setActiveSubCate(!activeSubCate);
-  }
+  
 
   const openCate2 = () => {
     setActiveSub2(!activeSub2);
+  }
+  const openSubCate1 = () =>{
+    setActiveSubCate1(!activeSubCate1);
+  }
+  const openSubCate2 = () =>{
+    setActiveSubCate2(!activeSubCate2);
   }
   
 
@@ -41,10 +46,18 @@ const Header = () => {
           <div className={`sub ${activeSub1 ? 'display' : ''}`}>
             <p>ALL SHOP</p>
             <p>NEW</p>
-            <p>NEW CLOTH</p>
+            <div className="newCloth">
+            <p onClick={openSubCate2}>NEW CLOTH</p>
+              <div className={`newCloth-sub ${(activeSubCate2 && activeSub2) ? 'display' : ''}`}>
+                <p>ALL</p>
+                <p>TOP</p>
+                <p>BOTTOM</p>
+              </div>
+            </div>
+           
             <div className="second">
-              <p onClick={openSubCate}>SECOND</p>
-              <div className={`second-sub ${activeSubCate ? 'display' : ''}`}>
+              <p onClick={openSubCate1}>SECOND</p>
+              <div className={`second-sub ${(activeSubCate1 && activeSub1) ? 'display' : ''}`}>
                 <p>ALL</p>
                 <p>TOP</p>
                 <p>BOTTOM</p>
