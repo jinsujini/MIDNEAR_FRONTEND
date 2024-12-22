@@ -1,0 +1,14 @@
+.Nav {
+    width: 9.375vw;
+    height: 100%;
+    background-color: var(--white);
+    border-right: 1px solid var(--gray300);
+
+    div {
+        border-bottom: 1px solid var(--gray300);
+        height: 4.44vh;
+        padding-left: 1vh;
+        display: flex;
+        align-items: center;
+    }
+}
