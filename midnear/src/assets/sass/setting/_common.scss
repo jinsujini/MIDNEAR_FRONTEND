@@ -1,17 +1,19 @@
-html{
+html, #root{
     font-size: 10px;
     width: 100%;
+    height: 100%;
 }
 body {
     padding: 0;
     margin: 0 auto;
     position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 .container { 
     width: 1200px;
-    min-height: 100vh;
-    margin: 10px auto;
-    margin-bottom: 0px;
+    min-height: calc(100vh - 4.63vh - 2.4rem);
+    margin: 0 auto;
     background-color: rgb(169, 206, 236);
 }

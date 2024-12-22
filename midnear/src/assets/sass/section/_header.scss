@@ -1,5 +1,5 @@
 .header {
-    height: 5rem;
+    height: 4.63vh;
     width: auto;
     display: flex;
     flex-direction: row;
@@ -7,6 +7,9 @@
     border-bottom: var(--gray300) 1px solid;
     position: relative;
     cursor: pointer;
+    font-size: 1.11vh;
+    overflow: visible;
+    z-index: 2;
 
     .logo {
         display: flex;
@@ -15,7 +18,7 @@
 
         img {
             display: flex;
-            height: 2.8rem;
+            height: 2.59vh;
             padding-left: 1.5rem;
             width: auto;
 
@@ -24,46 +27,135 @@
 
     .sc1 {
         gap: 2.4rem;
+        height: 4.63vh;
+        align-items: center;
         display: flex;
         width: 1200px;
-        height: 1.4rem;
         left: calc(50% - 600px);
         position: absolute;
+        height: 4.63vh;
 
-        .sub {
-            display: none;
-            gap: 2.4rem;
+        .SHOP,
+        .OTHERS {
+            display: flex;
+            position: relative;
+            height: 4.63vh;
+                justify-content: center;
+                align-items: center;
+            .sub {
+                display: none;
+                gap: 2.4rem;
+                height: 4.63vh;
+                justify-content: center;
+                align-items: center;
+            }
         }
+
+        .SHOP:hover,
+        .OTHERS:hover {
+            >p {
+                font-weight: bold;
+                margin-right: 2.4rem;
+            }
+
+            .sub {
+                display: flex;
+
+            }
+
+            .second:hover {
+                .second {
+                    display: flex;
+                }
+
+                .second-sub {
+                    display: flex;
+                }
+            }
+
+
+        }
+
+       
+
+        .sub>p:hover {
+            font-weight: bold;
+        }
+
+        .second p:hover {
+            font-weight: bold;
+        }
+
+
+
+        .second {
+            position: relative;
+            display: flex;
+            height: 4.63vh;
+            justify-content: center;
+            align-items: center;
+
+
+            .second-sub {
+                position: absolute;
+                flex-direction: column;
+                top: 4.63vh;
+                left: -0.5vw;
+                height: 9.26vh;
+                width: 4vw;
+                display: none;
+                justify-content: space-around;
+                background-color: var(--white);
+                border: 1px solid var(--gray300);
+
+                p {
+                    margin: 0 1.2rem;
+
+                }
+
+                p:hover {
+                    font-weight: bold;
+                }
+            }
+
+            .second-sub:first-child {
+                padding-top: 0.65vh;
+            }
+
+            .second-sub:last-child {
+                padding-bottom: 0.65vh;
+            }
+        }
+
+
     }
+
 
     .sc2 {
         justify-content: end;
         gap: 2.4rem;
         display: flex;
         padding-right: 1.5rem;
-        height: 1.4rem;
         flex: 1;
-        text-overflow: clip;
-    }
+        z-index: 2;
 
-  
-
-    .sc1
-    {
-        .SHOP:hover{
-                font-weight: 600;
-
-            .sub {
-                display: flex;
-            }
+        p:hover {
+            font-weight: bold;
         }
     }
 
+
     .display {
         display: flex !important;
+
+    }
+
+    .SHOP .second-sub:hover~.sub {
+        display: flex;
     }
 
     .bold {
         font-weight: 600;
+        margin-right: 2.4rem;
     }
 }
