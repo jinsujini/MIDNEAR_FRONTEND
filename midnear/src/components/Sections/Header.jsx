@@ -28,6 +28,7 @@ const Header = () => {
     setActiveSubCate2(!activeSubCate2);
   };
 
+
   return (
     <div className="header">
       <div className="logo" onClick={goHome}>
@@ -40,6 +41,7 @@ const Header = () => {
             SHOP
           </p>
           <div className={`sub ${activeSub1 ? 'display' : ''}`}>
+
             <Link to="/shop/all">ALL SHOP</Link>
             <Link to="/shop/new">NEW</Link>
             <div className="newCloth">
@@ -56,6 +58,7 @@ const Header = () => {
                 <Link to="/shop/second/all">ALL</Link>
                 <Link to="/shop/second/top">TOP</Link>
                 <Link to="/shop/second/bottom">BOTTOM</Link>
+
               </div>
             </div>
           </div>
