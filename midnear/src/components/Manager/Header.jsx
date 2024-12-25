@@ -12,7 +12,7 @@ const Header = () => {
             <div className="logo">
                 <img src={logo} alt="logo" onClick={goHome} />
             </div>
-
+            
         </div>
     )
 }

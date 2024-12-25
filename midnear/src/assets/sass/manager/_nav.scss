@@ -3,12 +3,42 @@
     height: 100%;
     background-color: var(--white);
     border-right: 1px solid var(--gray300);
-
-    div {
+    div{
         border-bottom: 1px solid var(--gray300);
+    }
+   
+
+    p {
+        
         height: 4.44vh;
         padding-left: 1vh;
         display: flex;
         align-items: center;
     }
+
+    p:hover {
+        color: var(--white);
+        font-weight: bold;
+        background-color: var(--black);
+    }
+
+    .product, .cuppon, .store-manager, .graph, .notice, .magazine, .onebyone, .blockedusers, .sales{
+        background-color: var(--gray900);
+        color: var(--white);
+        display: none;
+        &.display{
+            display: flex;
+            background-color: var(--gray900);
+            flex-direction: column;
+            font-weight: normal;
+        }
+       
+    }
+    .display{
+        color: var(--white);
+        background-color: var(--black);
+        font-weight: bold;
+        display: flex;
+    }
+   
 }
