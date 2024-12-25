@@ -12,7 +12,8 @@ const ProdList = ({productList}) => {
       <div className='prodList'>
         {productList.slice(offset, offset + limit).map((it)=>(
             <div className='product'>
-                <img src={it.image}></img>
+                <img src={it.frontImg} className='frontImg'></img>
+                <img src={it.backImg} className='backImg'></img>
                 <p className='name'>{it.name}</p>
                 <p>{it.price}</p>
             </div>
