@@ -5,6 +5,7 @@ import Footer from './components/Sections/Footer';
 import Manager from './components/Manager/Manager';
 import ManagerHeader from './components/Manager/Header';
 import Header from './components/Sections/Header';
+import AllShop from './components/Home/Shop/AllShop';
 
 function App() {
   const location = useLocation();
@@ -12,13 +13,18 @@ function App() {
 
 
   return (
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        {/*유저 페이지*/}
+        <Route path='/' element={<Home />} />
+        <Route path='/all-shop' element={<AllShop />} />
+
     <>
       {isManagerRoute ? <ManagerHeader /> : <Header />}
 
-      <Routes>
-        {/* 유저 페이지 */}
-        <Route path="/" element={<Home />} />
 
+     
         {/* 관리자 페이지 */}
         <Route path="/manager/*" element={<Manager />}/>
       </Routes>
