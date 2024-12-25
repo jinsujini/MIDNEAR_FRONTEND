@@ -23,8 +23,8 @@ function App() {
       <Routes>
         {/* 유저 페이지 */}
         <Route path="/" element={<Home />} />
-        <Route path="/join" element={<Join />} />
-        <Route path='/login' element={<Login />} />
+        <Route path="user/join" element={<Join />} />
+        <Route path='user/login' element={<Login />} />
         <Route path='user/find/id' element={<FindID />} />
         <Route path='user/find/pw' element={<FindPW />} />
         <Route path='user/change/pw' element={<ChangePW />} />

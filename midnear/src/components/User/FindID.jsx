@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const FindID = () => {
     const navigate = useNavigate();
     const [selectedOption, setSelectedOption] = useState('phone');
+    const [PhoneCodeInput, setPhoneCodeInput] = useState(false);
 
     const handleOptionChange = (e) => {
        setSelectedOption(e.target.value);
@@ -15,6 +16,11 @@ const FindID = () => {
 
     const goToFindID = () => {
         navigate('/user/find/id');
+    };
+
+    const handlePhoneRequest = (e) => {
+        e.preventDefault();
+        setPhoneCodeInput(true);
     };
   
   return (
@@ -45,8 +51,14 @@ const FindID = () => {
                         <input type="text" className="min_text" placeholder="이름*" />
                         <div className='user_container'>
                             <input type="text" className="min_text" placeholder="휴대전화 (-없이)" />
-                            <button className="certi_btn" >인증요청</button>
+                            <button className="certi_btn" onClick={handlePhoneRequest}>인증요청</button>
                         </div>
+                    </div>
+                )}
+                {PhoneCodeInput && (
+                    <div className="user_container">
+                        <input type="text" className="min_text" placeholder="6자리코드" />
+                        <button className="certi_btn">확인</button>
                     </div>
                 )}
 
