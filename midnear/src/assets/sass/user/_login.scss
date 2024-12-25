@@ -16,7 +16,7 @@
     display: flex;
     justify-content: center; 
     height: 100vh; 
-    background-color: #ffffff;
+    background-color: var(--white);
     width: 43.7rem;
 
 .login {
@@ -71,6 +71,8 @@
     .kakao_btn img {
         width: 3.6rem;
         height: 2.5rem;
+        margin-right: 10rem;
+        margin-left: -13rem;
     }
 
     .naver_btn {
@@ -83,10 +85,12 @@
     .naver_btn img {
         width: 5.8rem;
         height: 4rem;
+        margin-right: 9rem;
+        margin-left: -14rem;
     }
 
     .google_btn {
-        background-color: #ffffff;
+        background-color: var(--white);
         border: 0.1rem solid #DFDFDF;
         font-size: 1.2rem;
         font-weight: 500;
@@ -95,6 +99,8 @@
     .google_btn img {
         width: 2rem;
         height: 2rem;
+        margin-right: 10.7rem;
+        margin-left: -13rem;
     }
 
     .option_content {
@@ -109,20 +115,20 @@
           gap: 0.5rem;
       
           .keep_login {
-            appearance: none; /* 기본 체크박스 제거 */
+            appearance: none; 
             width: 1.8rem;
             height: 1.8rem;
             border: 0.1rem solid var(--gray300);
             border-radius: 0.2rem;
             cursor: pointer;
-            background-color: #fff;
+            background-color: var(--white);
             display: flex;
             align-items: center;
             justify-content: center;
           }
           
           .keep_login:checked {
-            background-color: #fff; /* 배경색 유지 */
+            background-color: var(--white);
           }
           
           .keep_login:checked::after {
@@ -144,7 +150,7 @@
 
             .option_text {
                 font-size: 1.2rem;
-                color: #000;
+                color: var(--black);
                 text-decoration: underline;
                 cursor: pointer;
                 margin: 0;
