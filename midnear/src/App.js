@@ -18,8 +18,9 @@ function App() {
 
 
   return (
-    <BrowserRouter>
-      <Header />
+    <>
+      {isManagerRoute ? <ManagerHeader /> : <Header />}
+
       <Routes>
         {/*유저 페이지*/}
         <Route path='/' element={<Home />} />
@@ -30,11 +31,6 @@ function App() {
         <Route path='user/find/pw' element={<FindPW />} />
         <Route path='user/change/pw' element={<ChangePW />} />
 
-    <>
-      {isManagerRoute ? <ManagerHeader /> : <Header />}
-
-
-     
         {/* 관리자 페이지 */}
         <Route path="/manager/*" element={<Manager />}/>
       </Routes>
