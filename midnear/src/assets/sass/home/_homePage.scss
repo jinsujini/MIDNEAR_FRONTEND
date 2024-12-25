@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     img{
-        height: 100vh;
+        height: calc(100vh - 4.63vh - 2.22vh);
         width: auto;
     }
 }
