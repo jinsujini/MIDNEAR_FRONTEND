@@ -10,6 +10,7 @@ import Login from './components/User/Login';
 import FindID from './components/User/FindID';
 import FindPW from './components/User/FindPW';
 import ChangePW from './components/User/ChangePW';
+import AllShop from './components/Home/Shop/AllShop';
 
 function App() {
   const location = useLocation();
@@ -17,18 +18,23 @@ function App() {
 
 
   return (
-    <>
-      {isManagerRoute ? <ManagerHeader /> : <Header />}
-
+    <BrowserRouter>
+      <Header />
       <Routes>
-        {/* 유저 페이지 */}
-        <Route path="/" element={<Home />} />
-        <Route path="user/join" element={<Join />} />
+        {/*유저 페이지*/}
+        <Route path='/' element={<Home />} />
+        <Route path='/all-shop' element={<AllShop />} />
+         <Route path="user/join" element={<Join />} />
         <Route path='user/login' element={<Login />} />
         <Route path='user/find/id' element={<FindID />} />
         <Route path='user/find/pw' element={<FindPW />} />
         <Route path='user/change/pw' element={<ChangePW />} />
 
+    <>
+      {isManagerRoute ? <ManagerHeader /> : <Header />}
+
+
+     
         {/* 관리자 페이지 */}
         <Route path="/manager/*" element={<Manager />}/>
       </Routes>
