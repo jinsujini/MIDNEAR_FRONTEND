@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     height: 50px;
-    padding-top:10px;
+    padding-top:15px;
 
     .title{
     font-size: 20px;
@@ -16,7 +16,7 @@
             display: flex;
             flex-direction: column;
 
-            div{            
+            .selected, .no-selected{            
                 width: 78px;
                 height: 24px;
                 color: var(--gray600);
@@ -28,13 +28,10 @@
             }
             .triangle{
                 display: flex;
-                justify-content: center;
-                width: 0;
-                height: 0;
-                border-left: 7px solid transparent;
-                border-right: 7px solid transparent;
-                border-top: 9px solid var(--gray500);
+                align-items: center;
                 margin-right: 6px;
+                width: 13px;
+                height: 11px;
             }
 
             .selected{
@@ -46,52 +43,68 @@
             }
         
             .option{
-                width: 50px;
+                width: 45px;
                 display: flex;
                 justify-content: center;
                 margin-left: 3px;
-                font-weight: 450;
+                font-weight: 450;                
+                font-size: 12px;
             }
         }
     }
 }
+
 .bottom-el{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    padding-top: 15px;
     .prodList{
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 24px;
-        margin-top: 20px;
+        min-height: 888px;
+       
         .product{
             width: 282px;
             height: 437px;
-            img{
-                border-top: solid 1px var(--gray900);
-                border-bottom: solid 1px var(--gray900);
-            }
-            p{
-                font-size: 10px;
+            .backImg{
+                display: none;
             }
             .name{
                 font-weight: bold;
             }
         }
+        .product:hover .frontImg{
+            display: none;
+
+        }
+        .product:hover .backImg{
+            display: flex;
+        }
     }
     .pagination{
         display: flex;
         justify-content: center;
-        button{
-            background-color: transparent;
-            margin: 7px;
-            color: var(--gray900);
+        color: var(--gray900);
+        margin-top: 27px;
+        padding-bottom: 50px;
+        
+        font-size: 12px;
+        
+        .pageNum{
+            margin: 0 7px;
+            height: 18px;
+            padding-top:1px;
 
+            &[aria-current="page"]{
+                color: var(--gray1000)
+            }
         }
-        .prev{
-
-        }
-        .next{
-
+        .prev, .next{
+           display: flex;
+           align-items: center;
+           background-color: transparent;
         }
     }
 }

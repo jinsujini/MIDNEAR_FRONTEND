@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react'
+import triangle from '../../../assets/img/product/triangle.svg'
 
 const SortMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +36,7 @@ const SortMenu = () => {
     <div className="sort-dropdown" ref={ref}>
       <div className="selected" onClick={removeHandler}>
         <div className='option'>{options.find(option => option.value === select).label}</div>
-        <div className='triangle'></div>
+        <div className='triangle'><img src={triangle}></img></div>
       </div>
 
       {isOpen && (

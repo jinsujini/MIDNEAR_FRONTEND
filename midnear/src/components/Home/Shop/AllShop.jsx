@@ -1,44 +1,51 @@
 import React from 'react'
 import SortMenu from './SortMenu'
 import ProdList from './ProdList'
-import prodImg from '../../../assets/img/product/prod1.png'
+import frontImg from '../../../assets/img/product/prod1.png'
+import backImg from '../../../assets/img/product/prod2.png'
 
 const AllShop = () => {
   // api 연동하면 db 값 받아서 배열에 저장
   const dummyList = [
     { 
       id: 1,
-      image: prodImg,
+      frontImg: frontImg,
+      backImg: backImg,
       name: "CUTE SWEATER",
       price: "\u20A9 39,900"
     },
     { 
       id: 2,
-      image: prodImg,
+      frontImg: frontImg,
+      backImg: backImg,
       name: "CUTE SWEATER",
       price: "\u20A9 39,900"
     },
     { 
       id: 3,
-      image: prodImg,
+      frontImg: frontImg,
+      backImg: backImg,
       name: "CUTE SWEATER",
       price: "\u20A9 39,900"
     },
     { 
       id: 4,
-      image: prodImg,
+      frontImg: frontImg,
+      backImg: backImg,
       name: "CUTE SWEATER",
       price: "\u20A9 39,900"
     },
     { 
       id: 5,
-      image: prodImg,
+      frontImg: frontImg,
+      backImg: backImg,
       name: "CUTE SWEATER",
       price: "\u20A9 39,900"
     },
     { 
       id: 6,
-      image: prodImg,
+      frontImg: frontImg,
+      backImg: backImg,
       name: "CUTE SWEATER",
       price: "\u20A9 39,900"
     }
