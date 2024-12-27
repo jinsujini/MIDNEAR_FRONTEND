@@ -10,7 +10,7 @@ import Login from './components/User/Login';
 import FindID from './components/User/FindID';
 import FindPW from './components/User/FindPW';
 import ChangePW from './components/User/ChangePW';
-import AllShop from './components/Home/Shop/AllShop';
+import AllShop from './components/Shop/AllShop';
 
 function App() {
   const location = useLocation();

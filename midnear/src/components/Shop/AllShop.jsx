@@ -1,8 +1,8 @@
 import React from 'react'
 import SortMenu from './SortMenu'
 import ProdList from './ProdList'
-import frontImg from '../../../assets/img/product/prod1.png'
-import backImg from '../../../assets/img/product/prod2.png'
+import frontImg from '../../assets/img/product/prod1.png'
+import backImg from '../../assets/img/product/prod2.png'
 
 const AllShop = () => {
   // api 연동하면 db 값 받아서 배열에 저장

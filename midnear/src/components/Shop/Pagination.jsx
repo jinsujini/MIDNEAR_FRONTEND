@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import next from '../../../assets/img/product/next.svg'
-import prev from '../../../assets/img/product/prev.svg'
+import next from '../../assets/img/product/next.svg'
+import prev from '../../assets/img/product/prev.svg'
 
 
 const Pagination = ({total, limit, page, setPage}) => {
