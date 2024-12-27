@@ -25,7 +25,7 @@ function App() {
         {/*유저 페이지*/}
         <Route path='/' element={<Home />} />
         <Route path='/all-shop' element={<AllShop />} />
-         <Route path="user/join" element={<Join />} />
+        <Route path="user/join" element={<Join />} />
         <Route path='user/login' element={<Login />} />
         <Route path='user/find/id' element={<FindID />} />
         <Route path='user/find/pw' element={<FindPW />} />
