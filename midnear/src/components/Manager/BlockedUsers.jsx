@@ -7,7 +7,7 @@ const BlockedUsers = () => {
   const [filteredIds, setFilteredIds] = useState([]);
 
   const reasons = [
-    '불법 거래',
+    '이상 거래',
     '반품 과다',
     '허위 정보 제공',
     '악성 리뷰 작성',
