@@ -7,7 +7,7 @@ const Manager = () => {
     const path = location.pathname.split('/manager/')[1];
 
     const ManagerContent = React.lazy(() => {
-        return import(`./${path.charAt(0).toUpperCase() + path.slice(1)}.jsx`);
+       return import(`./${path}.jsx`);
     });
 
     return (
