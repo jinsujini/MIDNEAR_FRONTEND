@@ -21,19 +21,27 @@
         font-weight: bold;
         background-color: var(--black);
     }
-
-    .product, .cuppon, .store-manager, .graph, .notice, .magazine, .onebyone, .blockedusers, .sales{
+    .category {
+        cursor: pointer;
+        font-weight: bold;
+    }
+    
+    .content {
+        overflow: hidden; 
         background-color: var(--gray900);
         color: var(--white);
-        display: none;
-        &.display{
+        p:hover{
+            color: var(--white);
+            background-color: var(--black);
+            font-weight: bold;
             display: flex;
-            background-color: var(--gray900);
-            flex-direction: column;
-            font-weight: normal;
         }
-       
+        p {
+            background-color: var(--gray900);
+            cursor: pointer;
+        }
     }
+    
     .display{
         color: var(--white);
         background-color: var(--black);

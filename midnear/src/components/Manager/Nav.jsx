@@ -1,119 +1,133 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 
 const Nav = () => {
-    const [activeProduct, setActiveProduct] = useState(false);
-    const [activeCuppon, setActiveCuppon] = useState(false);
-    const [activeStore, setActiveStore] = useState(false);
-    const [activeGraph, setActiveGraph] = useState(false);
-    const [activeNotice, setActiveNotice] = useState(false);
-    const [activeMagazine, setActiveMagazine] = useState(false);
-    const [activeOnebyone, setActiveOnebyone] = useState(false);
-    const [activeSales, setActiveSales] = useState(false);
-    const [activeBlock, setActiveBlock] = useState(false);
+    const [activeCategory, setActiveCategory] = useState(null);
 
-    const onProduct = () =>{
-        setActiveProduct(!activeProduct);
-    }
+    const toggleCategory = (category) => {
+        setActiveCategory((prev) => (prev === category ? null : category));
+    };
 
-    const onCuppon = () =>{
-        setActiveCuppon(!activeCuppon);
-    }
-
-    const onStore = () =>{
-        setActiveStore(!activeStore);
-    }
-
-    const onGraph = () =>{
-        setActiveGraph(!activeGraph);
-    }
-
-    const onNotice = () =>{
-        setActiveNotice(!activeNotice);
-    }
-
-    const onMagazine = () =>{
-        setActiveMagazine(!activeMagazine);
-    }
-
-    const onOnebyone = () => {
-        setActiveOnebyone(!activeOnebyone);
-    }
-
-    const onSales = () => {
-        setActiveSales(!activeSales);
-    }
-
-    const onBlock = () => {
-        setActiveBlock(!activeBlock);
-    }
+    const variants = {
+        hidden: { height: 0, opacity: 0 },
+        visible: { height: "auto", opacity: 1 },
+    };
 
     return (
-        <div className='Nav'>
-            <div onClick={onProduct} className={` ${activeProduct ? 'display' : ''}`}>
+        <div className="Nav">
+            <div onClick={() => toggleCategory("product")} className={`${activeCategory === "product" ? "display" : "category"}`}>
                 <p>상품</p>
-
             </div>
-            <div className={`product ${activeProduct ? 'display' : ''}`}>
+            <motion.div
+                className="content product"
+                initial="hidden"
+                animate={activeCategory === "product" ? "visible" : "hidden"}
+                variants={variants}
+                transition={{ duration: 0.3 }}
+            >
                 <p>상품 추가</p>
                 <p>상품 관리</p>
                 <p>코디 상품 관리</p>
                 <p>SHIPPING & RETURNS</p>
-            </div>
-            <div onClick={onCuppon} className={` ${activeCuppon ? 'display' : ''}`}>
-                <p>쿠폰/포인트 지급관리</p>
+            </motion.div>
 
+            <div onClick={() => toggleCategory("cuppon")} className={`${activeCategory === "cuppon" ? "display" : "category"}`}>
+                <p>쿠폰/포인트 지급관리</p>
             </div>
-            <div className={`cuppon ${activeCuppon ? 'display' : ''}`}>
+            <motion.div
+                className="content cuppon"
+                initial="hidden"
+                animate={activeCategory === "cuppon" ? "visible" : "hidden"}
+                variants={variants}
+                transition={{ duration: 0.3 }}
+            >
                 <p>포인트 지급관리</p>
                 <p>쿠폰 지급관리</p>
-            </div>
-            <div onClick={onStore} className={` ${activeStore ? 'display' : ''}`}>
-                <p>스토어관리</p>
+            </motion.div>
 
+            <div onClick={() => toggleCategory("store")} className={`${activeCategory === "store" ? "display" : "category"}`}>
+                <p>스토어관리</p>
             </div>
-            <div className={`store-manager ${activeStore ? 'display' : ''}`}>
+            <motion.div
+                className="content store"
+                initial="hidden"
+                animate={activeCategory === "store" ? "visible" : "hidden"}
+                variants={variants}
+                transition={{ duration: 0.3 }}
+            >
                 <p>메인화면 이미지 수정</p>
                 <p>로고 수정</p>
                 <p>카테고리 관리</p>
                 <p>개인정보처리방침 관리</p>
                 <p>이용약관 관리</p>
                 <p>주소 및 사업자 정보 관리</p>
-            </div>
-            <div onClick={onGraph} className={` ${activeGraph ? 'display' : ''}`}>
+                <p>개인정보 수집 및 이용 목적</p>
+            </motion.div>
+
+            <div onClick={() => toggleCategory("graph")} className={`${activeCategory === "graph" ? "display" : "category"}`}>
                 <p>통계</p>
-
             </div>
-            <div className={`graph ${activeGraph ? 'display' : ''}`}>
+            <motion.div
+                className="content graph"
+                initial="hidden"
+                animate={activeCategory === "graph" ? "visible" : "hidden"}
+                variants={variants}
+                transition={{ duration: 0.3 }}
+            >
                 <p>매출 확인</p>
-            </div>
-            <div onClick={onNotice} className={` ${activeNotice ? 'display' : ''}`}>
-                <p>공지</p>
+            </motion.div>
 
+            <div onClick={() => toggleCategory("notice")} className={`${activeCategory === "notice" ? "display" : "category"}`}>
+                <p>공지</p>
             </div>
-            <div className={`notice ${activeNotice ? 'display' : ''}`}>
+            <motion.div
+                className="content notice"
+                initial="hidden"
+                animate={activeCategory === "notice" ? "visible" : "hidden"}
+                variants={variants}
+                transition={{ duration: 0.3 }}
+            >
                 <p>공지사항 목록</p>
                 <p>공지사항 작성</p>
-            </div>
-            <div onClick={onMagazine} className={` ${activeMagazine ? 'display' : ''}`}>
+            </motion.div>
+
+            <div onClick={() => toggleCategory("magazine")} className={`${activeCategory === "magazine" ? "display" : "category"}`}>
                 <p>매거진</p>
-
             </div>
-            <div className={`magazine ${activeMagazine ? 'display' : ''}`}>
+            <motion.div
+                className="content magazine"
+                initial="hidden"
+                animate={activeCategory === "magazine" ? "visible" : "hidden"}
+                variants={variants}
+                transition={{ duration: 0.3 }}
+            >
                 <p>매거진 목록 및 작성성</p>
-            </div>
-            <div onClick={onOnebyone} className={` ${activeOnebyone ? 'display' : ''}`}>
+            </motion.div>
+
+            <div onClick={() => toggleCategory("onebyone")} className={`${activeCategory === "onebyone" ? "display" : "category"}`}>
                 <p>1:1문의</p>
-
             </div>
-            <div className={`onebyone ${activeOnebyone ? 'display' : ''}`}>
+            <motion.div
+                className="content onebyone"
+                initial="hidden"
+                animate={activeCategory === "onebyone" ? "visible" : "hidden"}
+                variants={variants}
+                transition={{ duration: 0.3 }}
+            >
                 <p>1:1문의 목록</p>
-            </div>
-            <div onClick={onSales} className={` ${activeSales ? 'display' : ''}`}>
-                <p>판매관리</p>
+            </motion.div>
 
+            <div onClick={() => toggleCategory("sales")} className={`${activeCategory === "sales" ? "display" : "category"}`}>
+                <p>판매관리</p>
             </div>
-            <div className={`sales ${activeSales ? 'display' : ''}`}>
+            <motion.div
+                className="content sales"
+                initial="hidden"
+                animate={activeCategory === "sales" ? "visible" : "hidden"}
+                variants={variants}
+                transition={{ duration: 0.3 }}
+            >
                 <p>주문 통합 검색</p>
                 <p>주문확인/배송관리</p>
                 <p>구매확정 내역</p>
@@ -121,26 +135,23 @@ const Nav = () => {
                 <p>반품관리</p>
                 <p>무통장결제</p>
                 <p>교환관리</p>
-            </div>
-            <div onClick={onBlock} className={` ${activeBlock ? 'display' : ''}`}>
-                <p>판매 방해 고객관리</p>
+            </motion.div>
 
+            <div onClick={() => toggleCategory("block")} className={`${activeCategory === "block" ? "display" : "category"}`}>
+                <p>판매 방해 고객관리</p>
             </div>
-            <div className={`blockedusers ${activeBlock ? 'display' : ''}`}>
+            <motion.div
+                className="content block"
+                initial="hidden"
+                animate={activeCategory === "block" ? "visible" : "hidden"}
+                variants={variants}
+                transition={{ duration: 0.3 }}
+            >
                 <p>고객 ID 조회</p>
                 <p>판매방해 고객 List</p>
-            </div>
-
-
+            </motion.div>
         </div>
-    )
-}
+    );
+};
 
-export default Nav
-
-
-
-
-
-
-
+export default Nav;
