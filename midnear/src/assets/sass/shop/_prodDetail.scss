@@ -1,0 +1,98 @@
+.all-info{
+    display: flex;
+    height: calc(100vh - 4.63vh);
+    overflow: hidden;
+    padding: 2.4rem 0;
+
+    .left-img, .right-info{
+        width: 60rem;
+        overflow-y: scroll;
+    }
+    .left-img::-webkit-scrollbar, .right-info::-webkit-scrollbar {
+        display: none;
+    }
+    .left-img{
+        img{
+            width: 60rem;
+            height: calc(100vh - 4.63vh - 4.8rem);
+            object-fit: contain;
+        }
+    }
+
+    .right-info{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 12px;
+        padding-left: 3rem;
+        
+        .basic{
+            display: flex;
+            margin-bottom: 6.9rem;
+            .name{
+                font-weight: bold;
+            }
+        }
+        .size{
+            margin-left: 20.8rem;
+            display: flex;
+            div{
+                margin: 0 2.1rem;
+                cursor: pointer;
+                &.bold {
+                    font-weight: bold; 
+                  }
+               
+            } 
+        }
+        .color{
+            font-size: 11px;
+        }
+        .img-list{
+            display: flex;
+            margin-top:1rem;
+            margin-bottom: 1.8rem;
+            img{                
+                width:40px;
+                height: auto;
+                object-fit: contain;
+                margin: 0.6rem;
+            }
+        }
+        .box{
+            border: solid 0.1rem var(--gray500);
+            width: 48.6rem;
+            height: 4rem;
+            margin: 0.8rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .detail-box{
+            margin-top: 1.2rem;
+            
+            .detail{
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 1.8rem;
+                .title{
+                    display: flex;
+                    
+                }
+
+                p, img{cursor: pointer;}
+                .bold{font-weight: bold;}
+                .down{
+                    width: 0.8rem;
+                    height: auto;
+                    margin-left: 0.3rem;
+                }
+                .content{
+                    margin-bottom: 2.7rem;
+                    margin-top: 1rem;
+                }
+            }
+        }
+    }
+}
