@@ -9,13 +9,19 @@
 @import "section/header";
 @import "section/footer";
 
-//user
+
+@import "mypage/userinfo";
+@import "mypage/mypagemodal";
+@import "mypage/orderlist";
+@import "mypage/review";
 @import "shop/prodList";
 @import "home/homePage";
+@import "shop/prodList";
+@import "shop/prodDetail";
+@import "user/user";
+@import "user/modal";
+@import "user/login";
 
 //manager
 @import "manager/manager";
 @import "manager/nav";
-@import "user/user";
-@import "user/modal";
-@import "user/login";
