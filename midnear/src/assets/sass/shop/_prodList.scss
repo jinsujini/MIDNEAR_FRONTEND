@@ -4,42 +4,44 @@
 .top-el{
     display: flex;
     justify-content: space-between;
-    height: 50px;
-    padding-top:15px;
+    height: 5rem;
+    padding-top:1.5rem;
 
     .title{
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: bold;
     }
     .sort{
-        margin-top:15px;
+        margin-top:1.5rem;
         display: flex;
         justify-content: end;
         z-index: 1;
+        cursor: pointer;
         .sort-dropdown{
             display: flex;
             flex-direction: column;
 
             .selected, .no-selected{            
-                width: 78px;
-                height: 24px;
+                width: 7.8rem;
+                height: 2.4rem;
                 color: var(--gray600);
                 text-align: center;
-                line-height: 24px;
+                line-height: 2.4rem;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                padding-top: 0.1rem;
             }
             .triangle{
                 display: flex;
                 align-items: center;
-                margin-right: 6px;
-                width: 13px;
-                height: 11px;
+                margin-right: 0.6rem;
+                width: 1.3rem;
+                height: 1.1rem;
             }
 
             .selected{
-                border: solid 1px var(--gray800);
+                border: solid 0.1rem var(--gray800);
                 background-color: var(--white);
             }
             .no-selected{
@@ -47,12 +49,12 @@
             }
         
             .option{
-                width: 45px;
+                width: 5rem;
                 display: flex;
                 justify-content: center;
-                margin-left: 3px;
+                margin-left: 0.3rem;
                 font-weight: 450;                
-                font-size: 12px;
+                font-size: 1.2rem;
             }
         }
     }
@@ -62,16 +64,17 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: 15px;
+    padding-top: 1.5rem;
     .prodList{
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 24px;
-        min-height: 888px;
+        gap: 2.4rem;
+        min-height: 88.8rem;
        
         .product{
-            width: 282px;
-            height: 437px;
+            width: 28.2rem;
+            height: 43.7rem;
+            cursor: pointer;
             .backImg{
                 display: none;
             }
@@ -81,9 +84,21 @@
             .origin-price{
                 text-decoration:line-through;
             }
-            .dc-price{
-                font-weight: bold;
-                color: #FF0000;
+            .discount{
+                display: flex;
+                justify-content: center;
+                font-size: 1.2rem;
+                .dc-price{
+                    font-weight: bold;
+                    color: #FF0000;
+                    margin-right: 0.7rem;
+                }
+                .coupon{
+                    color: #FF0000;
+                }
+                .sold-out{
+                    font-weight: bold;
+                }
             }
         }
         .product:hover .frontImg{
@@ -100,18 +115,20 @@
         color: var(--gray900);
         margin: 1rem  0;
         
-        font-size: 12px;
+        font-size: 1.2rem;
         
         .pageNum{
-            margin: 0 7px;
-            height: 18px;
-            padding-top:1px;
+            cursor: pointer;
+            margin: 0 0.7rem;
+            height: 1.8rem;
+            padding-top: 0.1rem;
 
             &[aria-current="page"]{
                 color: var(--gray1000)
             }
         }
         .prev, .next{
+           cursor: pointer;
            display: flex;
            align-items: center;
            background-color: transparent;
