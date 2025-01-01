@@ -7,7 +7,7 @@ const SortMenu = () => {
     const ref = useRef(null);
     const options = [
         {value: 'latest', label: '최신순'},
-        {value: 'oldest', label: '오래된순'},
+        {value: 'popular', label: '인기순'},
     ];
 
     // 드롭다운 메뉴
