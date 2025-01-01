@@ -1,0 +1,110 @@
+.top-el{
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    padding-top:15px;
+
+    .title{
+    font-size: 20px;
+    font-weight: bold;
+    }
+    .sort{
+        margin-top:15px;
+        display: flex;
+        justify-content: end;
+        .sort-dropdown{
+            display: flex;
+            flex-direction: column;
+
+            .selected, .no-selected{            
+                width: 78px;
+                height: 24px;
+                color: var(--gray600);
+                text-align: center;
+                line-height: 24px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .triangle{
+                display: flex;
+                align-items: center;
+                margin-right: 6px;
+                width: 13px;
+                height: 11px;
+            }
+
+            .selected{
+                border: solid 1px var(--gray800);
+                background-color: var(--white);
+            }
+            .no-selected{
+                background-color: var(--gray800);
+            }
+        
+            .option{
+                width: 45px;
+                display: flex;
+                justify-content: center;
+                margin-left: 3px;
+                font-weight: 450;                
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+.bottom-el{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 15px;
+    .prodList{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        min-height: 888px;
+       
+        .product{
+            width: 282px;
+            height: 437px;
+            .backImg{
+                display: none;
+            }
+            .name{
+                font-weight: bold;
+            }
+        }
+        .product:hover .frontImg{
+            display: none;
+
+        }
+        .product:hover .backImg{
+            display: flex;
+        }
+    }
+    .pagination{
+        display: flex;
+        justify-content: center;
+        color: var(--gray900);
+        margin-top: 27px;
+        padding-bottom: 50px;
+        
+        font-size: 12px;
+        
+        .pageNum{
+            margin: 0 7px;
+            height: 18px;
+            padding-top:1px;
+
+            &[aria-current="page"]{
+                color: var(--gray1000)
+            }
+        }
+        .prev, .next{
+           display: flex;
+           align-items: center;
+           background-color: transparent;
+        }
+    }
+}
