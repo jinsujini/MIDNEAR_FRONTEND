@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react'
-import triangle from '../../../assets/img/product/triangle.svg'
+import triangle from '../../assets/img/product/triangle.svg'
 
 const SortMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
