@@ -4,6 +4,7 @@
 .top-el{
     display: flex;
     justify-content: space-between;
+
     height: 5rem;
     padding-top:1.5rem;
 
@@ -22,6 +23,7 @@
             flex-direction: column;
 
             .selected, .no-selected{            
+
                 width: 7.8rem;
                 height: 2.4rem;
                 color: var(--gray600);
@@ -31,10 +33,12 @@
                 align-items: center;
                 justify-content: space-between;
                 padding-top: 0.1rem;
+
             }
             .triangle{
                 display: flex;
                 align-items: center;
+
                 margin-right: 0.6rem;
                 width: 1.3rem;
                 height: 1.1rem;
@@ -42,6 +46,7 @@
 
             .selected{
                 border: solid 0.1rem var(--gray800);
+
                 background-color: var(--white);
             }
             .no-selected{
@@ -55,6 +60,7 @@
                 margin-left: 0.3rem;
                 font-weight: 450;                
                 font-size: 1.2rem;
+
             }
         }
     }
@@ -75,6 +81,7 @@
             width: 28.2rem;
             height: 43.7rem;
             cursor: pointer;
+
             .backImg{
                 display: none;
             }
@@ -84,6 +91,7 @@
             .origin-price{
                 text-decoration:line-through;
             }
+
             .discount{
                 display: flex;
                 justify-content: center;
@@ -99,6 +107,7 @@
                 .sold-out{
                     font-weight: bold;
                 }
+
             }
         }
         .product:hover .frontImg{
@@ -113,21 +122,21 @@
         display: flex;
         justify-content: center;
         color: var(--gray900);
-        margin: 1rem  0;
-        
+        margin: 1rem  0;  
         font-size: 1.2rem;
-        
         .pageNum{
             cursor: pointer;
             margin: 0 0.7rem;
             height: 1.8rem;
             padding-top: 0.1rem;
 
+
             &[aria-current="page"]{
                 color: var(--gray1000)
             }
         }
         .prev, .next{
+
            cursor: pointer;
            display: flex;
            align-items: center;

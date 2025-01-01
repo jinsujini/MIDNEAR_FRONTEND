@@ -1,6 +1,7 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
 import Pagination from './Pagination';
 import { Link } from 'react-router-dom'; 
+
 
 const ProdList = ({productList}) => {
   const [limit, setLimit] = useState(11); // 한 페이지 당 보여줄 게시물 개수, 추후에 수정
