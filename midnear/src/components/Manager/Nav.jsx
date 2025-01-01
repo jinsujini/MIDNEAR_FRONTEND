@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 
 const Nav = () => {
@@ -56,9 +57,9 @@ const Nav = () => {
                 variants={variants}
                 transition={{ duration: 0.3 }}
             >
-                <p>메인화면 이미지 수정</p>
-                <p>로고 수정</p>
-                <p>카테고리 관리</p>
+                <Link to="/manager/store/MainImage">메인화면 이미지 수정</Link>
+                <Link to="/manager/store/Logo">로고 수정</Link>
+                <Link to="/manager/store/Category">카테고리 관리</Link> 
                 <p>개인정보처리방침 관리</p>
                 <p>이용약관 관리</p>
                 <p>주소 및 사업자 정보 관리</p>

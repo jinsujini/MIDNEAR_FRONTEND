@@ -5,6 +5,7 @@ import Footer from './components/Sections/Footer';
 import Manager from './components/Manager/Manager';
 import ManagerHeader from './components/Manager/Header';
 import Header from './components/Sections/Header';
+import None from './components/Sections/None';
 
 function App() {
   const location = useLocation();
@@ -21,6 +22,8 @@ function App() {
 
         {/* 관리자 페이지 */}
         <Route path="/manager/*" element={<Manager />}/>
+        <Route path='*' element={<None />}/>
+
       </Routes>
       <Footer />
     </>
