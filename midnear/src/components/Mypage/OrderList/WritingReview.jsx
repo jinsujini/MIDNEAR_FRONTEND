@@ -87,7 +87,7 @@ const WritingReview = () => {
                                 className="star"
                                 onClick={() => toggleStar(index)}
                                 style={{
-                                    backgroundImage: `url(${isFilled ? '/assets/img/orderlist/star_fill.svg' : '/assets/img/orderlist/star.svg'})`,
+                                    backgroundImage: `url(${isFilled ? '/assets/img/orderlist/Star 26.jpg' : '/assets/img/orderlist/Star 26-1.jpg'})`,
                                 }}
                             />
                         ))}
