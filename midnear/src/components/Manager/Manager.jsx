@@ -12,6 +12,7 @@ const Manager = () => {
         } catch (error) {
             return import('../Sections/None.jsx'); 
         }
+
     });
 
     return (
