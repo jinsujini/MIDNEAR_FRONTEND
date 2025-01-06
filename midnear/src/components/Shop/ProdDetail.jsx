@@ -4,10 +4,17 @@ import frontImg from '../../assets/img/product/prod1.png'
 import backImg from '../../assets/img/product/prod2.png'
 import down from '../../assets/img/product/down.svg'
 import up from '../../assets/img/product/up.svg'
+import ShippingModal from './ShippingModal';
+import ShowReview from './ShowReview';
 
 const ProdDetail = () => {
      const [selectSize, setSelectSize] = useState(null); 
-     const [isSelected, setIsSelected] = useState(null);
+     const [isSelected, setIsSelected] = useState(null);     
+     const [isModalOpen, setIsModalOpen] = useState(false);
+
+     const openModal = () => setIsModalOpen(true);
+     const closeModal = () => setIsModalOpen(false);
+     
 
      const showDetail = (item)=>{
       setIsSelected((prev) => (prev === item.name ? null : item.name));
@@ -15,7 +22,7 @@ const ProdDetail = () => {
 
      const variants = {
       hidden: { height: 0, opacity: 0 },
-      visible: { height: "auto", opacity: 1,  marginBottom: "2.7rem", marginTop: "1rem"},
+      visible: { height: "auto", opacity: 1,  marginBottom: "2.7rem", marginTop: "1rem", zIndex: 1},
       };
 
      const dummyList = [
@@ -42,7 +49,14 @@ const ProdDetail = () => {
       },
       {
         name: 'SHIPPING & RETURNS',
-        content: '00택배 (1588-3223)\n\n구매하신 제품은 수령하신 날로부터 7일 이내에 접수해 주셔야 합니다.\n자세히 보기.'
+        content: (
+          <>
+          <p className='delivery'>00택배 (1588-3223)</p>
+          <p>구매하신 제품은 수령하신 날로부터 7일 이내에 접수해 주셔야 합니다.</p>
+          <p className='open-modal' onClick={openModal}>자세히 보기.</p>
+          <ShippingModal isOpen={isModalOpen} closeModal={closeModal} />
+          </>
+          )
       },
       {
         name: 'STYLED WITH',
@@ -50,7 +64,11 @@ const ProdDetail = () => {
       },
       {
         name: 'REVIEW',
-        content: 'NONE'
+        content: (
+        <>
+        <ShowReview />
+        </>
+        )
       }
      ]
      
@@ -98,7 +116,7 @@ const ProdDetail = () => {
                 <div className='title'>
                 <p className={`${isSelected === item.name ? 'bold' : ''} ${isSelected === item.name ? 'display' : item.name}`} onClick={()=>showDetail(item)}>{item.name}</p>
                 <img src={isSelected === item.name ? up : down}
-                    className={`${isSelected === item.name ? 'display' : item.name}`} onClick={()=>showDetail(item)}/>
+                    className={`down ${isSelected === item.name ? 'display' : item.name}`} onClick={()=>showDetail(item)}/>
                 </div>
                 <motion.div
                     className='content'
@@ -113,7 +131,6 @@ const ProdDetail = () => {
               </div>
             ))}
           </div>
-
         </div>
       </div>
     </div>
