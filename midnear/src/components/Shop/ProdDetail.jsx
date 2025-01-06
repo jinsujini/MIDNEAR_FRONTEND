@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion'
 import frontImg from '../../assets/img/product/prod1.png'
 import backImg from '../../assets/img/product/prod2.png'
 import down from '../../assets/img/product/down.svg'
@@ -7,7 +8,16 @@ import up from '../../assets/img/product/up.svg'
 const ProdDetail = () => {
      const [selectSize, setSelectSize] = useState(null); 
      const [isSelected, setIsSelected] = useState(null);
-     const ref = useRef(null);
+
+     const showDetail = (item)=>{
+      setIsSelected((prev) => (prev === item.name ? null : item.name));
+     };
+
+     const variants = {
+      hidden: { height: 0, opacity: 0 },
+      visible: { height: "auto", opacity: 1,  marginBottom: "2.7rem", marginTop: "1rem"},
+      };
+
      const dummyList = [
         { 
           id: 1,
@@ -44,22 +54,6 @@ const ProdDetail = () => {
       }
      ]
      
-     const showDetail = (item)=>{
-        setIsSelected((prev) => (prev === item.name ? null : item.name));
-     }
-     useEffect(() => {
-             const onClick = (e) => {            
-             if(ref.current !== null && !ref.current.contains(e.target)){
-                 setIsSelected(null);
-             }
-             };
-             if(isSelected){
-                 window.addEventListener("click", onClick);
-             }
-             return () => {
-                 window.removeEventListener("click", onClick);
-             };
-         }, []);
 
   return (
     <div className='container'>
@@ -69,15 +63,21 @@ const ProdDetail = () => {
           <img src={dummyList[0].backImg}/>
         </div>
         <div className='right-info'>
-
+          <div className='empty'></div>
           <div className='basic'>
-            <div>
+            <div className='info'>
               <p className='name'>{dummyList[0].name}</p>
               <p className='price'>{dummyList[0].price}</p>
+              {/**<div className='discount'>
+                  <p className='dc-price'>{dummyList[0].dcPrice}</p>
+                  <p className='coupon'>{dummyList[0].coupon}</p>
+              </div>*/}
             </div>
             <div className='size'>
               {size.map((item)=>(
-                <div className={selectSize === item ? 'bold' : ''} onClick={()=>{setSelectSize(item)}}>{item}</div>
+                <div className={selectSize === item ? 'bold' : ''} onClick={() => {
+                  setSelectSize((prev) => (prev === item ? null : item));
+                }}>{item}</div>
               ))}
             </div>
           </div>
@@ -87,20 +87,29 @@ const ProdDetail = () => {
             <img src={dummyList[0].frontImg} />                
             <img src={dummyList[0].backImg} />
           </div>
-
+          {/**<div className='soldout'>SOLD OUT</div>*/}
+          
           <div className='box'>구매하기</div>
           <div className='box'>장바구니 담기</div>
-
-          <div className='detail-box' ref={ref}>
+          
+          <div className='detail-box'>
             {information.map((item)=>(
               <div className='detail' >
                 <div className='title'>
-                <p className={isSelected === item.name ? 'bold' : ''} onClick={()=>showDetail(item)}>{item.name}</p>
-                <img src={isSelected === item.name ? up : down} className='down' onClick={()=>showDetail(item)}/>
+                <p className={`${isSelected === item.name ? 'bold' : ''} ${isSelected === item.name ? 'display' : item.name}`} onClick={()=>showDetail(item)}>{item.name}</p>
+                <img src={isSelected === item.name ? up : down}
+                    className={`${isSelected === item.name ? 'display' : item.name}`} onClick={()=>showDetail(item)}/>
                 </div>
-                {isSelected === item.name && (
-                  <p className='content'>{item.content}</p>
-                )}
+                <motion.div
+                    className='content'
+                    initial='hidden'
+                    animate={isSelected === item.name ? 'visible' : 'hidden'}
+                    variants={variants}
+                    transition={{duration:0.3}}
+                >
+                  <p>{item.content}</p>
+                </motion.div>
+                
               </div>
             ))}
           </div>

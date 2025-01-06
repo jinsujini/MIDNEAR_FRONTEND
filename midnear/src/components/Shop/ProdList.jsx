@@ -20,11 +20,10 @@ const ProdList = ({productList}) => {
                 <p className='name'>{it.name}</p>
                 <p className='origin-price'>{it.price}</p>
                 <div className='discount'>
-                  
+                  {/**
                   <p className='dc-price'>{it.dcPrice}</p>
-                  <p className='coupon'>{it.coupon}</p>
-                  
-                  {/** <p className='sold-out'>{it.soldout}</p>*/}
+                  <p className='coupon'>{it.coupon}</p>*/}
+                   <p className='sold-out'>{it.soldout}</p>
                 </div>
                 </Link>
             </div>
