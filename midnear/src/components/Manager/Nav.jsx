@@ -89,7 +89,7 @@ const Nav = () => {
                 variants={variants}
                 transition={{ duration: 0.3 }}
             >
-                <p>공지사항 목록</p>
+                <Link to="/manager/Notice">공지사항 목록</Link>
                 <p>공지사항 작성</p>
             </motion.div>
 
@@ -116,7 +116,7 @@ const Nav = () => {
                 variants={variants}
                 transition={{ duration: 0.3 }}
             >
-                <p>1:1문의 목록</p>
+                <Link to="/manager/Qna">1:1문의 목록</Link>
             </motion.div>
 
             <div onClick={() => toggleCategory("sales")} className={`${activeCategory === "sales" ? "display" : "category"}`}>
@@ -148,8 +148,10 @@ const Nav = () => {
                 variants={variants}
                 transition={{ duration: 0.3 }}
             >
-                <Link to="/manager/BlokedUsers">고객 ID 조회</Link>
-                <Link to="/manager/BlokedUsersList">판매방해 고객 List</Link>
+
+                <Link to="/manager/BlockedUsers">고객 ID 조회</Link>
+                <Link to="/manager/BlockedUsersList">판매방해 고객 List</Link>
+
             </motion.div>
         </div>
     );
