@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom';
 import frontImg from '../../assets/img/product/prod1.png'
 import backImg from '../../assets/img/product/prod2.png'
 import down from '../../assets/img/product/down.svg'
@@ -60,7 +61,14 @@ const ProdDetail = () => {
       },
       {
         name: 'STYLED WITH',
-        content: 'NONE'
+        content: (
+          <>
+          <div className='with-item'>
+          <Link to="/products/detail"><img src={dummyList[0].frontImg} /></Link>          
+          <Link to="/products/detail"><img src={dummyList[0].backImg} /></Link>
+          </div>
+          </>
+        )
       },
       {
         name: 'REVIEW',
@@ -102,8 +110,8 @@ const ProdDetail = () => {
 
           <div className='color'>BLACK</div>
           <div className='img-list'>
-            <img src={dummyList[0].frontImg} />                
-            <img src={dummyList[0].backImg} />
+            <Link to="/products/detail"><img src={dummyList[0].frontImg} /></Link>          
+            <Link to="/products/detail"><img src={dummyList[0].backImg} /></Link>
           </div>
           {/**<div className='soldout'>SOLD OUT</div>*/}
           
