@@ -37,7 +37,7 @@ const AllShop = () => {
       coupon: "10%할인쿠폰적용가",
       soldout: "SOLD OUT"
     },
-    /*
+    
     { 
       id: 4,
       frontImg: frontImg,
@@ -58,7 +58,7 @@ const AllShop = () => {
       backImg: backImg,
       name: "CUTE SWEATER",
       price: "\u20A9 39,900"
-    },*/
+    },
   ]
 
   return (
