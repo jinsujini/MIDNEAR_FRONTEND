@@ -1,0 +1,66 @@
+.inquiry-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+  
+    form {
+      display: flex;
+      flex-direction: column;
+  
+      label {
+        font-weight: bold;
+        margin: 10px 0 5px;
+      }
+  
+      input[type="text"],
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+  
+      textarea {
+        height: 150px;
+        resize: none;
+      }
+  
+      .checkbox-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+  
+        input {
+          margin-right: 10px;
+        }
+  
+        label {
+          font-size: 0.9rem;
+        }
+      }
+  
+      button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+  
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+    }
+  }
+  
