@@ -1,9 +1,13 @@
 .Nav {
-    width: 9.375vw;
+
+    min-width: 9.375vw;
+    width: auto;
+
     height: inherit;
     background-color: var(--white);
     font-size: 10px;
     border-right: 1px solid var(--gray300);
+    cursor: pointer;
     div{
         border-bottom: 1px solid var(--gray300);
     }
