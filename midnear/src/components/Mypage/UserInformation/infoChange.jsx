@@ -11,12 +11,13 @@ const InfoChange = () => {
 
                 <input type='text' className='mypage_input_field_top' placeholder='이름'></input>
                 <input type='text' className='mypage_input_field' placeholder='이메일'></input>
-                <input type='text' className='mypage_input_field' placeholder='휴대폰'></input>
-                <input type='text' className='mypage_input_field' placeholder='배송지'></input>
-                <input type='text' className='mypage_input_field' placeholder='상세 주소'></input>
-                
+                <input type='text' className='mypage_input_field' placeholder='휴대폰'></input>   
 
                 <button className='submit_button'>변경사항 저장하기</button>
+
+                <div className='mypage_title'>배송지 관리</div>
+
+                
             </div>
         </div>
     </div>

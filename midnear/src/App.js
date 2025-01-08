@@ -19,19 +19,19 @@ import FindPW from './components/User/FindPW';
 import ChangePW from './components/User/ChangePW';
 import AllShop from './components/Shop/AllShop';
 import ProdDetail from './components/Shop/ProdDetail';
-
+import SelectContents from './components/Mypage/OrderList/SelectContents';
+import ExchangeReson from './components/Mypage/OrderList/Exchange/ExchangeReson';
+import RefundReson from './components/Mypage/OrderList/Refund/RefundReson';
 
 function App() {
   const location = useLocation();
   const isManagerRoute = location.pathname.startsWith('/manager');
-
 
   return (
     <>
       {isManagerRoute ? <ManagerHeader /> : <Header />}
 
       <Routes>
-
         {/* 유저 페이지 */}
         <Route path="/" element={<Home />} />
         <Route path="/mypage/userinformaiton/confirm" element={<PasswordConfirm />} />
@@ -41,6 +41,9 @@ function App() {
         <Route path="/mypage/orderlist/writingReview" element={<WritingReview />} />
         <Route path="/mypage/orderlist/" element={<OrderListBasic />} />
         <Route path="/mypage/orderlist/detail" element={<OrderDetail />} />
+        <Route path="/mypage/orderlist/option" element={<SelectContents />} />
+        <Route path="/mypage/orderlist/option/exchange" element={<ExchangeReson />} />
+        <Route path="/mypage/orderlist/option/refund" element={<RefundReson />} />
         <Route path='/all-shop' element={<AllShop />} />
         <Route path="user/join" element={<Join />} />
         <Route path='user/login' element={<Login />} />
@@ -48,9 +51,9 @@ function App() {
         <Route path='user/find/pw' element={<FindPW />} />
         <Route path='user/change/pw' element={<ChangePW />} />
         <Route path='/products/detail' element={<ProdDetail />} />
-
+        
         {/* 관리자 페이지 */}
-        <Route path="/manager/*" element={<Manager />}/>
+        <Route path="/manager/*" element={<Manager />} />
       </Routes>
       <Footer />
     </>

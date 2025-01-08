@@ -1,18 +1,18 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useRef } from 'react'
 import MyPageModal from '../MyPageModal'
 import defaultimage from '../../../assets/img/orderlist/default.svg'
+import { Link } from 'react-router-dom'; 
 
 const OrderListBasic = () => {
-    const navigate = useNavigate(); 
 
-    const goToGoodsDetail = () => {
-        navigate('/mypage/orderlist/detail');
-    };
-    
-    const goToReview = () => {
-        navigate('/mypage/orderlist/writingReview');
-    };
+    const modalRef = useRef();
+
+    const showSuccessModal = () => {
+        modalRef.current.openModal(
+          "정말 주문취소를 하시겠습니까?",
+          "/mypage/orderlist/cancel"
+        );
+      };
 
   return (
     <div className='container'>
@@ -49,10 +49,10 @@ const OrderListBasic = () => {
                         <div className='line' />
 
                         <div className='box_right'>
-                            <div className='order_detail' onClick={goToGoodsDetail}>주문 상세보기 &gt;</div>
+                            <div className='order_detail'>주문 상세보기 &gt;</div>
                             <div className='box'>
                                 <button className='order_option'>배송조회</button>
-                                <button className='order_option'>주문취소</button>
+                                <button className='order_option' onClick={showSuccessModal}>주문취소</button>
                             </div>
                             
                         </div>
@@ -83,9 +83,10 @@ const OrderListBasic = () => {
 
                         <div className='box_right'>
                             <div className='box'>
+                                <div className='order_detail'>주문 상세보기 &gt;</div>
                                 <button className='order_option'>배송조회</button>
-                                <button className='order_option'>교환, 반품 신청</button>
-                                <button className='order_option' onClick={goToReview}>리뷰 작성하기</button>
+                                <Link to="/mypage/orderlist/option" className='order_option'>교환, 반품 신청</Link>
+                                <Link to="/mypage/orderlist/writingReview" className='order_option'>리뷰 작성하기</Link>
                             </div>
                         </div>
                 </div>
