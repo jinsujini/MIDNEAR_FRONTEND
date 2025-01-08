@@ -60,7 +60,7 @@ const Nav = () => {
                 <Link to="/manager/store/MainImage">메인화면 이미지 수정</Link>
                 <Link to="/manager/store/Logo">로고 수정</Link>
                 <Link to="/manager/store/Category">카테고리 관리</Link> 
-                <p>개인정보처리방침 관리</p>
+                <Link to="/manager/store/PrivacyPolicy">개인정보처리방침 관리</Link>
                 <p>이용약관 관리</p>
                 <p>주소 및 사업자 정보 관리</p>
                 <p>개인정보 수집 및 이용 목적</p>
