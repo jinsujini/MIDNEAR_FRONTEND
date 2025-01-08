@@ -12,58 +12,6 @@
     font-size: 2rem;
     font-weight: bold;
     }
-    .sort{
-        margin-top:1.5rem;
-        display: flex;
-        justify-content: end;
-        z-index: 1;
-        cursor: pointer;
-        .sort-dropdown{
-            display: flex;
-            flex-direction: column;
-
-            .selected, .no-selected{            
-
-                width: 7.8rem;
-                height: 2.4rem;
-                color: var(--gray600);
-                text-align: center;
-                line-height: 2.4rem;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding-top: 0.1rem;
-
-            }
-            .triangle{
-                display: flex;
-                align-items: center;
-
-                margin-right: 0.6rem;
-                width: 1.3rem;
-                height: 1.1rem;
-            }
-
-            .selected{
-                border: solid 0.1rem var(--gray800);
-
-                background-color: var(--white);
-            }
-            .no-selected{
-                background-color: var(--gray800);
-            }
-        
-            .option{
-                width: 5rem;
-                display: flex;
-                justify-content: center;
-                margin-left: 0.3rem;
-                font-weight: 450;                
-                font-size: 1.2rem;
-
-            }
-        }
-    }
 }
 
 .bottom-el{
