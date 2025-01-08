@@ -6,11 +6,13 @@
     
     .contents{
         padding: 24px;
-        .container{
+        height: auto;
+        >.container{
             width: 88.125vw;
             background-color: var(--white);
             padding: 2rem;
             min-height: fit-content;
+            position: relative;
         }
     }
     .btn{
