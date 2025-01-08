@@ -63,7 +63,7 @@ const AllShop = () => {
 
   return (
     <div className='container'>
-      <div className='all-el'>
+    <div className='all-shop'>
       {/** 상위 요소-제목, 정렬메뉴 */}
       <div className='top-el'>
         <div className='title'>ALL SHOP</div>

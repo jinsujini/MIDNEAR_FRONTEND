@@ -63,7 +63,7 @@ const ProdDetail = () => {
 
   return (
     <div className='container'>
-      <div className='all-info'>
+      <div className='prod-detail'>
         <div className='left-img'>
           <img src={dummyList[0].frontImg}/>
           <img src={dummyList[0].backImg}/>
