@@ -19,6 +19,7 @@ import FindPW from './components/User/FindPW';
 import ChangePW from './components/User/ChangePW';
 import AllShop from './components/Shop/AllShop';
 import ProdDetail from './components/Shop/ProdDetail';
+import ReviewImage from './components/Shop/ReviewImage';
 
 
 function App() {
@@ -47,7 +48,8 @@ function App() {
         <Route path='user/find/id' element={<FindID />} />
         <Route path='user/find/pw' element={<FindPW />} />
         <Route path='user/change/pw' element={<ChangePW />} />
-        <Route path='/products/detail' element={<ProdDetail />} />
+        <Route path='/products/detail' element={<ProdDetail />} />        
+        <Route path='/review/images' element={<ReviewImage />} />
 
         {/* 관리자 페이지 */}
         <Route path="/manager/*" element={<Manager />}/>
