@@ -148,8 +148,8 @@ const Nav = () => {
                 variants={variants}
                 transition={{ duration: 0.3 }}
             >
-                <p>고객 ID 조회</p>
-                <p>판매방해 고객 List</p>
+                <Link to="/manager/BlokedUsers">고객 ID 조회</Link>
+                <Link to="/manager/BlokedUsersList">판매방해 고객 List</Link>
             </motion.div>
         </div>
     );
