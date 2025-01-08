@@ -78,7 +78,7 @@ const BlockedUsers = () => {
         <select
           value={reason}
           onChange={(e) => setReason(e.target.value)}
-          className="select"
+          className="b-select"
         >
           <option value="">-----사유 선택-----</option>
           {reasons.map((reason, index) => (
