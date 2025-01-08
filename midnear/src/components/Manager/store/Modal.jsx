@@ -19,22 +19,24 @@ const Modal = ({ show, onClose, onConfirm }) => {
     return (
         <div className='store_modal'>
             <div className="wrap">
-                <div className="ment">{ment[modal]}</div>
-                {modal === 0 ?
-                    <>
-                        <div className="btns">
-                            <div className="no_btn" onClick={handleClose}>아니요</div>
-                            <div className="yes_btn" onClick={nextModal}>네</div>
-                        </div>
+                <div className="modal">
+                    <div className="ment">{ment[modal]}</div>
+                    {modal === 0 ?
+                        <>
+                            <div className="btns">
+                                <div className="no_btn" onClick={handleClose}>아니요</div>
+                                <div className="yes_btn" onClick={nextModal}>네</div>
+                            </div>
 
-                    </>
-                    :
-                    <>
-                        <div className="btns">
-                            <div className="check_btn" onClick={handleClose}>확인</div>
-                        </div>
-                    </>
-                }
+                        </>
+                        :
+                        <>
+                            <div className="btns">
+                                <div className="check_btn" onClick={handleClose}>확인</div>
+                            </div>
+                        </>
+                    }
+                </div>
 
             </div>
 

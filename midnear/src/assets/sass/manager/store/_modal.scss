@@ -1,52 +1,58 @@
 .store_modal {
-    z-index: 100;
-    background-color: #0000002e;
-    width: calc(100vw - 9.375vw);
-    height: calc(100% - 6.48vh - 2.22vh);
-    position: absolute;
-    right: 0;
-    top: 6.48vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+    height: 100%;
+    display: block;
     .wrap {
-        width: 36.1rem;
-        height: 13.3rem;
-        background-color: var(--white);
+        z-index: 100;
+        background-color: #0000002e;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: inherit;
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
-        z-index: 100;
-        position: relative;
-        .ment{
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-        }
 
-        .btns {
+        .modal {
+            width: 36.1rem;
+            height: 13.3rem;
+            background-color: var(--white);
             display: flex;
-            gap: 1rem;
-            cursor: pointer;
-            position: absolute;
-            bottom: 1.5rem;
-            >div {
-                width: 6.5rem;
-                height: 3rem;
-                border-radius: 0.5rem;
-                font-size: 1.2rem;
-                font-weight: 600;
-                text-align: center;
-                align-content: center;
-          
-                background-color: var(--gray1100);
-                color: var(--gray600);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 100;
+            position: relative;
+
+            .ment {
+                font-size: 1.3rem;
+                margin-bottom: 2rem;
             }
 
-            >div:hover {
-                background-color: var(--black);
-                color: var(--white);
+            .btns {
+                display: flex;
+                gap: 1rem;
+                cursor: pointer;
+                position: absolute;
+                bottom: 1.5rem;
+
+                >div {
+                    width: 6.5rem;
+                    height: 3rem;
+                    border-radius: 0.5rem;
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    text-align: center;
+                    align-content: center;
+
+                    background-color: var(--gray1100);
+                    color: var(--gray600);
+                }
+
+                >div:hover {
+                    background-color: var(--black);
+                    color: var(--white);
+                }
             }
         }
     }

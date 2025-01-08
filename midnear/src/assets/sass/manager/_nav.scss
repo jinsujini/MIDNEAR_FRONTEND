@@ -1,5 +1,6 @@
 .Nav {
-    width: 9.375vw;
+    min-width: 9.375vw;
+    width: auto;
     height: inherit;
     background-color: var(--white);
     font-size: 10px;

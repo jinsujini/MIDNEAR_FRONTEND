@@ -31,7 +31,7 @@ const PrivacyPolicy = () => {
         className="policy-input"
         value={policyText}
         onChange={handleInputChange}
-        placeholder="개인정보처리방침 내용을 입력하세요."
+        placeholder="개인정보처리방침 입력"
       />
       <div className="btn" onClick={handleSave}>
         완료
