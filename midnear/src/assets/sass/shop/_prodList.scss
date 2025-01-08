@@ -1,0 +1,90 @@
+.all-shop{
+    min-height: calc(100vh - 4.63vh);
+}
+.top-el{
+    display: flex;
+    justify-content: space-between;
+
+    height: 5rem;
+    padding-top:1.5rem;
+
+    .title{
+    font-size: 2rem;
+    font-weight: bold;
+    }
+}
+
+.bottom-el{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 1.5rem;
+    .prodList{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2.4rem;
+        min-height: 88.8rem;
+       
+        .product{
+            width: 28.2rem;
+            height: 43.7rem;
+            cursor: pointer;
+            .prodImg{
+                position: relative;
+                height: 40rem;
+                width: 28.2rem;
+
+                img{
+                    position: absolute;
+                    transition: opacity 0.5s ease-in-out;
+                }
+                .backImg { opacity: 0; }
+            
+                &:hover .frontImg { opacity: 0; }
+            
+                &:hover .backImg { opacity: 1; }
+            }
+            .name{ font-weight: bold; }
+            .origin-price{ text-decoration:line-through; }
+
+            .discount{
+                display: flex;
+                font-size: 1.2rem;
+
+                .dc-price, .coupon, .sold-out{
+                    font-weight: bold;
+                    color: #FF0000;
+                }
+                .dc-price{
+                    margin-right: 0.7rem;
+                }
+
+            }
+        }
+    }
+    .pagination{
+        display: flex;
+        justify-content: center;
+        color: var(--gray900);
+        margin: 1rem  0;  
+        font-size: 1.2rem;
+        .pageNum{
+            cursor: pointer;
+            margin: 0 0.7rem;
+            height: 1.8rem;
+            padding-top: 0.1rem;
+
+
+            &[aria-current="page"]{
+                color: var(--gray1000)
+            }
+        }
+        .prev, .next{
+
+           cursor: pointer;
+           display: flex;
+           align-items: center;
+           background-color: transparent;
+        }
+    }
+}
