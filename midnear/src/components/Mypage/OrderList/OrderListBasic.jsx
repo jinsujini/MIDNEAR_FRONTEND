@@ -49,7 +49,7 @@ const OrderListBasic = () => {
                         <div className='line' />
 
                         <div className='box_right'>
-                            <div className='order_detail'>주문 상세보기 &gt;</div>
+                        <Link to="/mypage/orderlist/detail" className='order_detail'>주문 상세보기 &gt;</Link>
                             <div className='box'>
                                 <button className='order_option'>배송조회</button>
                                 <button className='order_option' onClick={showSuccessModal}>주문취소</button>
@@ -83,7 +83,7 @@ const OrderListBasic = () => {
 
                         <div className='box_right'>
                             <div className='box'>
-                                <div className='order_detail'>주문 상세보기 &gt;</div>
+                                <Link to="/mypage/orderlist/detail" className='order_detail'>주문 상세보기 &gt;</Link>
                                 <button className='order_option'>배송조회</button>
                                 <Link to="/mypage/orderlist/option" className='order_option'>교환, 반품 신청</Link>
                                 <Link to="/mypage/orderlist/writingReview" className='order_option'>리뷰 작성하기</Link>

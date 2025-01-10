@@ -22,6 +22,8 @@ import ProdDetail from './components/Shop/ProdDetail';
 import SelectContents from './components/Mypage/OrderList/SelectContents';
 import ExchangeReson from './components/Mypage/OrderList/Exchange/ExchangeReson';
 import RefundReson from './components/Mypage/OrderList/Refund/RefundReson';
+import ExchangeDone from './components/Mypage/OrderList/Exchange/ExchangeDone';
+import RefundDone from './components/Mypage/OrderList/Refund/RefundDone';
 
 function App() {
   const location = useLocation();
@@ -44,6 +46,8 @@ function App() {
         <Route path="/mypage/orderlist/option" element={<SelectContents />} />
         <Route path="/mypage/orderlist/option/exchange" element={<ExchangeReson />} />
         <Route path="/mypage/orderlist/option/refund" element={<RefundReson />} />
+        <Route path="/mypage/orderlist/option/exchange/done" element={<ExchangeDone />} />
+        <Route path="/mypage/orderlist/option/refund/done" element={<RefundDone />} />
         <Route path='/all-shop' element={<AllShop />} />
         <Route path="user/join" element={<Join />} />
         <Route path='user/login' element={<Login />} />
