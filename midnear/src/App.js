@@ -24,6 +24,9 @@ import ExchangeReson from './components/Mypage/OrderList/Exchange/ExchangeReson'
 import RefundReson from './components/Mypage/OrderList/Refund/RefundReson';
 import ExchangeDone from './components/Mypage/OrderList/Exchange/ExchangeDone';
 import RefundDone from './components/Mypage/OrderList/Refund/RefundDone';
+import Ask from './components/Mypage/CustomerService/Ask';
+import AskedList from './components/Mypage/CustomerService/AskedList';
+import AskDetail from './components/Mypage/CustomerService/AskDetail';
 
 function App() {
   const location = useLocation();
@@ -48,7 +51,12 @@ function App() {
         <Route path="/mypage/orderlist/option/refund" element={<RefundReson />} />
         <Route path="/mypage/orderlist/option/exchange/done" element={<ExchangeDone />} />
         <Route path="/mypage/orderlist/option/refund/done" element={<RefundDone />} />
+        <Route path="/mypage/question/create" element={<Ask />} />
+        <Route path="/mypage/question/list" element={<AskedList />} />
+        <Route path="/mypage/question/detail" element={<AskDetail/>} />
+
         <Route path='/all-shop' element={<AllShop />} />
+
         <Route path="user/join" element={<Join />} />
         <Route path='user/login' element={<Login />} />
         <Route path='user/find/id' element={<FindID />} />
