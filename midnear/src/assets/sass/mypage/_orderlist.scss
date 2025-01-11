@@ -1,5 +1,5 @@
 // 주문 내역
-.order_search {
+.search-bar-order {
     margin-top: 2rem;
     width: 70.2rem;
     height: 4.2rem;
@@ -7,6 +7,15 @@
     color: var(--gray700);
     padding-left: 1.5rem;
     font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+
+    .order_search {
+        width: 90%;
+        outline: none;
+    }
 }
 
 .order_title{
@@ -97,8 +106,8 @@
 
         .order_detail {
             position: absolute; 
-            top: 0.8rem;
-            right: -2.5rem;
+            top: 0.6rem;
+            right: -0.6rem;
             font-size: 1rem;
             font-weight: 500;
             color: var(--black);
@@ -109,7 +118,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1rem;
     
             .order_option {
                 width: 13.7rem;
@@ -123,41 +131,15 @@
                 border-radius: 0.5rem;
                 background-color: var(--white);
                 cursor: pointer;
+                margin: 1rem;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: #363636;
+                    color: var(--white);
+                }
             }
         }
-    }
-}
-
-.button_area{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 71.8rem;
-    gap: 1rem;
-    margin-top: 4rem;
-
-    .previous {
-        width: 7.1rem;
-        height: 3.6rem;
-        font-size: 1.2rem;
-        font-weight: 500;
-        border-radius: 0.5rem;
-        border: 0.1rem solid #C2C2C2;
-        color: #C2C2C2;
-        background-color: #E6E6E6;
-        cursor: pointer;
-    }
-
-    .next {
-        width: 7.1rem;
-        height: 3.6rem;
-        font-size: 1.2rem;
-        font-weight: 500;
-        border-radius: 0.5rem;
-        border: 0.1rem solid #C2C2C2;
-        color: var(--black);
-        background-color: var(--white);
-        cursor: pointer;
     }
 }
 
