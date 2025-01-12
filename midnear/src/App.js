@@ -21,8 +21,6 @@ import AllShop from './components/Shop/AllShop';
 import ProdDetail from './components/Shop/ProdDetail';
 import ReviewImage from './components/Shop/ReviewImage';
 import ShoppingCart from './components/Cart/ShoppingCart';
-import Member from './components/Cart/Member';
-import NoMember from './components/Cart/NoMember';
 
 
 function App() {
