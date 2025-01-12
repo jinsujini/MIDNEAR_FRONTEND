@@ -53,9 +53,7 @@ function App() {
         <Route path='user/change/pw' element={<ChangePW />} />
         <Route path='/products/detail' element={<ProdDetail />} />        
         <Route path='/review/images' element={<ReviewImage />} />        
-        <Route path='/cart/shoppingCart' element={<ShoppingCart />} />      
-        <Route path='/order/member' element={<Member />} />   
-        <Route path='/order/non-member' element={<NoMember />} />
+        <Route path='/cart/shoppingCart' element={<ShoppingCart />} /> 
 
         {/* 관리자 페이지 */}
         <Route path="/manager/*" element={<Manager />}/>
