@@ -132,40 +132,39 @@
             color: var(--black);
         }
 
-        // 열 크기 설정
         th:nth-child(1),
         td:nth-child(1) {
-            width: 6.51vw; /* 작성자 */
+            width: 6.51vw; 
         }
 
         th:nth-child(2),
         td:nth-child(2) {
-            width: 9.79vw; /* 제목 */
+            width: 9.79vw; 
         }
 
         th:nth-child(3),
         td:nth-child(3) {
-            width: 45.52vw; /* 내용 */
+            width: 45.52vw;
         }
 
         th:nth-child(4),
         td:nth-child(4) {
-            width: 10.63vw; /* 일시 */
+            width: 10.63vw; 
         }
 
         th:nth-child(5),
         td:nth-child(5) {
-            width: 5.47vw; /* 조회수 */
+            width: 5.47vw; 
         }
 
         th:nth-child(6),
         td:nth-child(6) {
-            width: 5.52vw; /* 답글 여부 */
+            width: 5.52vw; 
         }
 
         th:nth-child(7),
         td:nth-child(7) {
-            width: 2.50vw; /* 선택 */
+            width: 2.50vw; 
         }
     }
 }
@@ -246,4 +245,6 @@ input[type="checkbox"] {
         color: var(--white);
         border: 0.1vw solid var(--gray900);
     }
+
+
 }

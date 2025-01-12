@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import '../../assets/sass/manager/_notice.scss';
+import '../../../assets/sass/manager/qna/_qna.scss';
+import Modal from './Qnamodal'; // Modal을 Qnamodal로 변경
 
-const NoticeTableComponent = () => {
+const TableComponent = () => {
     const [data, setData] = useState([]);
     const [filter, setFilter] = useState('전체');
     const [sortOrder, setSortOrder] = useState('최신순');
@@ -9,62 +10,70 @@ const NoticeTableComponent = () => {
     const [selectedIds, setSelectedIds] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
+    
+    const [selectedItem, setSelectedItem] = useState(null); // 선택된 항목을 저장할 state
+    const [isModalOpen, setIsModalOpen] = useState(false); // 모달의 열림/닫힘 상태
+    const [editorContent, setEditorContent] = useState(''); // 에디터의 내용
 
     useEffect(() => {
-        fetchNoticeData();
+        fetchFilteredData('전체', '최신순', '');
     }, []);
 
-    const fetchNoticeData = () => {
+    const fetchFilteredData = async (filter, sortOrder, searchQuery) => {
         const allData = [
             {
                 id: 1,
-                title: '신제품 출시 안내',
-                content: '새로운 제품이 출시되었습니다. 많은 관심 부탁드립니다.',
+                writer: '김철수',
+                title: '배송 지연 문의',
+                content: '상품 배송이 지연되고 있습니다.',
                 date: '2025-01-07 14:00',
+                views: 20,
+                answered: true,
             },
             {
                 id: 2,
-                title: '서비스 점검 안내',
-                content: '시스템 점검이 예정되어 있으니, 이용에 참고해 주세요.',
+                writer: '이영희',
+                title: '환불 요청',
+                content: '환불이 처리되지 않았습니다.',
                 date: '2025-01-06 13:00',
+                views: 15,
+                answered: false,
             },
             {
                 id: 3,
-                title: '이벤트 종료 안내',
-                content: '이번 주에 진행된 이벤트가 종료되었습니다. 많은 참여 감사드립니다.',
+                writer: '박지수',
+                title: '상품 상태 문의',
+                content: '상품에 문제가 있습니다.',
                 date: '2025-01-05 12:00',
+                views: 30,
+                answered: true,
             },
         ];
 
-        let filteredData = allData;
-
-        // 날짜 필터 적용
         const today = new Date();
-        switch (filter) {
-            case '오늘':
-                filteredData = filteredData.filter((item) => new Date(item.date).toDateString() === today.toDateString());
-                break;
-            case '1주일':
-                filteredData = filteredData.filter((item) => new Date(item.date) >= new Date(today.setDate(today.getDate() - 7)));
-                break;
-            case '1개월':
-                filteredData = filteredData.filter((item) => new Date(item.date) >= new Date(today.setMonth(today.getMonth() - 1)));
-                break;
-            case '3개월':
-                filteredData = filteredData.filter((item) => new Date(item.date) >= new Date(today.setMonth(today.getMonth() - 3)));
-                break;
-            default:
-                break;
-        }
 
-        // 검색 적용
+        let filteredData = allData.filter((item) => {
+            const itemDate = new Date(item.date);
+            switch (filter) {
+                case '오늘':
+                    return itemDate.toDateString() === today.toDateString();
+                case '1주일':
+                    return itemDate >= new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7);
+                case '1개월':
+                    return itemDate >= new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
+                case '3개월':
+                    return itemDate >= new Date(today.getFullYear(), today.getMonth() - 3, today.getDate());
+                default:
+                    return true;
+            }
+        });
+
         if (searchQuery) {
             filteredData = filteredData.filter((item) =>
-                item.title.includes(searchQuery) || item.content.includes(searchQuery)
+                item.writer.includes(searchQuery) || item.title.includes(searchQuery)
             );
         }
 
-        // 정렬
         filteredData = filteredData.sort((a, b) => {
             const dateA = new Date(a.date);
             const dateB = new Date(b.date);
@@ -74,22 +83,37 @@ const NoticeTableComponent = () => {
         setData(filteredData);
     };
 
+    const handleRowClick = (item) => {
+        setSelectedItem(item); // 선택된 아이템을 설정
+        setIsModalOpen(true); // 모달 열기
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false); // 모달 닫기
+        setEditorContent(''); // 에디터 내용 초기화
+    };
+
+    const handleSave = () => {
+        console.log('등록된 내용:', editorContent);
+        handleCloseModal(); // 저장 후 모달 닫기
+    };
+
     const handleFilterChange = (event) => {
         const selectedFilter = event.target.value;
         setFilter(selectedFilter);
-        fetchNoticeData(selectedFilter, sortOrder, searchQuery);
+        fetchFilteredData(selectedFilter, sortOrder, searchQuery);
     };
 
     const handleSortChange = (event) => {
         const selectedSortOrder = event.target.value;
         setSortOrder(selectedSortOrder);
-        fetchNoticeData(filter, selectedSortOrder, searchQuery);
+        fetchFilteredData(filter, selectedSortOrder, searchQuery);
     };
 
     const handleSearchChange = (event) => {
         const query = event.target.value;
         setSearchQuery(query);
-        fetchNoticeData(filter, sortOrder, query);
+        fetchFilteredData(filter, sortOrder, query);
     };
 
     const handleCheckboxChange = (id) => {
@@ -101,6 +125,7 @@ const NoticeTableComponent = () => {
     };
 
     const handleSelectAll = () => {
+        const currentItems = data.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage); // 현재 페이지 항목들
         if (selectedIds.length === currentItems.length) {
             setSelectedIds([]);
         } else {
@@ -135,26 +160,26 @@ const NoticeTableComponent = () => {
     }
 
     return (
-        <div className="notice-container">
-            <div className="notice-header1">
-                <div className="notice-title">공지사항</div>
-                <div className="notice-controls">
-                    <select className="notice-dropdown" value={filter} onChange={handleFilterChange}>
+        <div className="qna-container">
+            <div className="qna-header1">
+                <div className="qna-title">1:1 문의 내역</div>
+                <div className="qna-controls">
+                    <select className="qna-dropdown" value={filter} onChange={handleFilterChange}>
                         <option value="오늘">오늘</option>
                         <option value="1주일">1주일</option>
                         <option value="1개월">1개월</option>
                         <option value="3개월">3개월</option>
                         <option value="전체">전체</option>
                     </select>
-                    <select className="notice-dropdown" value={sortOrder} onChange={handleSortChange}>
+                    <select className="qna-dropdown" value={sortOrder} onChange={handleSortChange}>
                         <option value="최신순">최신순</option>
                         <option value="오래된순">오래된순</option>
                     </select>
-                    <div className="notice-search-box">
-                        <div className="notice-square-box">검색</div>
+                    <div className="qna-search-box">
+                        <div className="qna-square-box">작성자</div>
                         <input
                             type="text"
-                            className="notice-search-bar"
+                            className="qna-search-bar"
                             value={searchQuery}
                             onChange={handleSearchChange}
                         />
@@ -162,22 +187,28 @@ const NoticeTableComponent = () => {
                 </div>
             </div>
 
-            <div className="notice-table-container">
-                <table className="notice-table">
+            <div className="qna-table-container">
+                <table className="qna-table">
                     <thead>
                         <tr>
+                            <th>작성자</th>
                             <th>제목</th>
                             <th>내용</th>
                             <th>일시</th>
+                            <th>조회수</th>
+                            <th>답글 여부</th>
                             <th>선택</th>
                         </tr>
                     </thead>
                     <tbody>
                         {currentItems.map((item) => (
-                            <tr key={item.id}>
-                                <td>{item.title}</td>
-                                <td>{item.content}</td>
-                                <td>{item.date}</td>
+                            <tr key={item.id} >
+                                <td onClick={() => handleRowClick(item)}>{item.writer}</td>
+                                <td onClick={() => handleRowClick(item)}>{item.title}</td>
+                                <td onClick={() => handleRowClick(item)}>{item.content}</td>
+                                <td onClick={() => handleRowClick(item)}>{item.date}</td>
+                                <td onClick={() => handleRowClick(item)}>{item.views}</td>
+                                <td onClick={() => handleRowClick(item)}>{item.answered ? '답변 완료' : '미답변'}</td>
                                 <td>
                                     <input
                                         type="checkbox"
@@ -187,16 +218,11 @@ const NoticeTableComponent = () => {
                                 </td>
                             </tr>
                         ))}
-                        {currentItems.length === 0 && (
-                            <tr>
-                                <td colSpan="4">데이터가 없습니다.</td>
-                            </tr>
-                        )}
                     </tbody>
                 </table>
             </div>
 
-            <div className="notice-pagination">
+            <div className="qna-pagination">
                 {pageNumbers.map((number) => (
                     <button
                         key={number}
@@ -208,17 +234,26 @@ const NoticeTableComponent = () => {
                 ))}
             </div>
 
-            <div className="notice-btn-group">
+            {isModalOpen && selectedItem && (
+                <Modal
+                    selectedItem={selectedItem}
+                    editorContent={editorContent}
+                    setEditorContent={setEditorContent}
+                    handleSave={handleSave}
+                    handleCloseModal={handleCloseModal}
+                />
+            )}
 
-                <div className="notice-action-buttons">
-                    <button onClick={handleSelectAll}>선택 글 고정</button>
-                    <button onClick={handleDeselectAll}>선택 글 고정 해제</button>
+            <div className="qna-btn-group">
+                <div className="qna-action-buttons">
+                    <button onClick={handleSelectAll}>답글 완료한 것만 보기</button>
+                    <button onClick={handleDeselectAll}>답글 대기중인 것만 보기</button>
                 </div>
 
-                <div className="notice-action-buttons">
+                <div className="qna-action-buttons">
                     <button onClick={handleSelectAll}>전체 선택</button>
                     <button onClick={handleDeselectAll}>전체 해제</button>
-                    <button className="notice-delete-btn" onClick={handleDeleteSelected}>
+                    <button className="qna-delete-btn" onClick={handleDeleteSelected}>
                         삭제
                     </button>
                 </div>
@@ -227,4 +262,4 @@ const NoticeTableComponent = () => {
     );
 };
 
-export default NoticeTableComponent;
+export default TableComponent;

@@ -15,8 +15,8 @@
 //manager
 @import "manager/manager";
 @import "manager/nav";
-@import "manager/blockedusers";
-@import "manager/blockeduserslist";
+@import "manager/blockedUsers/blockeduserslist";
+@import "manager/blockedUsers/blockedusers";
 @import "manager/store/mainImage";
 @import "manager/store/logo";
 @import "manager/store/category";
@@ -24,3 +24,6 @@
 @import "manager/store/terms";
 @import "manager/store/modal";
 @import "manager/store/address";
+@import "manager/notice/notice";
+@import "manager/qna/qna";
+@import "manager/magazine/magazine";
