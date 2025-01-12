@@ -21,6 +21,8 @@ import AllShop from './components/Shop/AllShop';
 import ProdDetail from './components/Shop/ProdDetail';
 import ReviewImage from './components/Shop/ReviewImage';
 import ShoppingCart from './components/Cart/ShoppingCart';
+import Member from './components/Cart/Member';
+import NoMember from './components/Cart/NoMember';
 
 
 function App() {
@@ -51,7 +53,9 @@ function App() {
         <Route path='user/change/pw' element={<ChangePW />} />
         <Route path='/products/detail' element={<ProdDetail />} />        
         <Route path='/review/images' element={<ReviewImage />} />        
-        <Route path='/cart/shoppingCart' element={<ShoppingCart />} />
+        <Route path='/cart/shoppingCart' element={<ShoppingCart />} />      
+        <Route path='/order/member' element={<Member />} />   
+        <Route path='/order/non-member' element={<NoMember />} />
 
         {/* 관리자 페이지 */}
         <Route path="/manager/*" element={<Manager />}/>

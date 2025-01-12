@@ -9,4 +9,133 @@
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     z-index: 1000;
+
+    .cart_content{
+        height: 100vh; 
+        background-color: var(--white);
+        width: 43.7rem;
+
+        .cart{
+            width: 43.7rem;
+            padding: 0 1.8rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            .cart_nav{
+                display: flex;
+                margin-top: 1.8rem;
+                justify-content: space-between;
+                align-items: center;                    
+
+                .close{
+                    width: 1.5rem;
+                    height: 1.6rem;
+                    cursor: pointer;
+                }
+
+                .sc2 {
+                    font-size: 1.2rem;
+                    justify-content: end;
+                    gap: 2.4rem;
+                    display: flex;
+                    flex: 1;
+                    z-index: 2;
+        
+                    p:hover {
+                        cursor: pointer;
+                        font-weight: bold;
+                    }
+                }
+            }
+            .prodList{
+                display: flex;
+                flex-direction: column;
+                margin-top: 3.3rem;
+                padding: 0 2rem;
+                flex-grow: 1;
+                overflow-y: scroll;
+                .prod{
+                    display: flex;
+                    width: 36.5rem;
+                    height: 18.74rem;
+                    margin: 1.7rem 0;
+                    .thumbnail{
+                        width: 13rem;
+                        height: 18.44rem;
+                        object-fit: cover;
+                    }
+                    .info{
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        width: 21.7rem;
+                        height: 18.44;
+                        padding-left: 1.5rem;
+                        .top{
+                            .name{
+                                font-weight: bold;
+                            }
+                            /* 할인시 중앙 라인 표시
+                            .price{text-decoration:line-through;}
+                            
+                            .discount{
+                                display: flex;
+                                color: #FF0000;
+                                .dc-price{
+                                    font-weight: bold;
+                                    margin-right: 0.7rem;
+                                }
+                            }
+                            */
+                        }
+                        .bottom{
+                            font-size: 1.1rem;
+                            button{
+                                margin-top: 0.3rem;
+                                background-color: var(--none);
+                                cursor: pointer;
+                             }
+                            .slash{ margin: 0 0.5rem; }
+                            .cal{ margin: 0 1rem ;}
+                        }
+                    }
+                    .checkbox{
+                        width: 1.8rem;
+                        height: 1.8rem;
+                        border: solid 0.1rem var(--gray300);
+                        border-radius: 0.2rem;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .prodList::-webkit-scrollbar {
+                display: none;
+              }
+            .total{
+                padding: 0 2rem;
+                margin: 1.6rem 0 3.2rem 0;
+                .total-price{
+                    display: flex;
+                    justify-content: space-between;
+                    .sum-price{font-weight: bold;}
+                }
+                .box{
+                    border: solid 0.1rem var(--gray500);
+                    height: 4rem;
+                    margin-top: 1.6rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-shrink: 0;
+                    font-size: 1.2rem;
+                }
+                .box:hover{
+                    border: solid 0.1rem var(--black);
+                    background-color: var(--black);
+                    color: var(--white);            
+                    cursor: pointer;
+                }
+            }
+        }
+    }
 }
