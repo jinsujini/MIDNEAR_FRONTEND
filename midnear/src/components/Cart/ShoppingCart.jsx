@@ -38,10 +38,11 @@ const ShoppingCart = ({ toggleCart}) => {
     );
     setTotal(initialTotal);
   }, []);
-  const deleteItem = (id) => {
-    // 선택한 아이템을 삭제하고 새로운 배열을 설정
-    const updatedCartItems = cartItems.filter(item => item.id !== id);
+
+  const deleteItem = () => {
+    const updatedCartItems = cartItems.filter(item => !checkedItems.includes(item.id));
     setCartItems(updatedCartItems);
+    setCheckedItems([]);
   }
 
   const decreaseNum = (id) => {
@@ -63,7 +64,15 @@ const ShoppingCart = ({ toggleCart}) => {
     );
     setTotal(updatedTotal);
   }, [cartItems]);
-
+  
+  const checkAllItems = () => {
+    if (checkedItems.length === cartItems.length) {
+      setCheckedItems([]); // Deselect all if all are selected
+    } else {
+      const allItemIds = cartItems.map(item => item.id);
+      setCheckedItems(allItemIds); // Select all items
+    }
+  }
   const checkItemHandler = (id, isChecked) => {
     setCheckedItems((prevCheckedItems) => {
       if (isChecked) {
@@ -78,6 +87,7 @@ const ShoppingCart = ({ toggleCart}) => {
     const { checked } = e.target;
     checkItemHandler(id, checked);
   };
+
   useEffect(()=>{
     const selectedItems = cartItems.filter(item => checkedItems.includes(item.id));
     const newSelectedTotal = selectedItems.reduce(
@@ -101,6 +111,23 @@ const ShoppingCart = ({ toggleCart}) => {
                         </p>
                     </div>
                 </div>
+                <div className='del-check'>
+                    <div className='delete' onClick={deleteItem}>선택 삭제</div>                    
+                    <div className='check'>
+                    <span>전체 선택</span>
+                    <label className='checkbox'>
+                      <input
+                        type="checkbox"
+                        checked={checkedItems.length === cartItems.length}
+                        onChange={checkAllItems} 
+                      />
+                      {checkedItems.length === cartItems.length && (
+                        <img src={check} className='checkImg'/>
+                      )
+                      }
+                    </label>
+                    </div>
+                  </div>
                 <div className='prodList'>
                   {cartItems.map((item,index)=>(
                     <div className='prod' key={index}>
@@ -120,7 +147,6 @@ const ShoppingCart = ({ toggleCart}) => {
                           <button className='plus' onClick={()=>increaseNum(item.id)}>+</button>
                         </div>
                       </div>
-                      <div className='left'>
                       <label className='checkbox'>
                         <input
                           type="checkbox"
@@ -133,8 +159,7 @@ const ShoppingCart = ({ toggleCart}) => {
                         )
                         }
                         </label>
-                        <p className='delete' onClick={() => deleteItem(item.id)}>삭제</p>
-                        </div>
+                       
                     </div>
                   ))}
                 </div>
