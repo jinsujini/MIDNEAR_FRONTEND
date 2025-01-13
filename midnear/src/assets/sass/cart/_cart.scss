@@ -8,13 +8,17 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
-    z-index: 1000;
+    z-index: 10;
+}
 
     .cart_content{
         height: 100vh; 
         background-color: var(--white);
         width: 43.7rem;
-
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 100;
         .cart{
             width: 43.7rem;
             padding: 0 1.8rem;
@@ -45,6 +49,7 @@
                         cursor: pointer;
                         font-weight: bold;
                     }
+                    .BAG{ font-weight: bold;}
                 }
             }
             .prodList{
@@ -150,4 +155,3 @@
             }
         }
     }
-}

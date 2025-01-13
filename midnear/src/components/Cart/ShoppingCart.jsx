@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Close from '../../assets/img/product/close.svg'
 import frontImg from '../../assets/img/product/prod1.png'
 import check from '../../assets/img/cart/check.svg'
 
-const ShoppingCart = () => {
+const ShoppingCart = ({ toggleCart}) => {
   const [cartItems, setCartItems] = useState([]); 
   const [total, setTotal] = useState(0); //{total.toLocaleString('ko-KR')}
   const [checkedItems, setCheckedItems] = useState([]);
   const [selectedTotal, setSelectedTotal] = useState(0);
-  const navigate = useNavigate();
-
   const cartList = [
     { 
       id: 1,
@@ -89,11 +87,10 @@ const ShoppingCart = () => {
   }, [checkedItems, cartItems]);
   
   return (
-    <div className='ShoppingCart'>
-        <div className='cart_content'>
+    <div className='cart_content'>
             <div className='cart'>
                 <div className='cart_nav'>
-                    <img src={Close} className='close' onClick={()=>navigate(-1)}/>
+                    <img src={Close} className='close' onClick={toggleCart}/>
 
                     <div className="sc2">
                         <p className="SEARCH">SEARCH</p>
@@ -155,7 +152,6 @@ const ShoppingCart = () => {
                 </div>
             </div>
         </div>
-    </div>
   )
 }
 
