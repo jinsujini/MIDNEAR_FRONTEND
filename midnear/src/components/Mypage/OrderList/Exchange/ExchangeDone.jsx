@@ -117,7 +117,7 @@ const SelectContents = () => {
 
         </div>
 
-        <button className='submit_button_option ' onClick={showSuccessModal}>교환 신청</button>
+        <button className='submit_button_option' onClick={showSuccessModal}>교환 신청</button>
 
         <Modal ref={modalRef} />
         </div>

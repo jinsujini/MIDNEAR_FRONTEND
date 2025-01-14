@@ -27,6 +27,9 @@ import RefundDone from './components/Mypage/OrderList/Refund/RefundDone';
 import Ask from './components/Mypage/CustomerService/Ask';
 import AskedList from './components/Mypage/CustomerService/AskedList';
 import AskDetail from './components/Mypage/CustomerService/AskDetail';
+import Colligation from './components/Mypage/Cupon/Colligation';
+import CuponList from './components/Mypage/Cupon/Colligation';
+import PointList from './components/Mypage/Cupon/PointList';
 
 function App() {
   const location = useLocation();
@@ -54,6 +57,10 @@ function App() {
         <Route path="/mypage/question/create" element={<Ask />} />
         <Route path="/mypage/question/list" element={<AskedList />} />
         <Route path="/mypage/question/detail" element={<AskDetail/>} />
+        <Route path="/mypage/colligation" element={<Colligation/>} />
+        <Route path="/mypage/colligation/cupon" element={<CuponList/>} />
+        <Route path="/mypage/colligation/point" element={<PointList/>} />
+        
 
         <Route path='/all-shop' element={<AllShop />} />
 
