@@ -50,3 +50,28 @@
         }
     }
 }
+.PrivacyModal{
+    .modal{
+        min-height: 62.6rem;
+        .modal-bottom{
+            display: flex;
+            flex-direction: row;
+            margin-top: 2.4rem;
+            div{
+                width: 11rem;
+                height: 4rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: solid 0.1rem var(--gray500);
+                margin: 0 2.7rem;
+                cursor: pointer;
+            }
+            div:hover{
+                color: var(--white);
+                background-color: #333;
+            }
+        }
+    }
+
+}
