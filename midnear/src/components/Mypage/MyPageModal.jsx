@@ -22,7 +22,7 @@ const MyPageModal = () => {
                 
                 <Link to="/mypage/question/list" className='menu_section'>고객지원/1:1문의</Link>
                 
-                <Link to="/" className='menu_section'>적립금 및 보유 쿠폰 관리</Link>
+                <Link to="/mypage/colligation" className='menu_section'>적립금 및 보유 쿠폰 관리</Link>
             </div>
         </div>
     </div>

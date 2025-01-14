@@ -28,7 +28,7 @@ import Ask from './components/Mypage/CustomerService/Ask';
 import AskedList from './components/Mypage/CustomerService/AskedList';
 import AskDetail from './components/Mypage/CustomerService/AskDetail';
 import Colligation from './components/Mypage/Cupon/Colligation';
-import CuponList from './components/Mypage/Cupon/Colligation';
+import CuponList from './components/Mypage/Cupon/CuponList';
 import PointList from './components/Mypage/Cupon/PointList';
 
 function App() {

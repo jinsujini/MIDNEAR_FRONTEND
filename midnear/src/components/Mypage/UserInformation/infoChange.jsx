@@ -1,7 +1,6 @@
-import React from 'react'
 import React, { useRef } from 'react'
 import MyPageModal from '../MyPageModal'
-import Modal from '../../../User/Modal/Modal';
+import Modal from '../../User/Modal/Modal';
 
 const InfoChange = () => {
 
