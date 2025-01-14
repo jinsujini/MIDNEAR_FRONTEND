@@ -37,7 +37,7 @@ const AllShop = () => {
       coupon: "10%할인쿠폰적용가",
       soldout: "SOLD OUT"
     },
-    /*
+    
     { 
       id: 4,
       frontImg: frontImg,
@@ -58,12 +58,12 @@ const AllShop = () => {
       backImg: backImg,
       name: "CUTE SWEATER",
       price: "\u20A9 39,900"
-    },*/
+    },
   ]
 
   return (
     <div className='container'>
-      <div className='all-el'>
+    <div className='all-shop'>
       {/** 상위 요소-제목, 정렬메뉴 */}
       <div className='top-el'>
         <div className='title'>ALL SHOP</div>

@@ -31,6 +31,7 @@ import Colligation from './components/Mypage/Cupon/Colligation';
 import CuponList from './components/Mypage/Cupon/CuponList';
 import PointList from './components/Mypage/Cupon/PointList';
 import DeliveryAddress from './components/Mypage/UserInformation/DeliveryAddress';
+import ReviewImage from './components/Shop/ReviewImage';
 
 function App() {
   const location = useLocation();
@@ -71,8 +72,9 @@ function App() {
         <Route path='user/find/id' element={<FindID />} />
         <Route path='user/find/pw' element={<FindPW />} />
         <Route path='user/change/pw' element={<ChangePW />} />
-        <Route path='/products/detail' element={<ProdDetail />} />
-        
+        <Route path='/products/detail' element={<ProdDetail />} />        
+        <Route path='/review/images' element={<ReviewImage />} />
+
         {/* 관리자 페이지 */}
         <Route path="/manager/*" element={<Manager />} />
       </Routes>
