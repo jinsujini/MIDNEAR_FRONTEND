@@ -64,14 +64,14 @@ const AskedList = () => {
                 <ul className="inquiry-list">
                   {paginatedInquiries.map((inquiry) => (
                     <li key={inquiry.id} className="inquiry-item">
-                      <div className="inquiry-title">
+                      <Link to='/mypage/question/detail' className="inquiry-title">
                         {inquiry.isLocked ? (
                           <img src={lock} className="lock-icon" />
                         ) : (
                           <span className="dot-icon"></span>
                         )}
                         {inquiry.title}
-                      </div>
+                      </Link>
                       <div className="inquiry-date">작성일 : {inquiry.date}</div>
                     </li>
                   ))}

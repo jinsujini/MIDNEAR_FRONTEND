@@ -38,6 +38,7 @@
     background-color: #E6E6E6;
     margin-top: 2.5rem;
     transition: 0.3s;
+    cursor: pointer;
 
     &:hover {
         color: #E6E6E6;
@@ -110,6 +111,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
 
             &:hover{
                 background-color: #333333;
