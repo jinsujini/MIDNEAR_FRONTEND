@@ -20,6 +20,9 @@ import ChangePW from './components/User/ChangePW';
 import AllShop from './components/Shop/AllShop';
 import ProdDetail from './components/Shop/ProdDetail';
 import ReviewImage from './components/Shop/ReviewImage';
+import GotoLogin from './components/Cart/GotoLogin';
+import PaySucceed from './components/Cart/Pay/PaySucceed';
+import PayFailed from './components/Cart/Pay/PayFailed';
 
 
 function App() {
@@ -48,7 +51,10 @@ function App() {
         <Route path='user/find/pw' element={<FindPW />} />
         <Route path='user/change/pw' element={<ChangePW />} />
         <Route path='/products/detail' element={<ProdDetail />} />        
-        <Route path='/review/images' element={<ReviewImage />} />      
+        <Route path='/review/images' element={<ReviewImage />} />  
+        <Route path='/order/login' element={<GotoLogin />} />    
+        <Route path='/order/pay-succeed' element={<PaySucceed />} />    
+        <Route path='/order/pay-failed' element={<PayFailed />} />    
 
         {/* 관리자 페이지 */}
         <Route path="/manager/*" element={<Manager />}/>
