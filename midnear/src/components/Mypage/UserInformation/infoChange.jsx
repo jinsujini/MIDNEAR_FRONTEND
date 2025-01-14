@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import MyPageModal from '../MyPageModal'
 import Modal from '../../User/Modal/Modal';
+import { Link } from 'react-router-dom';
 
 const InfoChange = () => {
 
@@ -9,7 +10,6 @@ const InfoChange = () => {
     const showSuccessModal = () => {
         modalRef.current.openModal(
           "배송 정보를 정말 삭제할까요?",
-          "배송 정보가 삭제되었습니다.",
           "/mypage/userinformaiton/userinfo/changing"
         );
       };
@@ -39,13 +39,13 @@ const InfoChange = () => {
                     <div className='post_info-post-number'>(123098)</div>
                   </div>
 
-                  <div>
-                    <button className='correction'>수정</button>
+                  <div className='button_place'>
+                    <Link to='/mypage/userinformaiton/address' className='correction'>수정</Link>
                     <button className='delete' onClick={showSuccessModal}>삭제</button>
                   </div>
                 </div>
 
-                <button className='submit_button'>변경 사항 저장하기</button>
+                <Link to='/mypage/userinformaiton/address' className='submit_button'>배송지 추가하기</Link>
 
                 <Modal ref={modalRef} />
             </div>

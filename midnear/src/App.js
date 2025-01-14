@@ -30,6 +30,7 @@ import AskDetail from './components/Mypage/CustomerService/AskDetail';
 import Colligation from './components/Mypage/Cupon/Colligation';
 import CuponList from './components/Mypage/Cupon/CuponList';
 import PointList from './components/Mypage/Cupon/PointList';
+import DeliveryAddress from './components/Mypage/UserInformation/DeliveryAddress';
 
 function App() {
   const location = useLocation();
@@ -46,6 +47,7 @@ function App() {
         <Route path="/mypage/userinformaiton/userinfo/changing" element={<InfoChange />} />
         <Route path="/mypage/userinformaiton/password/change" element={<PasswordEnter />} />
         <Route path="/mypage/userinformaiton/password/changing" element={<PasswordChange />} />
+        <Route path="/mypage/userinformaiton/address" element={<DeliveryAddress />} />
         <Route path="/mypage/orderlist/writingReview" element={<WritingReview />} />
         <Route path="/mypage/orderlist/" element={<OrderListBasic />} />
         <Route path="/mypage/orderlist/detail" element={<OrderDetail />} />
