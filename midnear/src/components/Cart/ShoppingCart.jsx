@@ -67,10 +67,10 @@ const ShoppingCart = ({ toggleCart}) => {
   
   const checkAllItems = () => {
     if (checkedItems.length === cartItems.length) {
-      setCheckedItems([]); // Deselect all if all are selected
+      setCheckedItems([]);
     } else {
       const allItemIds = cartItems.map(item => item.id);
-      setCheckedItems(allItemIds); // Select all items
+      setCheckedItems(allItemIds); 
     }
   }
   const checkItemHandler = (id, isChecked) => {
@@ -142,9 +142,11 @@ const ShoppingCart = ({ toggleCart}) => {
                         </div>
                         <div className='bottom'>
                           <p>{item.color}<span className='slash'>/</span>{item.size}</p>
+                          <div className='quantity'>
                           <button className='minus' onClick={()=>decreaseNum(item.id)}>-</button>
-                          <span className='cal'>{item.count}</span>
+                          <p className='cal'>{item.count}</p>
                           <button className='plus' onClick={()=>increaseNum(item.id)}>+</button>
+                          </div>
                         </div>
                       </div>
                       <label className='checkbox'>
@@ -168,8 +170,8 @@ const ShoppingCart = ({ toggleCart}) => {
                     <p>총 상품 금액</p>
                     <p className='sum-price'>{selectedTotal.toLocaleString('ko-KR')}</p>
                   </div>
-                  <Link to="/order/member"><div className='box'>선택한 상품만 결제</div></Link>
-                  <Link to="/order/member"><div className='box'>전체 결제</div></Link>
+                  <Link to="/order/login"><div className='box' onClick={toggleCart}>선택한 상품만 결제</div></Link>
+                  <Link to="/order/login"><div className='box' onClick={toggleCart}>전체 결제</div></Link>
                   {/**
                    * <Link to="/order/non-member"><div className='box'>선택한 상품만 결제</div></Link>
                   <Link to="/order/non-member"><div className='box'>전체 결제</div></Link>

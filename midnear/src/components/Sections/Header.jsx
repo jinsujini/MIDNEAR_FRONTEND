@@ -37,7 +37,7 @@ const Header = () => {
   const cartVariants = {
     hidden: { x: "43.7rem" },
     visible: { x: 0 },
-    exit: { x: "43.7rem",  transition: { duration: 1.5, ease: "easeInOut" }  } 
+    exit: { x: "43.7rem",  transition: { duration: 1, ease: "easeInOut" }  } 
   };
   const backgroundVariants = {
     hidden: { opacity: 0 },
