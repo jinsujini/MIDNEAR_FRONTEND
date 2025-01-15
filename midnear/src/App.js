@@ -23,6 +23,11 @@ import ReviewImage from './components/Shop/ReviewImage';
 import GotoLogin from './components/Cart/GotoLogin';
 import PaySucceed from './components/Cart/Pay/PaySucceed';
 import PayFailed from './components/Cart/Pay/PayFailed';
+import NoMemInfo from './components/Cart/Order/NoMemInfo';
+import MemInfo from './components/Cart/Order/MemInfo';
+import NewAddress from './components/Cart/Order/NewAddress';
+import SelectAdd from './components/Cart/Order/SelectAdd';
+import EditAdd from './components/Cart/Order/EditAdd';
 
 
 function App() {
@@ -54,7 +59,12 @@ function App() {
         <Route path='/review/images' element={<ReviewImage />} />  
         <Route path='/order/login' element={<GotoLogin />} />    
         <Route path='/order/pay-succeed' element={<PaySucceed />} />    
-        <Route path='/order/pay-failed' element={<PayFailed />} />    
+        <Route path='/order/pay-failed' element={<PayFailed />} />     
+        <Route path='/order/delivery/no-member' element={<NoMemInfo/>} />   
+        <Route path='/order/delivery/member' element={<MemInfo />} />       
+        <Route path='/order/delivery/new-address' element={<NewAddress />} />   
+        <Route path='/order/delivery/select-address' element={<SelectAdd />} />   
+        <Route path='/order/delivery/edit-address' element={<EditAdd />} />   
 
         {/* 관리자 페이지 */}
         <Route path="/manager/*" element={<Manager />}/>
