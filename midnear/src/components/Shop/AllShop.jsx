@@ -15,8 +15,8 @@ const AllShop = () => {
       frontImg: frontImg,
       backImg: backImg,
       name: "CUTE SWEATER",
-      price: "\u20A9 39,900",
-      dcPrice: "\u20A9 35,100",
+      price: 39000,
+      dcPrice: 35100,
       coupon: "10%할인쿠폰적용가",
       soldout: "SOLD OUT"
     },
@@ -25,8 +25,8 @@ const AllShop = () => {
       frontImg: frontImg,
       backImg: backImg,
       name: "CUTE SWEATER",
-      price: "\u20A9 39,900",
-      dcPrice: "\u20A9 35,100",
+      price: 39000,
+      dcPrice: 35100,
       coupon: "10%할인쿠폰적용가",
       soldout: "SOLD OUT"
     },
@@ -35,33 +35,12 @@ const AllShop = () => {
       frontImg: frontImg,
       backImg: backImg,
       name: "CUTE SWEATER",
-      price: "\u20A9 39,900",
-      dcPrice: "\u20A9 35,100",
+      price: 39000,
+      dcPrice: 35100,
       coupon: "10%할인쿠폰적용가",
       soldout: "SOLD OUT"
     },
     
-    { 
-      id: 4,
-      frontImg: frontImg,
-      backImg: backImg,
-      name: "CUTE SWEATER",
-      price: "\u20A9 39,900"
-    },
-    { 
-      id: 5,
-      frontImg: frontImg,
-      backImg: backImg,
-      name: "CUTE SWEATER",
-      price: "\u20A9 39,900"
-    },
-    { 
-      id: 6,
-      frontImg: frontImg,
-      backImg: backImg,
-      name: "CUTE SWEATER",
-      price: "\u20A9 39,900"
-    },
   ]
 
   return (
