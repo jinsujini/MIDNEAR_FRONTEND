@@ -1,0 +1,193 @@
+.container {
+    display: flex;
+    justify-content: center;
+    background-color: var(--white);
+  }
+
+//회원가입
+//전체 input, button 스타일
+  
+.join {
+    max-width: 36.1rem;
+    display: flex;
+    flex-direction: column;
+}
+  
+    .eye_icon {
+        width: 2.4rem;
+        height: 2.4rem;
+        position: relative;
+        position: absolute;
+        top: 2.7rem;
+        right: 0.5rem;
+    }
+
+        .user_container {
+            position: relative;
+            width: 36.1rem;
+        }
+
+    .mid_text {
+        font-weight: 700;
+        font-size: 1.2rem;
+        margin-top: 8rem;
+        margin-left: 1rem;
+    }
+
+        .min_text_ex {
+            font-size: 1.2rem;
+            color: var(--gray600) ;
+            margin-top: 2.5rem;
+            margin-left: 1rem;
+        }
+
+        .min_text {
+            font-size: 1.2rem;
+            color: var(--gray600) ;
+            width: 36.1rem;
+            height: 3.2rem;
+            padding: 1rem;
+            border: none;
+            border-bottom: 0.1rem solid var(--gray300);
+            outline: none;
+            margin-top: 2.5rem;
+        }
+
+    .user_btn {
+        width: 36.1rem;
+        height: 4rem;
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: var(--black);
+        border: 0.1rem solid var(--gray500);
+        outline: none;
+        margin-top: 3.6rem;
+        background-color: var(--white);
+
+        &:hover {
+            color: var(--white);
+            background-color: #333;
+        }
+    }
+
+        .user_btn_id {
+            width: 36.1rem;
+            height: 4rem;
+            font-size: 1.2rem;
+            color: var(--gray600) ;
+            border: 0.1rem solid var(--black);
+            outline: none;
+            margin-top: 7.8rem;
+            background-color: var(--white);
+        }
+
+    .certi_btn, .pw_check {
+        font-size: 1.2rem;
+        width: 5.3rem;
+        height: 2rem;
+        color: var(--gray700);
+        background-color: var(--gray100);
+        border-radius: 0.3rem;
+        position: absolute;
+        top: 2.7rem;
+        right: 0.5rem;
+
+        &:hover {
+            cursor: pointer;
+            color: var(--white);
+            background-color: #333;
+        }
+    }
+
+// 아이디, 비밀번호 찾기
+.find {
+    max-width: 36.1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+    .select_content{
+        display: flex;
+        margin-top: 8rem;
+    }
+
+        .activate_box{
+            width: 17.9rem;
+            height: 4rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 0.1rem solid var(--gray200);
+        }
+
+        .unactivate_box{
+            width: 17.9rem;
+            height: 4rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray400);
+            background-color: var(--gray200);
+        }
+
+    .radio-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--gray700);
+            margin-top: 2.4rem;
+        }
+
+        .radio-label_top{
+            margin-top: 0.9rem;
+        }
+
+        .radio-label input[type='radio'] {
+            position: relative;
+            width: 1.7rem;
+            height: 1.7rem;
+            appearance: none;
+            border: 0.1rem solid var(--gray700);
+            border-radius: 50%; 
+            background-color: #F8F8F8;
+            margin-right: 1.4rem;
+            cursor: pointer;
+            display: inline-block;
+
+            &:checked {
+                background-color: var(--black);
+                border: none;
+            }
+            
+            &:checked::after {
+                content: '';
+                position: absolute;
+                top:0.3rem;
+                left: 0.3rem;
+                width: 1.1rem;
+                height: 1.1rem;
+                background-color: var(--white);
+                border-radius: 50%;
+            }
+
+            &:checked + span {
+                font-weight: 600;
+                color: var(--black); 
+            }
+        }
+
+    .selected_text{
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-top: 3.3rem;
+    }
