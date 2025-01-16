@@ -1,0 +1,53 @@
+// 내 정보,비밀번호 변경
+
+.field_container {
+    display: flex;
+    margin-top: 5.8rem;
+}
+
+.field_container_content {
+    width: 71.8rem;
+    margin-top: 8.1rem;
+    margin-left: 12.9rem;
+}
+
+.clarify {
+    margin-top: 2.4rem;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--gray600);
+}
+
+.mypage_input_field {
+    margin-top: 2.4rem;
+    width: 78.9rem;
+    height: 3.2rem;
+    color: var(--gray700);
+    border-bottom: 0.1rem solid var(--gray300);
+    outline: none;
+}
+
+.mypage_input_field_top {
+    margin-top: 6.7rem;
+    width: 78.9rem;
+    height: 3.2rem;
+    color: var(--gray700);
+    border-bottom: 0.1rem solid var(--gray300);
+    outline: none;
+    
+}
+
+.submit_button {
+    margin-top: 4.8rem;
+    width: 78.9rem;
+    height: 4rem;
+    background-color: var(--white);
+    border: 0.1rem solid #363636;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #363636;
+        color: var(--white);
+    }
+}
+
