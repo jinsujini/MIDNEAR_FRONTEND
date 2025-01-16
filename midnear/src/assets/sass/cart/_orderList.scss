@@ -1,0 +1,100 @@
+.order_content{
+    margin-top: 8rem;
+    .title{
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    .s_title{
+        margin-top: 2rem;
+        color: var(--gray600);
+        font-size: 1.2rem;
+    }
+    .prodList{
+        display: flex;
+        flex-direction: column;
+        margin-top: 1rem;
+        flex-grow: 1;
+        overflow-y: scroll;
+        .prod{
+            display: flex;
+            width: 29.4rem;
+            height: 18.74rem;
+            margin: 1.7rem 0;
+            .thumbnail{
+                width: 13rem;
+                height: 18.44rem;
+                object-fit: cover;
+            }
+            .info{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 16.4rem;
+                height: 18.44;
+                padding-left: 1.5rem;
+                .top{
+                    .name{
+                        font-weight: bold;
+                    }
+                    /*할인시 중앙 라인 표시
+                    .price{text-decoration:line-through;}
+                    .dc-price{
+                        font-weight: bold;
+                        color: #FF0000;
+                    }*/
+                }
+                .bottom{
+                    font-size: 1.1rem;
+                    margin-bottom: 0;
+                    button{
+                        margin-top: 0.3rem;
+                        background-color: var(--none);
+                        cursor: pointer;
+                     }
+                    .slash{ margin: 0 0.5rem; }
+                    .cal{ margin: 0 1rem ;}
+                }
+            }                    
+            .checkbox{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 1.8rem;
+                height: 1.8rem;
+                border: solid 0.1rem var(--gray300);
+                border-radius: 0.2rem;
+                cursor: pointer;
+                img{
+                    width: 1.3rem;
+                    height: 1.1rem;
+                }
+            }
+        }
+    }
+    .prodList::-webkit-scrollbar {
+        display: none;
+    }
+    .total, .fee, .total-fee{
+        font-size: 1.2rem;
+        display: flex;
+        justify-content: space-between;
+        height: 5rem;
+        align-items: center;
+        .text{color: var(--gray600);}
+    }
+    .total{
+        border-top: solid 1px var(--gray500);
+    }
+    .fee{
+        border-bottom: solid 1px var(--gray500);
+    }
+}
+.quantity{
+    display: flex;
+    align-items: center;
+    
+    button{
+        margin:0;
+        padding-bottom: 0.7rem;
+    }
+}
