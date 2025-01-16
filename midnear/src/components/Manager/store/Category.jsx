@@ -1,46 +1,20 @@
 import React, { useState } from 'react';
+import CateItem from './CateItem';
 
 const Category = () => {
-  const [inputs, setInputs] = useState([]);
-
-  const handleInputChange = (e, index) => {
-    const updatedInputs = [...inputs];
-    updatedInputs[index] = e.target.value;
-    setInputs(updatedInputs);
-  };
-
-  const handleAddInput = () => {
-    setInputs([...inputs, '']); 
-  };
-
-  const handleRemoveInput = (index) => {
-    const updatedInputs = inputs.filter((_, i) => i !== index);
-    setInputs(updatedInputs);
-  };
-
   return (
     <div className='manager_category container'>
       <div className="title">
         <p className='b'>카테고리 관리</p>
-        <p>한번 클릭 시 카테고리 명 수정 더블 클릭 시 하위 카테고리 오픈</p>
+        <p>더블클릭시 수정 가능, 수정 중 칸을 비워둔 채로 enter키를 누르면 해당 항목이 삭제(해당 항목에 하위 카테고리가 있을 경우 함께 삭제)</p>
       </div>
       <div className="catelist">
-        <div className="category">
-          <h5>SHOP</h5>
-          <div className="item"></div>
-        </div>
-        {inputs.map((inputValue, index) => (
-          <div className="input" key={index}>
-            <input
-              type='text'
-              value={inputValue}
-              onChange={(e) => handleInputChange(e, index)}
-              placeholder="입력"
-              size={inputValue.length + 1 || 2} />
-            <div className="minus" onClick={() => handleRemoveInput(index)}>-</div>
-          </div>
-        ))}
-        <div className="plus" onClick={handleAddInput}>+</div>
+        <CateItem type="top" />
+        <div className="line"><span></span></div>
+        <CateItem type="mid" />
+        <div className="line"><span></span></div>
+        <CateItem type="bot" />
+
       </div>
       <div className="btn">완료</div>
     </div>
