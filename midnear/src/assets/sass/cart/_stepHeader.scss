@@ -1,0 +1,48 @@
+.step-header{
+    background-color: var(--white);
+    position: absolute; 
+    top: 0; 
+    width: 100%;
+    z-index: 10;
+    .header{
+        cursor: default;
+        justify-content: space-between;
+        .logo{
+            cursor: pointer;
+            min-width: 10rem;
+            flex: none;
+        }
+        .center{
+            display: flex;
+            justify-content: space-between;
+            width: 120rem;
+            height: 4.63vh;
+            align-items: center;
+            .title{width: 2.5rem;}
+            .step{
+                display: flex;
+                gap: 9.05rem;
+                color: var(--gray700);
+                width: 36.1;
+                align-items: center;
+                p{ 
+                    height: 4.63vh;
+                    align-items: center;
+                    width: 6rem;
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+        }
+        .continue{
+            min-width: 10rem;
+            display: flex;
+            justify-content: flex-end;
+            p{
+                margin-right: 2.4rem;
+                text-decoration-line: underline;
+                cursor: pointer;
+            }
+        }
+    }
+}
