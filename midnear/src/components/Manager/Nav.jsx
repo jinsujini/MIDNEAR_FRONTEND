@@ -60,9 +60,9 @@ const Nav = () => {
                 <Link to="/manager/store/MainImage">메인화면 이미지 수정</Link>
                 <Link to="/manager/store/Logo">로고 수정</Link>
                 <Link to="/manager/store/Category">카테고리 관리</Link> 
-                <p>개인정보처리방침 관리</p>
-                <p>이용약관 관리</p>
-                <p>주소 및 사업자 정보 관리</p>
+                <Link to="/manager/store/PrivacyPolicy">개인정보처리방침 관리</Link>
+                <Link to="/manager/store/Terms">이용약관 관리</Link>
+                <Link to="/manager/store/Address">주소 및 사업자 정보 관리</Link>
                 <p>개인정보 수집 및 이용 목적</p>
             </motion.div>
 
@@ -76,7 +76,7 @@ const Nav = () => {
                 variants={variants}
                 transition={{ duration: 0.3 }}
             >
-                <p>매출 확인</p>
+                <Link to="/manager/statistics/Data">매출 확인</Link>
             </motion.div>
 
             <div onClick={() => toggleCategory("notice")} className={`${activeCategory === "notice" ? "display" : "category"}`}>
@@ -89,7 +89,7 @@ const Nav = () => {
                 variants={variants}
                 transition={{ duration: 0.3 }}
             >
-                <p>공지사항 목록</p>
+                <Link to="/manager/notice/Notice">공지사항 목록</Link>
                 <p>공지사항 작성</p>
             </motion.div>
 
@@ -103,7 +103,7 @@ const Nav = () => {
                 variants={variants}
                 transition={{ duration: 0.3 }}
             >
-                <p>매거진 목록 및 작성성</p>
+                <Link to="/manager/magazine/magazine">매거진 목록 및 작성성</Link>
             </motion.div>
 
             <div onClick={() => toggleCategory("onebyone")} className={`${activeCategory === "onebyone" ? "display" : "category"}`}>
@@ -116,7 +116,7 @@ const Nav = () => {
                 variants={variants}
                 transition={{ duration: 0.3 }}
             >
-                <p>1:1문의 목록</p>
+                <Link to="/manager/qna/Qna">1:1문의 목록</Link>
             </motion.div>
 
             <div onClick={() => toggleCategory("sales")} className={`${activeCategory === "sales" ? "display" : "category"}`}>
@@ -148,8 +148,10 @@ const Nav = () => {
                 variants={variants}
                 transition={{ duration: 0.3 }}
             >
-                <p>고객 ID 조회</p>
-                <p>판매방해 고객 List</p>
+
+                <Link to="/manager/blockedUsers/BlockedUsers">고객 ID 조회</Link>
+                <Link to="/manager/blockedUsers/BlockedUsersList">판매방해 고객 List</Link>
+
             </motion.div>
         </div>
     );

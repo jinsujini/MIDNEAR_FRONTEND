@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../../assets/sass/manager/_blockeduserslist.scss';
+import '../../../assets/sass/manager/blockedUsers/_blockeduserslist.scss';
 
 const TableComponent = () => {
   const [data, setData] = useState([]); // 테이블 데이터

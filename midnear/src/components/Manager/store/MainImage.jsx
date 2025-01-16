@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import Modal from './Modal';
 
 const MainImage = () => {
     const [previewImage, setPreviewImage] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isCompleted, setIsCompleted] = useState(false);
     const [fileName, setFileName] = useState("");
 
     const handleFileChange = (event) => {
@@ -14,6 +17,20 @@ const MainImage = () => {
             };
             reader.readAsDataURL(file);
         }
+    };
+
+    const handleSave = () => {
+        setIsModalOpen(true); 
+      };
+
+    const handleConfirm = () => {
+        setIsCompleted(true);
+        setIsModalOpen(false);
+
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
     };
 
     return (
@@ -43,8 +60,14 @@ const MainImage = () => {
                 )}
             </div>
 
-            <div className="btn">완료</div>
+            <div className="btn" onClick={handleSave}>완료</div>
+            <Modal
+                show={isModalOpen}
+                onClose={handleCloseModal}
+                onConfirm={handleConfirm}
+            />
         </div>
+
     );
 };
 

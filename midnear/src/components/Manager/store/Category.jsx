@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 
 const Category = () => {
-  const [categories, setCategories] = useState([]);
-  const [inputValue, setInputValue] = useState('');
-  const [textSize, setTextSize] = useState('2');
   const [inputs, setInputs] = useState([]);
 
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
-    setTextSize(e.target.value.length + 1 || 2);
+  const handleInputChange = (e, index) => {
+    const updatedInputs = [...inputs];
+    updatedInputs[index] = e.target.value;
+    setInputs(updatedInputs);
   };
 
   const handleAddInput = () => {
@@ -32,24 +30,21 @@ const Category = () => {
           <div className="item"></div>
         </div>
         {inputs.map((inputValue, index) => (
-          <div className="input">
+          <div className="input" key={index}>
             <input
               type='text'
               value={inputValue}
-              onChange={handleInputChange}
+              onChange={(e) => handleInputChange(e, index)}
               placeholder="입력"
-              size={textSize} />
+              size={inputValue.length + 1 || 2} />
             <div className="minus" onClick={() => handleRemoveInput(index)}>-</div>
           </div>
         ))}
-
         <div className="plus" onClick={handleAddInput}>+</div>
-
       </div>
       <div className="btn">완료</div>
-
     </div>
-  )
-}
+  );
+};
 
-export default Category
+export default Category;
