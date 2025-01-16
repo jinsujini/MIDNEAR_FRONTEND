@@ -40,6 +40,8 @@ import MemInfo from './components/Cart/Order/MemInfo';
 import NewAddress from './components/Cart/Order/NewAddress';
 import SelectAdd from './components/Cart/Order/SelectAdd';
 import EditAdd from './components/Cart/Order/EditAdd';
+import MagazineList from './components/Magazine/MagazineList';
+import MagazinDetail from './components/Magazine/MagazinDetail';
 
 function App() {
   const location = useLocation();
@@ -71,6 +73,7 @@ function App() {
         <Route path="/mypage/colligation/cupon" element={<CuponList/>} />
         <Route path="/mypage/colligation/point" element={<PointList/>} />
         
+        
 
         <Route path='/all-shop' element={<AllShop />} />
 
@@ -89,6 +92,8 @@ function App() {
         <Route path='/order/delivery/new-address' element={<NewAddress />} />   
         <Route path='/order/delivery/select-address' element={<SelectAdd />} />   
         <Route path='/order/delivery/edit-address' element={<EditAdd />} />   
+        <Route path='/others/magazine' element={<MagazineList />} />
+        <Route path='/others/magazine/detail' element={<MagazinDetail />} />
 
         {/* 관리자 페이지 */}
         <Route path="/manager/*" element={<Manager />} />
