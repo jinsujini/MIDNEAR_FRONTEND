@@ -1,0 +1,57 @@
+.M-detail{
+    .Magazine{
+    .container{
+        overflow-y: auto;
+        &::-webkit-scrollbar{
+            display: none;
+        }
+    }
+    .top{margin-bottom: 0;}
+    .bottom{
+        margin-bottom: 3rem;
+        .magazine-list{
+            display: flex;
+        }
+    }
+}
+}
+.magazine-detail{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .title{
+        font-size: 4rem;
+        font-weight: 900;
+        margin: 0;
+        height: 4.5rem;
+    }
+    .date{
+        width: 120rem;
+        display: flex;
+        justify-content: flex-end;
+        font-size: 1.6rem;
+        font-weight: 500;
+        margin-bottom: 2rem;
+    }
+    .images{
+        width: 120rem;
+        display: flex;
+        justify-content: space-between;
+
+        img{object-fit: cover;}
+        .img1, .img2{
+            width: 46.2rem;
+            height: 70.1rem;
+        }
+        .img3{
+            width: 23rem;
+            height: 70.1rem;
+        }
+    }
+    .content{
+        font-size:1.6rem;
+        white-space: pre-wrap;
+        line-height: 1.7;
+        letter-spacing: 0.04rem;
+    }
+}
