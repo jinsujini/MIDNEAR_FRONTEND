@@ -23,7 +23,8 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         column-gap: 2.4rem;
-        min-height: 90rem;
+        min-height: 88.8rem;
+
        
         .product{
             width: 28.2rem;
@@ -81,11 +82,13 @@
     }
 }
 
+
 .pagination{
+    flex: 0;
     display: flex;
     justify-content: center;
     color: var(--gray900);
-    margin: 1rem  0 3rem 0;  
+    margin: 1rem  0;  
     font-size: 1.2rem;
     .pageNum{
         cursor: pointer;
@@ -94,13 +97,14 @@
         padding-top: 0.1rem;
 
 
+
         &[aria-current="page"]{
-            color: var(--gray1000);
-            font-weight: 600;
+            color: var(--gray1000)
         }
+
     }
     .prev, .next{
-
+        height: 1.8rem;
        cursor: pointer;
        display: flex;
        align-items: center;
