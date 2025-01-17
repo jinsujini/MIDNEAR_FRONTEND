@@ -74,8 +74,8 @@ function App() {
         <Route path="/mypage/colligation/point" element={<PointList/>} />
         
         
-
-        <Route path='/all-shop' element={<AllShop />} />
+        <Route path='/shop/:category/:subCategory' element={<AllShop />} />
+        <Route path='/shop/:category' element={<AllShop />} />
 
         <Route path="user/join" element={<Join />} />
         <Route path='user/login' element={<Login />} />
