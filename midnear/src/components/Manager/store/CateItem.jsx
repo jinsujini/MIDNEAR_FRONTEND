@@ -1,84 +1,60 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
-const CateItem = ({ type }) => {
-  const [catename, setCatename] = useState('ALL SHOP');
-  const [options, setOptions] = useState(['ALL SHOP', 'NEW']);
-  const [isOpen, setIsOpen] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
+const CateItem = ({ name, children, isOpen, onAddCategory }) => {
+  const [open, setOpen] = useState(isOpen);
+  const [editMode, setEditMode] = useState(false);
+  const [newName, setNewName] = useState(name);
 
-  const handleSelect = (name) => {
-    setCatename(name);
-    setIsOpen(false);
-  };
-
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
+  const toggleOpen = () => {
+    setOpen((prev) => !prev);
   };
 
   const handleDoubleClick = () => {
-    setIsEditing(true);
+    setEditMode(true);
   };
 
-  const handleEdit = (e) => {
-    setCatename(e.target.value);
+  const handleNameChange = (e) => {
+    setNewName(e.target.value);
   };
-
-  const handleBlur = () => {
-    setIsEditing(false);
-  };
-
-  const handleKeyDown = (e) => {
-    if (type === "top") {
-    }
-    else {
-      if (e.key === 'Enter') {
-        if (catename.trim() === '') {
-          setOptions(options.filter((option) => option !== catename));
-        } else {
-          setIsEditing(false);
-        }
-      }
-    }
-
+  const handleSaveName = () => {
+    setEditMode(false);
+    if (onAddCategory) onAddCategory(newName); 
   };
 
   return (
-    <div className="cateitem">
-      <div className="selected" onClick={toggleDropdown} onDoubleClick={handleDoubleClick}>
-        {isEditing ? (
-          <input
-            type="text"
-            value={catename}
-            onChange={handleEdit}
-            onBlur={handleBlur}
-            onKeyDown={handleKeyDown}
-            autoFocus
-          />
-        ) : (
-          <span>{catename}</span>
-        )}
-        <span className="arrow">{isOpen ? '▲' : '▼'}</span>
+    <div className="cateItem">
+      <div className="inner" onClick={toggleOpen}>
+        <div className={`semo ${open ? 'open' : ''}`}></div>
+        <div 
+          className="item-name" 
+          onDoubleClick={handleDoubleClick}
+        >
+          {editMode ? (
+            <input 
+              type="text" 
+              value={newName} 
+              onChange={handleNameChange}
+              onBlur={handleSaveName}
+              autoFocus
+            />
+          ) : (
+            newName
+          )}
+        </div>
       </div>
 
-
-      {isOpen && (
+      {children && (
         <motion.div
-          className="options"
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.3 }}
+          className={`children ${open || isOpen ? 'open' : ''}`}
+          initial={false}
+          animate={open || isOpen ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          style={{ overflow: 'hidden' }}
         >
-          {options.map((option, index) => (
-            <div key={index} className="option" onClick={() => handleSelect(option)}>
-              {option}
-            </div>
-          ))}
-          <div className="add" onClick={() => handleSelect("추가")}>추가</div>
+          {children}
         </motion.div>
       )}
-
     </div>
   );
 };
