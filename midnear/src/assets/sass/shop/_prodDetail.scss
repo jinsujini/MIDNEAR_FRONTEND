@@ -1,6 +1,7 @@
 .prod-detail{
     display: flex;
     height: calc(100vh - 4.63vh);
+    margin-bottom: 5rem;
     overflow: hidden;
     padding: 2.4rem 0;
 
@@ -104,6 +105,7 @@
                 
                 .title{ 
                     display: flex; 
+                    align-items: center;
                     p, .down{
                         cursor: pointer;
                     }
