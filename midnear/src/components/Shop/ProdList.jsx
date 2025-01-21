@@ -12,8 +12,8 @@ const ProdList = ({productList}) => {
   return (   
     <div className='bottom-el'> 
       <div className='prodList'>
-        {productList.slice(offset, offset + limit).map((it)=>(
-            <div className='product'>
+        {productList.slice(offset, offset + limit).map((it, index)=>(
+            <div className='product' key={index}>
               <Link to="/products/detail">
                 <div className='prodImg'>
                   <img src={it.frontImg} className='frontImg'></img>
