@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../assets/sass/manager/_blockedusers.scss';
+import '../../../assets/sass/manager/blockedUsers/_blockedusers.scss';
 
 const BlockedUsers = () => {
   const [customerId, setCustomerId] = useState('');
@@ -78,7 +78,7 @@ const BlockedUsers = () => {
         <select
           value={reason}
           onChange={(e) => setReason(e.target.value)}
-          className="select"
+          className="b-select"
         >
           <option value="">-----사유 선택-----</option>
           {reasons.map((reason, index) => (
