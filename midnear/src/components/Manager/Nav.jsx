@@ -43,8 +43,8 @@ const Nav = () => {
                 variants={variants}
                 transition={{ duration: 0.3 }}
             >
-                <p>포인트 지급관리</p>
-                <p>쿠폰 지급관리</p>
+                <Link to="/manager/coupon/Coupon">쿠폰 지급관리</Link>
+                <Link to="/manager/coupon/Point">포인트 지급관리</Link>
             </motion.div>
 
             <div onClick={() => toggleCategory("store")} className={`${activeCategory === "store" ? "display" : "category"}`}>
@@ -90,7 +90,7 @@ const Nav = () => {
                 transition={{ duration: 0.3 }}
             >
                 <Link to="/manager/notice/Notice">공지사항 목록</Link>
-                <p>공지사항 작성</p>
+                <Link to="/manager/notice/Notice-create">공지사항 작성</Link>
             </motion.div>
 
             <div onClick={() => toggleCategory("magazine")} className={`${activeCategory === "magazine" ? "display" : "category"}`}>

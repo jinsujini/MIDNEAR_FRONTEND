@@ -26,6 +26,7 @@
   align-items: center;
   justify-content: flex-end;
   width: 100%;
+// 
 }
 
 .dropdown, .search-bar {
@@ -40,12 +41,39 @@
   height: 2.5vh;
 }
 
+// .dropdown {
+//   width: 3.75vw;
+//   &:focus {
+//     outline: none;
+//   }
+//    content: " ▼"
+// }
+/* 드롭다운을 감싸는 컨테이너 */
+.dropdown-container {
+  position: relative;
+  width: 3.75vw;
+}
+
+/* 드롭다운 스타일 */
 .dropdown {
   width: 3.75vw;
-  text-align: center;
-  &:focus {
-    outline: none;
-  }
+  padding-right: 30px; /* 화살표와의 간격 */
+  padding-left: 10px;
+  appearance: none; /* 기본 드롭다운 화살표 숨김 */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  height: 40px; /* 드롭다운 높이 */
+
+}
+
+/* ▼ 기호 추가 */
+.dropdown-container::after {
+  content: " ▼"; /* ▼ 기호를 추가 */
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* 클릭 방지 */
 }
 
 .search-bar {
@@ -83,9 +111,9 @@ th, td {
 }
 
 th {
-  background-color: var(--gray900);
-  color: var(--white);
-  font-size: 0.68vw;
+  background-color: var(--gray300);
+
+  font-size: 0.6vw;
 }
 
 th:nth-child(1) { width: 9.84vw; }
@@ -132,7 +160,7 @@ tr {
   color: var(--gray800);
 }
 
-.action-buttons {
+.bul-action-buttons {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -145,16 +173,17 @@ tr {
   }
 }
 
-.action-buttons button {
+.bul-action-buttons button {
   font-size: 0.63vw;
   width: 3.87vw;
   height: 3.33vh;
   cursor: pointer;
-  background-color: var(--white);
+  background-color: var(--gray900);
   border-left: 0.05vw solid var(--gray800);
+  color: var(--white);
 }
 
-.action-buttons button:hover {
+.bul-action-buttons button:hover {
   background-color: var(--black);
   color: var(--white);
 }

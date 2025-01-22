@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../../assets/sass/manager/magazine/_magazine-create.scss';
+// import '../../../assets/sass/manager/magazine/_magazine-create.scss';
 
 const MagazineCreateComponent = () => {
     const [images, setImages] = useState([]);

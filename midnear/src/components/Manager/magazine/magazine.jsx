@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import '../../../assets/sass/manager/magazine/_magazine.scss';
 import { useNavigate } from 'react-router-dom';
 
 const MagazineComponent = () => {
@@ -151,6 +150,7 @@ const MagazineComponent = () => {
             <div className="magazine-header1">
                 <div className="magazine-title">매거진 관리</div>
                 <div className="magazine-controls">
+                <div className="dropdown-container">
                     <select className="magazine-dropdown" value={filter} onChange={handleFilterChange}>
                         <option value="오늘">오늘</option>
                         <option value="1주일">1주일</option>
@@ -158,10 +158,13 @@ const MagazineComponent = () => {
                         <option value="3개월">3개월</option>
                         <option value="전체">전체</option>
                     </select>
+                    </div>
+                    <div className="dropdown-container">
                     <select className="magazine-dropdown" value={sortOrder} onChange={handleSortChange}>
                         <option value="최신순">최신순</option>
                         <option value="오래된순">오래된순</option>
                     </select>
+                    </div>
                     <div className="magazine-search-box">
                         <div className="magazine-square-box">검색</div>
                         <input
