@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import {motion, AnimatePresence} from 'framer-motion';
 import logo from "../../assets/img/logo/header_logo.svg";
 import ShoppingCart from '../Cart/ShoppingCart';
+import frontImg from '../../assets/img/product/prod1.png'
 
 const Header = () => {
   const navigate = useNavigate();
@@ -11,7 +12,19 @@ const Header = () => {
   const [activeSubCate1, setActiveSubCate1] = useState(false);
   const [activeSubCate2, setActiveSubCate2] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  
+  const [cartList, setCartList] = useState([
+    {
+      id: 1,
+      frontImg: frontImg,
+      name: "CUTE SWEATER",
+      price: 39000,
+      dcPrice: 35100,
+      color: "BLACK",
+      size: "M",
+      count: 2,
+    },
+  ]);
+
   const goHome = () => {
      navigate('/'); 
   };
@@ -98,7 +111,7 @@ const Header = () => {
         <p className="LOGIN">LOGIN</p>
         <p className="ACCOUNT">ACCOUNT</p>
         <p className="BAG" onClick={toggleCart}>
-          BAG <span>(1)</span>
+          BAG <span>({cartList.length})</span>
         </p>
       </div>
     </div>
@@ -120,7 +133,7 @@ const Header = () => {
             variants={cartVariants}
             transition={{ type: "tween", duration: 1, }} 
           >
-            <ShoppingCart toggleCart={toggleCart} />
+            <ShoppingCart toggleCart={toggleCart} cartList={cartList}  />
           </motion.div>
           </>
         )}        
