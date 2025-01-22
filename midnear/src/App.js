@@ -42,6 +42,8 @@ import SelectAdd from './components/Cart/Order/SelectAdd';
 import EditAdd from './components/Cart/Order/EditAdd';
 import MagazineList from './components/Magazine/MagazineList';
 import MagazinDetail from './components/Magazine/MagazinDetail';
+import NoticeList from './components/Notice/NoticeList';
+import NoticeDetail from './components/Notice/NoticeDetail';
 
 function App() {
   const location = useLocation();
@@ -73,6 +75,8 @@ function App() {
         <Route path="/mypage/colligation/cupon" element={<CuponList/>} />
         <Route path="/mypage/colligation/point" element={<PointList/>} />
         
+        <Route path='/others/notice' element={<NoticeList />} />
+        <Route path='/others/notice/detail' element={<NoticeDetail />} />
         
         <Route path='/shop/:category/:subCategory' element={<AllShop />} />
         <Route path='/shop/:category' element={<AllShop />} />

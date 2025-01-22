@@ -83,7 +83,7 @@ const NoticeList = () => {
         {/* 고정 공지 */}
         {noticesTop.map((notice) => (
             <li key={notice.id} className="notice-item-top">
-            <Link to="/notice/detail">
+            <Link to="/others/notice/detail">
                 <div className="notice-title">{notice.title}</div>
             </Link>
             <div className="notice_information">
@@ -96,7 +96,7 @@ const NoticeList = () => {
         {/* 일반 공지 */}
         {paginatedNotices.map((notice) => (
             <li key={notice.id} className="notice-item">
-            <Link to="/notice/detail">
+            <Link to="/others/notice/detail">
                 <div className="notice-title">{notice.title}</div>
             </Link>
             <div className="notice_information">

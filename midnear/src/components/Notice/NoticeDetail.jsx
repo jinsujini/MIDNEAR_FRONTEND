@@ -8,7 +8,7 @@ const NoticeDetail = () => {
         <div className='notice'>
             <div className='mypage_title'>NOTICE</div>
             <div className='notice_nav_contianer'>
-                <Link to='/notice' className='back-to-notice-list'>목록</Link>
+                <Link to='/others/notice' className='back-to-notice-list'>목록</Link>
             </div>
             <ul className="notice-list">
                 <li className="notice-item-top">
