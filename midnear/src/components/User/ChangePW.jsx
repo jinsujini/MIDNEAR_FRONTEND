@@ -1,23 +1,22 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import eye from '../../assets/img/user/login/eye.svg'
-import noneye from '../../assets/img/user/login/eye_open.svg'
 import Modal from './Modal/Modal';
 
-const ChangePW = () => {
+const FindID = () => {
     const navigate = useNavigate();
-    const [pwType, setPwType] = useState({
-        type: 'password',
-        visible: false,
-      });
+    const [selectedOption, setSelectedOption] = useState('phone');
+    const [PhoneCodeInput, setPhoneCodeInput] = useState(false);
+    const [phone, setPhone] = useState('');
+    const [name, setName] = useState('');
+    const [isPhoneValid, setIsPhoneValid] = useState(true);
+    const [isNameValid, setIsNameValid] = useState(true);
+    const [verificationMessage, setVerificationMessage] = useState('');
+    const [code, setCode] = useState('');
+    const [isCodeValid, setIsCodeValid] = useState(false);
 
-    const handlePwState = (e) => {
-        e.preventDefault();
-        setPwType((prevState) => ({
-          type: prevState.visible ? 'password' : 'text',
-          visible: !prevState.visible,
-        }));
-      };
+    const handleOptionChange = (e) => {
+        setSelectedOption(e.target.value);
+    };
 
     const goToFindPW = () => {
         navigate('/user/find/pw');
@@ -27,16 +26,30 @@ const ChangePW = () => {
         navigate('/user/find/id');
     };
 
-    const modalRef = useRef();
+    const handlePhoneRequest = (e) => {
+        e.preventDefault();
+        if (isPhoneValid && isNameValid) {
+            setPhoneCodeInput(true);
+            setVerificationMessage('인증번호가 전송되었습니다.');
+        } else {
+            handleValid(); // Trigger validation
+        }
+    };
 
-    const showSuccessModal = () => {
-        modalRef.current.openModal(
-          "비밀번호 변경이 완료되었습니다.\n확인 버튼을 누르시면 로그인 페이지로 돌아갑니다.",
-          "/user/login"
-        );
-      };
+    const handleValid = () => {
+        const isPhoneEmpty = phone.trim() === '';
+        setIsPhoneValid(!isPhoneEmpty);
 
-  return (
+        const isNameEmpty = name.trim() === '';
+        setIsNameValid(!isNameEmpty);
+    };
+
+    const handleCodeChange = (e) => {
+        setCode(e.target.value);
+        setIsCodeValid(e.target.value.trim().length === 6);
+    };
+
+    return (
     <div className='container'>
         <div className='find'>
             <div className='select_content'>
@@ -48,28 +61,91 @@ const ChangePW = () => {
                 </div>
             </div>
 
-            <p className='selected_text'>비밀번호 변경</p>
+            <div className="radio-group">
+                <label className="radio-label">
+                    <input
+                        type="radio"
+                        name="findMethod"
+                        value="phone"
+                        checked={selectedOption === 'phone'}
+                        onChange={handleOptionChange}
+                    />
+                    <span className="radio-text">휴대폰 번호로 찾기</span>
+                </label>
 
-            <div className='user_content'>
-                <div className='user_container'>
-                    <input type={pwType.type} className='min_text' placeholder='새 비밀번호*' />
-                    <span onMouseDown={handlePwState}>
-                        <img src={pwType.visible ? noneye : eye} className="eye_icon" alt="toggle visibility" />
-                    </span>
-                </div>
+                {selectedOption === 'phone' && (
+                    <div className="form-group">
+                        
+                        {/* 이름 입력칸 */}
+                        <input 
+                            type="text" 
+                            className={`min_text ${isNameValid ? '' : 'invalid'}`} 
+                            placeholder="이름*" 
+                            value={name}
+                            onChange={(e) => { 
+                                setName(e.target.value);
+                                handleValid();
+                            }}
+                        />
+                        
+                        {/* 이름 유효성 검사 메시지 */}
+                        {!isNameValid && <p className="error_message">이름을 정확하게 입력해 주세요.</p>}
 
-                <div className='user_container'>
-                    <input type='password' className='min_text' placeholder='비밀번호 확인*' />
-                    <button className='pw_check'>확인</button>
-                </div>
+                        <div className='user_container'>
+                            
+                            {/* 휴대폰 번호 입력칸 */}
+                            <input 
+                                type="text" 
+                                className={`min_text ${isPhoneValid ? '' : 'invalid'}`} 
+                                placeholder="휴대전화 (-없이)" 
+                                value={phone}
+                                onChange={(e) => { 
+                                    setPhone(e.target.value);
+                                    handleValid();
+                                }}
+                            />
+
+                            {/* 인증 요청 버튼 */}
+                            <button 
+                                className="certi_btn" 
+                                onClick={handlePhoneRequest} 
+                                disabled={!isPhoneValid || !isNameValid}
+                            >
+                                인증요청
+                            </button>
+                        </div>
+
+                        {/* 휴대폰 번호 유효성 검사 메시지 */}
+                        {!isPhoneValid && <p className="error_message">휴대폰 번호를 정확하게 입력해 주세요.</p>}
+                        
+                        {/* 인증 번호 전송 메시지 */}
+                        {verificationMessage && <p className="success_message">{verificationMessage}</p>}
+                    </div>
+                )}
+
+                {PhoneCodeInput && (
+                    <div className="user_container">
+                        <input
+                            type="text"
+                            className="min_text"
+                            placeholder="6자리코드"
+                            value={code}
+                            onChange={handleCodeChange}
+                        />
+                        <button
+                            className="certi_btn"
+                            disabled={!isCodeValid}
+                        >
+                            확인
+                        </button>
+                    </div>
+                )}
             </div>
-
-            <button className='user_btn' onClick={showSuccessModal}>비밀번호 변경하기</button>
+            
+            <button className='user_btn'>아이디 찾기</button>
         </div>
-        
-        <Modal ref={modalRef} />
     </div>
   )
 }
 
-export default ChangePW
+export default FindID;

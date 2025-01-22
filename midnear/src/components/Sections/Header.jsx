@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom'; 
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation, Link } from 'react-router-dom'; 
 import logo from "../../assets/img/logo/header_logo.svg";
+import Login from '../User/Login';
+
 
 const Header = () => {
   const navigate = useNavigate();
+  const location = useLocation(); 
   const [activeSub1, setActiveSub1] = useState(false);
   const [activeSub2, setActiveSub2] = useState(false);
   const [activeSubCate1, setActiveSubCate1] = useState(false);
   const [activeSubCate2, setActiveSubCate2] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
   const goHome = () => {
      navigate('/'); 
@@ -27,6 +31,14 @@ const Header = () => {
   const openSubCate2 = () => {
     setActiveSubCate2(!activeSubCate2);
   };
+
+  const toggleLoginModal = () => {
+    setShowLoginModal(!showLoginModal);
+  };
+
+  useEffect(() => {
+    setShowLoginModal(false);
+  }, [location.pathname]);
 
 
   return (
@@ -78,12 +90,17 @@ const Header = () => {
 
       <div className="sc2">
         <p className="SEARCH">SEARCH</p>
-        <p className="LOGIN">LOGIN</p>
+        <p className="LOGIN" onClick={toggleLoginModal} >LOGIN</p>
         <p className="ACCOUNT">ACCOUNT</p>
         <p className="BAG">
           BAG <span>(1)</span>
         </p>
       </div>
+
+      {showLoginModal && (
+        <Login onClose={toggleLoginModal} />
+      )}
+
     </div>
   );
 };
