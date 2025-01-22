@@ -65,7 +65,7 @@ const ReviewImage = () => {
       <div className='bottom-el'>
           <div className='all-imgList'>
               {allImages.slice(offset, offset + limit).map((it, index)=>(
-                  <div keu={index} className='image-box' >
+                  <div key={index} className='image-box' >
                       <img src={it} className='image'/>
                   </div>
               ))}

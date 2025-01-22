@@ -102,8 +102,8 @@ const ProdDetail = () => {
               </div>
             </div>
             <div className='size'>
-              {size.map((item)=>(
-                <div className={selectSize === item ? 'bold' : ''} onClick={() => {
+              {size.map((item, index)=>(
+                <div key={index} className={selectSize === item ? 'bold' : ''} onClick={() => {
                   setSelectSize((prev) => (prev === item ? null : item));
                 }}>{item}</div>
               ))}
@@ -123,11 +123,11 @@ const ProdDetail = () => {
           <div className='box'>장바구니 담기</div>
           
           <div className='detail-box'>
-            {information.map((item)=>(
-              <div className='detail' >
+            {information.map((item, index)=>(
+              <div key={index} className='detail' >
                 <div className='title'>
-                <p className={`${isSelected === item.name ? 'bold' : ''} ${isSelected === item.name ? 'display' : item.name}`} onClick={()=>showDetail(item)}>{item.name}</p>
-                <img src={isSelected === item.name ? up : down}
+                  <p className={`${isSelected === item.name ? 'bold' : ''} ${isSelected === item.name ? 'display' : item.name}`} onClick={()=>showDetail(item)}>{item.name}</p>
+                  <img src={isSelected === item.name ? up : down}
                     className={`down ${isSelected === item.name ? 'display' : item.name}`} onClick={()=>showDetail(item)}/>
                 </div>
                 <motion.div
@@ -137,7 +137,7 @@ const ProdDetail = () => {
                     variants={variants}
                     transition={{duration:0.3}}
                 >
-                  <p>{item.content}</p>
+                  <div>{item.content}</div>
                 </motion.div>
                 
               </div>
