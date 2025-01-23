@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react'
-import triangle from '../../../assets/img/product/triangle.svg'
+import triangle from '../../assets/img/product/triangle.svg'
 
 const SortMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -7,7 +7,7 @@ const SortMenu = () => {
     const ref = useRef(null);
     const options = [
         {value: 'latest', label: '최신순'},
-        {value: 'oldest', label: '오래된순'},
+        {value: 'popular', label: '인기순'},
     ];
 
     // 드롭다운 메뉴
@@ -36,7 +36,9 @@ const SortMenu = () => {
     <div className="sort-dropdown" ref={ref}>
       <div className="selected" onClick={removeHandler}>
         <div className='option'>{options.find(option => option.value === select).label}</div>
-        <div className='triangle'><img src={triangle}></img></div>
+        <div className={`triangle ${isOpen ? 'open' : ''}`}>
+          <img src={triangle} alt='triangle'/>
+        </div>
       </div>
 
       {isOpen && (

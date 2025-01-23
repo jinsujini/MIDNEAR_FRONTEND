@@ -1,7 +1,11 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom'; 
 import logo from "../../assets/img/logo/header_logo.svg";
 import Login from '../User/Login';
+import {motion, AnimatePresence} from 'framer-motion';
+import ShoppingCart from '../Cart/ShoppingCart';
+import frontImg from '../../assets/img/product/prod1.png'
 
 
 const Header = () => {
@@ -12,6 +16,20 @@ const Header = () => {
   const [activeSubCate1, setActiveSubCate1] = useState(false);
   const [activeSubCate2, setActiveSubCate2] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [cartList, setCartList] = useState([
+    {
+      id: 1,
+      frontImg: frontImg,
+      name: "CUTE SWEATER",
+      price: 39000,
+      dcPrice: 35100,
+      color: "BLACK",
+      size: "M",
+      count: 2,
+    },
+  ]);
+
 
   const goHome = () => {
      navigate('/'); 
@@ -20,7 +38,6 @@ const Header = () => {
   const openCate1 = () => {
     setActiveSub1(!activeSub1);
   };
-
 
   const openCate2 = () => {
     setActiveSub2(!activeSub2);
@@ -40,8 +57,23 @@ const Header = () => {
     setShowLoginModal(false);
   }, [location.pathname]);
 
+  
+  const toggleCart = () => {
+    setIsCartOpen((prev)=>!prev);
+  }
+  const cartVariants = {
+    hidden: { x: "43.7rem" },
+    visible: { x: 0 },
+    exit: { x: "43.7rem",  transition: { duration: 1, ease: "easeInOut" }  } 
+  };
+  const backgroundVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.5, ease: "easeInOut" } },
+    exit: { opacity: 0, transition: { duration: 0.5, ease: "easeInOut" } }
+  };
 
   return (
+    <div className='header-container'>
     <div className="header">
       <div className="logo" onClick={goHome}>
         <img src={logo} alt="logo" />
@@ -92,8 +124,8 @@ const Header = () => {
         <p className="SEARCH">SEARCH</p>
         <p className="LOGIN" onClick={toggleLoginModal} >LOGIN</p>
         <p className="ACCOUNT">ACCOUNT</p>
-        <p className="BAG">
-          BAG <span>(1)</span>
+        <p className="BAG" onClick={toggleCart}>
+          BAG <span>({cartList.length})</span>
         </p>
       </div>
 
@@ -101,6 +133,30 @@ const Header = () => {
         <Login onClose={toggleLoginModal} />
       )}
 
+    </div>
+    <AnimatePresence>
+        {isCartOpen && (
+          <>
+          <motion.div
+            className="ShoppingCart"
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={backgroundVariants}
+          />
+          <motion.div
+          className={`cart_content ${isCartOpen ? 'open' : ''}`}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={cartVariants}
+            transition={{ type: "tween", duration: 1, }} 
+          >
+            <ShoppingCart toggleCart={toggleCart} cartList={cartList}  />
+          </motion.div>
+          </>
+        )}        
+      </AnimatePresence>
     </div>
   );
 };

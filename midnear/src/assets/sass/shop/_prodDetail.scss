@@ -1,0 +1,154 @@
+.prod-detail{
+    display: flex;
+    height: calc(100vh - 4.63vh);
+    margin-bottom: 5rem;
+    overflow: hidden;
+    padding: 2.4rem 0;
+
+    .left-img, .right-info{
+        width: 60rem;
+        overflow-y: scroll;
+    }
+    .left-img::-webkit-scrollbar, .right-info::-webkit-scrollbar {
+        display: none;
+    }
+    .left-img{
+        img{
+            width: 60rem;
+            height: calc(100vh - 4.63vh - 4.8rem);
+            object-fit: contain;
+        }
+    }
+
+    .right-info{
+        display: flex;
+        flex-direction: column;
+        font-size: 12px;
+        padding-left: 3rem;
+
+        .empty{
+            flex-shrink: 0;
+            height:21vh;
+        }
+        .basic{
+            display: flex;
+            margin-bottom: 6.9rem;
+            .info{ 
+                width: 20rem; 
+                display: flex;
+                flex-direction: column;
+            }
+            .name{ font-weight: bold; }            
+            /* 할인시 중앙 라인 표시
+            .price{text-decoration:line-through;}
+            */
+            .discount{
+                display: flex;
+                color: #FF0000;
+                .dc-price{
+                    font-weight: bold;
+                    margin-right: 0.7rem;
+                }
+            }
+            .size{
+                margin-left: 8.8rem;
+                display: flex;
+                div{
+                    margin: 0 2.1rem;
+                    cursor: pointer;
+                    &.bold {
+                        font-weight: bold; 
+                      }
+                   
+                } 
+            }
+            /* 할인표시 기본 */
+            .discount{display: none;}
+        }
+        
+        .color{ font-size: 11px; }
+        .other-color{
+            display: flex;
+            margin-top:1rem;
+            margin-bottom: 1.8rem;
+            img{                
+                width:4rem;
+                height: 4rem;
+                object-fit: cover;
+                margin-right: 1.2rem;
+            }
+        }
+        .soldout, .box{
+            border: solid 0.1rem var(--gray500);
+            width: 48.6rem;
+            height: 4rem;
+            margin: 0.8rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .box:hover{
+            border: solid 0.1rem var(--black);
+            background-color: var(--black);
+            color: var(--white);            
+            cursor: pointer;
+        }
+
+        .detail-box{
+            margin-top: 1.2rem;
+            
+            .detail{
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 1.8rem;
+                
+                .title{ 
+                    display: flex; 
+                    align-items: center;
+                    p, .down{
+                        cursor: pointer;
+                    }
+                }
+                .title:hover{ font-weight: bold;}
+
+                
+                .bold{font-weight: bold;}
+                .down{
+                    width: 0.8rem;
+                    height: auto;
+                    margin-left: 0.3rem;
+                }
+                .content{ 
+                    white-space: pre-wrap; 
+                    z-index: -1;
+
+
+                    .delivery{
+                        font-weight: bold;
+                        margin-bottom: 1rem;
+                    }
+
+                    .open-modal{
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
+                }
+                
+            }
+        }
+        /* 품절 박스 기본 */
+        .soldout{display: none;}
+
+        .with-item{
+            display: flex;
+            img{
+                width: 10.6rem;
+                height: 13.1rem;
+                object-fit: cover;
+                margin-right: 2.4rem;
+            }
+        }
+    }
+    
+}
