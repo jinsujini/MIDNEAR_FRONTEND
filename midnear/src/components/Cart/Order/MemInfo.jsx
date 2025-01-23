@@ -37,15 +37,15 @@ const MemInfo = () => {
   }
   
   const handleUseAllPoints = () => {
-    setInputValue(userPoint.toLocaleString('ko-KR'));
+    setInputValue(userPoint);
     setError('');
   };
 
   useEffect(() => {
-    const isInputValid = !isValidate && inputValue !== '' && Number(inputValue.replace(/,/g, '')) <= userPoint;
+    const isInputValid = !isValidate && inputValue !== '' && isNaN(inputValue) === false;
     const areFieldsFilled = name.trim() !== '' && phone.trim() !== '';
     setIsButtonEnabled(isInputValid && areFieldsFilled);
-  }, [name, phone, inputValue, isValidate]);
+  }, [name, phone, inputValue]);
 
   return (
     <div className='member'>
@@ -114,7 +114,7 @@ const MemInfo = () => {
           <div className='order_content'>
             <div className='title'>주문 내용</div>
             <div className='s_title'>상품</div>
-            <OrderList productList={items} point={Number(inputValue.replace(/,/g, '') || 0)} />
+            <OrderList productList={items} point={inputValue} />
           </div>
         </div>
     </div>

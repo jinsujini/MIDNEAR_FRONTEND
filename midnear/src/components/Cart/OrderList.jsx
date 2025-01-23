@@ -10,6 +10,7 @@ const OrderList = ({productList, toggleCart, point}) => {
   const [quantity, setQuantity] = useState(0);
 
   const totalPrice = total - point; // 상품 가격 + 배송비 - 포인트, 배송비는 아직
+  const totalCartPrice = selectedTotal; // 선택한 상품 가격 + 배송비(선택한 상품 없을 때 배송비 없게 해야함)
   useEffect(() => {
     const initialTotal = cartItems.reduce(
       (sum, item) => sum + item.price * item.count, 0
@@ -34,15 +35,27 @@ const OrderList = ({productList, toggleCart, point}) => {
 
   const decreaseNum = (id) => {
     setCartItems((prev) =>
-    prev.map((item) => 
-    item.id === id && item.count > 1 ? {...item, count : item.count - 1} : item
-  ))
+      prev.map((item) => 
+        item.id === id && item.count > 1 ? {...item, count : item.count - 1} : item
+      )
+    );
+    setCheckedItems((prev) =>
+      prev.map((item) =>
+        item.id === id && item.count > 1 ? { ...item, count: item.count - 1 } : item
+      )
+    );
   }
   const increaseNum = (id) => {
     setCartItems((prev) => 
-    prev.map((item) =>
-    item.id === id ? {...item, count: item.count + 1 } : item
-  ))
+      prev.map((item) =>
+        item.id === id ? {...item, count: item.count + 1 } : item
+      )
+    );
+    setCheckedItems((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, count: item.count + 1 } : item
+      )
+    );
   }
   useEffect(() => {
     const updatedTotal = cartItems.reduce(
@@ -155,7 +168,7 @@ const OrderList = ({productList, toggleCart, point}) => {
         </div>
         <div className='total-price'>
           <p>총 결제 금액</p>
-          <p className='sum-price'>&#xffe6; {selectedTotal.toLocaleString('ko-KR')}</p>
+          <p className='sum-price'>&#xffe6; {totalCartPrice.toLocaleString('ko-KR')}</p>
         </div>
       </div>
       
