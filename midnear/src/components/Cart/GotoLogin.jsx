@@ -72,13 +72,7 @@ const GotoLogin = () => {
                     </div>
         </div>
         
-        <div className='order_content'>
-            <div className='title'>주문 내용</div>
-            <div className='s_title'>상품</div>
-            <OrderList productList={items} point={0}/>
-        </div>
-
-       
+        <div className='order_content'> </div>       
         
     </div>
     </div>
