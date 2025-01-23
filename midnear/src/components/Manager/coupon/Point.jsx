@@ -41,7 +41,7 @@ const PaymentComponent = () => {
     return (
         <div className="payment-container">
             <div className="payment-header">
-                <h2>지급 정보</h2>
+                <h2>포인트 지급 관리</h2>
                 <div className="payment-action-buttons">
                     <button onClick={() => setSelectedTab('전체')} className={selectedTab === '전체'? 'active' : ''}>전체 포인트</button>
                    
@@ -52,10 +52,10 @@ const PaymentComponent = () => {
 
             {selectedTab === '전체' && (
                 <div className="payment-fields">
-                    <label htmlFor="reason">지급 사유</label>
-                    <input type="text" id="reason" value={paymentReason} onChange={(e) => setPaymentReason(e.target.value)} placeholder="지급 사유를 입력하세요" />
-                    <label htmlFor="amount">지급 금액</label>
-                    <input type="number" id="amount" value={paymentAmount} onChange={(e) => setPaymentAmount(e.target.value)} placeholder="지급 금액을 입력하세요" />
+                    <label htmlFor="reason" >지급 사유</label>
+                    <input type="text" id="reason" className='couponinput' value={paymentReason} onChange={(e) => setPaymentReason(e.target.value)} placeholder="지급 사유를 입력하세요" />
+                    <label htmlFor="amount" >지급 금액</label>
+                    <input type="number" id="amount" className='couponinput' value={paymentAmount} onChange={(e) => setPaymentAmount(e.target.value)} placeholder="지급 금액을 입력하세요" />
                 </div>
             )}
 
@@ -70,7 +70,7 @@ const PaymentComponent = () => {
         onChange={(e) => setUserId(e.target.value)} 
         placeholder="사용자 아이디 입력" 
     />
-    <span className="search-icon">🔍</span>
+    <div className="search-icon">🔍</div>
 </div>
                     <div className="cp-table-container">
                         <table className="cp-user-table">
@@ -116,10 +116,10 @@ const PaymentComponent = () => {
                     </div>
 
                     <div className="payment-fields">
-                        <label htmlFor="reason">지급 사유</label>
-                        <input type="text" id="reason" value={paymentReason} onChange={(e) => setPaymentReason(e.target.value)} placeholder="지급 사유를 입력하세요" />
-                        <label htmlFor="amount">지급 금액</label>
-                        <input type="number" id="amount" value={paymentAmount} onChange={(e) => setPaymentAmount(e.target.value)} placeholder="지급 금액을 입력하세요" />
+                        <label htmlFor="reason" className='couponinput'>지급 사유</label>
+                        <input type="text" id="reason" className='couponinput' value={paymentReason} onChange={(e) => setPaymentReason(e.target.value)} placeholder="지급 사유 입력" />
+                        <label htmlFor="amount" className='couponinput'>금액 입력</label>
+                        <input type="number" id="amount" className='couponinput' value={paymentAmount} onChange={(e) => setPaymentAmount(e.target.value)} placeholder="지급 금액 입력" />
                     </div>
                 </div>
             )}

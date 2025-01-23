@@ -1,5 +1,5 @@
 .payment-container {
-    width: 1692px; /* 배경 가로 길이 맞추기 */
+    width: 88vw; /* 배경 가로 길이 맞추기 */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,7 +40,7 @@
 }
 
 .payment-fields input {
-    width: 100%;
+    // width: 100%;
     padding: 10px;
     margin-bottom: 12px;
     font-size: 1rem;
@@ -222,10 +222,22 @@
 .input-group input {
     width: 161px;  /* 가로 길이 161px */
 
-    text-align: right;
+    text-align: left;
 }
 
 .input-group .currency {
     font-weight: bold;
 
+}
+.search-icon {
+    padding: 0px;
+    font-size: 2rem;
+}
+
+.couponinput {
+    width: 100%;
+}
+
+.couponpercent {
+    width: 10%;
 }

@@ -34,6 +34,13 @@ const PaymentComponent = () => {
         alert('쿠폰 지급이 완료되었습니다.');
     };
 
+    const handleCouponPercentageChange = (e) => {
+        let value = Number(e.target.value);
+        if (value < 0) value = 1;
+        if (value > 100) value = 100;
+        setCouponPercentage(value);
+    };
+
     const startIdx = currentPage * usersPerPage;
     const endIdx = startIdx + usersPerPage;
     const paginatedUsers = users.slice(startIdx, endIdx); // 현재 페이지의 유저만 가져오기
@@ -41,7 +48,7 @@ const PaymentComponent = () => {
     return (
         <div className="payment-container">
             <div className="payment-header">
-                <h2>쿠폰 지급 정보</h2>
+                <h2>쿠폰 지급 관리</h2>
                 <div className="payment-action-buttons">
                     <button 
                         onClick={() => setSelectedTab('쿠폰')} 
@@ -61,10 +68,10 @@ const PaymentComponent = () => {
             {selectedTab === '쿠폰' && (
                 <div className="payment-fields">
                     <label htmlFor="couponName">쿠폰 이름</label>
-                    <input type="text" id="couponName" value={couponName} onChange={(e) => setCouponName(e.target.value)} placeholder="쿠폰 이름을 입력하세요" />
+                    <input type="text" className='couponinput' id="couponName" value={couponName} onChange={(e) => setCouponName(e.target.value)} placeholder="지급 사유 입력" />
 
-                    <label htmlFor="couponPercentage">쿠폰 %</label>
-                    <input type="number" id="couponPercentage" value={couponPercentage} onChange={(e) => setCouponPercentage(e.target.value)} placeholder="쿠폰 %를 입력하세요" />
+                    <label htmlFor="couponPercentage">할인 퍼센트</label>
+                    <input type="number"  id="couponPercentage" className='couponpercent' value={couponPercentage} onChange={handleCouponPercentageChange} placeholder="할인율" />
                 </div>
             )}
 
@@ -79,7 +86,7 @@ const PaymentComponent = () => {
                             onChange={(e) => setUserId(e.target.value)} 
                             placeholder="사용자 아이디 입력" 
                         />
-                        <span className="search-icon">🔍</span>
+                        <div className="search-icon">🔍</div>
                     </div>
                     <div className="cp-table-container">
                         <table className="cp-user-table">
@@ -125,11 +132,10 @@ const PaymentComponent = () => {
                     </div>
 
                     <label htmlFor="couponName">쿠폰 이름</label>
-                    <input type="text" id="couponName" value={couponName} onChange={(e) => setCouponName(e.target.value)} placeholder="쿠폰 이름을 입력하세요" />
+                    <input type="text" className='couponinput' id="couponName" value={couponName} onChange={(e) => setCouponName(e.target.value)} placeholder="쿠폰 이름을 입력하세요" />
 
-                    <label htmlFor="couponPercentage">쿠폰 %</label>
-                    <input type="number" id="couponPercentage" value={couponPercentage} onChange={(e) => setCouponPercentage(e.target.value)} placeholder="쿠폰 %를 입력하세요" />
-
+                    <label htmlFor="couponPercentage">할인 퍼센트</label>
+                    <input type="number"  id="couponPercentage" className='couponpercent' value={couponPercentage} onChange={handleCouponPercentageChange} placeholder="할인율" />
                 </div>
             )}
 

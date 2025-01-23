@@ -140,7 +140,7 @@ const NoticeTableComponent = () => {
                 <div className="notice-title">공지사항</div>
                 <div className="notice-controls">
                 <div className="dropdown-container">
-                    <select className="notice-dropdown" value={filter} onChange={handleFilterChange}>
+                    <select className="dropdown" value={filter} onChange={handleFilterChange}>
                         <option value="오늘">오늘</option>
                         <option value="1주일">1주일</option>
                         <option value="1개월">1개월</option>
