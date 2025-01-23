@@ -12,10 +12,11 @@
 //user
 @import "home/prodList";
 @import "home/homePage";
+@import "user/user";
+@import "user/modal";
+@import "user/login";
+@import "user/check";
 
 //manager
 @import "manager/manager";
 @import "manager/nav";
-@import "user/user";
-@import "user/modal";
-@import "user/login";

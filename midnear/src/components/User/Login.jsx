@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import kakao from '../../assets/img/user/login/kakao_logo.svg'
 import naver from '../../assets/img/user/login/naver_logo.svg'
 import google from '../../assets/img/user/login/google_logo.svg'
@@ -13,21 +13,17 @@ const Login = ({ onClose }) => {
     const [isEmailValid, setIsEmailValid] = useState(true);
     const [isPasswordValid, setIsPasswordValid] = useState(true);
 
-    const goToFindID = () => {
-        navigate('/user/find/id');
-    };
-    
-    const goToJoin = () => {
-        navigate('/user/join');
-    };
-
     const handleLogin = () => {
         const isEmailEmpty = email.trim() === '';
         const isPasswordEmpty = password.trim() === '';
-    
+
         setIsEmailValid(!isEmailEmpty);
         setIsPasswordValid(!isPasswordEmpty);
-      };
+
+        if (!isEmailEmpty && !isPasswordEmpty) {
+            navigate('/');
+        }
+    };
 
   return (
     <div className='background'>
@@ -88,8 +84,8 @@ const Login = ({ onClose }) => {
                         <p>로그인 상태 유지</p>
                     </div>
                     <div className='option'>
-                        <p className='option_text' onClick={goToFindID}>아이디 / 비밀번호를 잊으셨나요?</p>
-                        <p className='option_text' onClick={goToJoin}>회원가입하기</p>
+                        <Link to='/user/find/id' className='option_text'>아이디 / 비밀번호를 잊으셨나요?</Link>
+                        <Link to='/user/join' className='option_text'>회원가입하기</Link>
                     </div>
                 </div>
             </div>

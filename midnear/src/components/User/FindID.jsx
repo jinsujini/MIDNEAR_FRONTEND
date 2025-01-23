@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Modal from './Modal/Modal';
 
 const FindID = () => {
     const navigate = useNavigate();
@@ -12,9 +11,10 @@ const FindID = () => {
     const [isNameValid, setIsNameValid] = useState(true);
     const [verificationMessage, setVerificationMessage] = useState('');
     const [code, setCode] = useState('');
-    const [isCodeValid, setIsCodeValid] = useState(false);
     const [isCodeVerified, setIsCodeVerified] = useState(false);
     const [isSubmitEnabled, setIsSubmitEnabled] = useState(false);
+    const [serverCode, setServerCode] = useState('123456'); // Simulated server code
+    const [codeError, setCodeError] = useState(''); // Error message for invalid code
 
     const handleOptionChange = (e) => {
         setSelectedOption(e.target.value);
@@ -33,6 +33,7 @@ const FindID = () => {
         if (isPhoneValid && isNameValid) {
             setPhoneCodeInput(true);
             setVerificationMessage('인증번호가 전송되었습니다.');
+            setCodeError('');
         } else {
             handleValid();
         }
@@ -46,28 +47,39 @@ const FindID = () => {
         setIsNameValid(!isNameEmpty);
     };
 
-    const handleCodeChange = (e) => {
-        setCode(e.target.value);
-        setIsCodeValid(e.target.value.trim().length === 6);
-    };
-
     const handleButtonClick = (e) => {
-        if (name.trim() === '' || phone.trim() === '') {
-            handleValid();
-        } else {
+        e.preventDefault();
+        handleValid();
+        if (isNameValid && isPhoneValid) {
             handlePhoneRequest(e);
         }
     };
 
+    const handleCodeChange = (e) => {
+        const enteredCode = e.target.value;
+        setCode(enteredCode);
+        setCodeError('');
+    };
+
     const handleResendRequest = () => {
         setVerificationMessage('인증번호가 재전송되었습니다.');
+        setCodeError('');
     };
 
     const handleCodeSubmit = () => {
-        if (isCodeValid) {
+        if (code === serverCode) {
             setIsCodeVerified(true);
             setIsSubmitEnabled(true);
             setVerificationMessage('');
+            setCodeError('');
+        } else {
+            setCodeError('*정확한 인증번호를 입력해 주세요.');
+        }
+    };
+
+    const handleFindIDSubmit = () => {
+        if (isSubmitEnabled) {
+            navigate('/user/find/id/showid');
         }
     };
 
@@ -104,7 +116,6 @@ const FindID = () => {
                                 value={name}
                                 onChange={(e) => {
                                     setName(e.target.value);
-                                    handleValid();
                                 }}
                             />
                             {!isNameValid && <p className="error_message">이름을 정확하게 입력해 주세요.</p>}
@@ -117,7 +128,6 @@ const FindID = () => {
                                     value={phone}
                                     onChange={(e) => {
                                         setPhone(e.target.value);
-                                        handleValid();
                                     }}
                                 />
                                 <button
@@ -139,13 +149,12 @@ const FindID = () => {
                             <input
                                 type="text"
                                 className="min_text"
-                                placeholder="6자리코드"
+                                placeholder="인증번호"
                                 value={code}
                                 onChange={handleCodeChange}
                             />
                             <button
                                 className="certi_btn"
-                                disabled={!isCodeValid}
                                 onClick={handleCodeSubmit}
                             >
                                 확인
@@ -153,8 +162,9 @@ const FindID = () => {
                         </div>
                     )}
 
+                    {codeError && <p className="error_message">{codeError}</p>} {/* Display error message here */}
                     {isCodeVerified && (
-                        <p className="success_message">코드번호 인증이 완료되었습니다.</p>
+                        <p className="success_message">*코드번호 인증이 완료되었습니다.</p>
                     )}
                 </div>
 
@@ -166,12 +176,13 @@ const FindID = () => {
                         cursor: isSubmitEnabled ? 'pointer' : 'default',
                     }}
                     disabled={!isSubmitEnabled}
+                    onClick={handleFindIDSubmit}
                 >
                     아이디 찾기
                 </button>
             </div>
         </div>
     );
-}
+};
 
 export default FindID;

@@ -11,6 +11,11 @@ import FindID from './components/User/FindID';
 import FindPW from './components/User/FindPW';
 import ChangePW from './components/User/ChangePW';
 import AllShop from './components/Home/Shop/AllShop';
+import Successful from './components/User/FindID/Successful';
+import Failed from './components/User/FindID/Failed';
+import UntilChange from './components/User/FindPW/UntilChange';
+import ChangeSuccess from './components/User/FindPW/ChangeSuccess';
+import SuccessJoin from './components/User/Join/SuccessJoin';
 
 function App() {
   const location = useLocation();
@@ -30,6 +35,12 @@ function App() {
         <Route path='user/find/id' element={<FindID />} />
         <Route path='user/find/pw' element={<FindPW />} />
         <Route path='user/change/pw' element={<ChangePW />} />
+        <Route path='user/find/id/showid' element={<Successful />} />
+        <Route path='user/find/id/nonid' element={<Failed />} />
+        <Route path='user/find/pw/change' element={<UntilChange />} />
+        <Route path='/user/change/success' element={<ChangeSuccess />} />
+        <Route path='/user/join/success' element={<SuccessJoin />} />
+        
 
         {/* 관리자 페이지 */}
         <Route path="/manager/*" element={<Manager />}/>
