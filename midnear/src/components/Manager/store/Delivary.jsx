@@ -43,18 +43,18 @@ const Delivary = () => {
     setOpen(!open)
   }
   const handleSave = () => {
-    setIsModalOpen(true); 
+    setIsModalOpen(true);
   };
 
-const handleConfirm = () => {
+  const handleConfirm = () => {
     setIsCompleted(true);
     setIsModalOpen(false);
 
-};
+  };
 
-const handleCloseModal = () => {
+  const handleCloseModal = () => {
     setIsModalOpen(false);
-};
+  };
 
   return (
     <div className='delivary container'>
@@ -146,10 +146,10 @@ const handleCloseModal = () => {
         저장
       </div>
       <Modal
-                show={isModalOpen}
-                onClose={handleCloseModal}
-                onConfirm={handleConfirm}
-            />
+        show={isModalOpen}
+        onClose={handleCloseModal}
+        onConfirm={handleConfirm}
+      />
     </div>
   );
 };

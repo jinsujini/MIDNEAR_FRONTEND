@@ -1,31 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-const CateItem = ({ name, children, isOpen, onAddCategory }) => {
+
+const CateItem = ({ name, children, isOpen, isBot , onAddCategory}) => {
   const [open, setOpen] = useState(isOpen);
   const [editMode, setEditMode] = useState(false);
   const [newName, setNewName] = useState(name);
 
+  useEffect(() => {
+    setOpen(isOpen);
+  }, [isOpen]);
+
   const toggleOpen = () => {
-    setOpen((prev) => !prev);
+    if (!isBot && !editMode) setOpen((prev) => !prev);
   };
 
-  const handleDoubleClick = () => {
+  const handleDoubleClick = (e) => {
+    e.stopPropagation();
     setEditMode(true);
   };
 
   const handleNameChange = (e) => {
     setNewName(e.target.value);
   };
+
   const handleSaveName = () => {
+    if (!newName.trim()) {
+      alert('이름을 입력해주세요!');
+      return;
+    }
     setEditMode(false);
-    if (onAddCategory) onAddCategory(newName); 
+    if (onAddCategory) onAddCategory(newName);
   };
 
   return (
-    <div className="cateItem">
+    <div className={`cateItem ${isBot ? 'bot' : ''}`}>
       <div className="inner" onClick={toggleOpen}>
-        <div className={`semo ${open ? 'open' : ''}`}></div>
+        {!isBot && <div className={`semo ${open ? 'open' : ''}`}></div>}
         <div 
           className="item-name" 
           onDoubleClick={handleDoubleClick}
@@ -44,15 +55,16 @@ const CateItem = ({ name, children, isOpen, onAddCategory }) => {
         </div>
       </div>
 
-      {children && (
+      {!isBot &&  (
         <motion.div
-          className={`children ${open || isOpen ? 'open' : ''}`}
+          className={`children ${open ? 'open' : ''}`}
           initial={false}
-          animate={open || isOpen ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
+          animate={open ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
           style={{ overflow: 'hidden' }}
         >
           {children}
+
         </motion.div>
       )}
     </div>
