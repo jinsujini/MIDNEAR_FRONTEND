@@ -1,74 +1,124 @@
 .manager_category {
+    height: max-content;
+    gap: 2rem;
+
     .title {
         display: flex;
         align-items: center;
+        justify-content: space-between;
 
-        >.b {
-            display: flex;
+        > .b {
             font-weight: 900;
             margin-right: 15px;
             font-size: 1.5rem !important;
-            letter-spacing: .05rem;
+            letter-spacing: 0.05rem;
             color: var(--black);
         }
 
-        p {
-            font-size: 1rem !important;
-            font-weight: 400;
-            color: var(--gray600);
+        .btns {
+            > div {
+                height: 2.4em;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0 1rem;
+                border: solid 1px #c2c2c2;
+                color: var(--gray600);
+                font-size: 1rem;
+                cursor: pointer;
+            }
+
+            > div:hover {
+                color: var(--white);
+                background-color: var(--black);
+            }
         }
     }
+    .empty{
+        width: 1.5rem;
 
-    .catelist {
-        margin: 1rem 0;
+    }
+    .top {
+        width: 85.625vw;
         display: flex;
-        gap: 1rem;
-        cursor: pointer;
-        height: 5rem;
+        flex-direction: column;
         align-items: end;
+        margin-bottom: 0.2rem;
 
-        .category,
-        .plus,
-        .input,
-        .minus {
-            border: 0.1rem solid var(--gray300);
-            justify-content: center;
-            align-items: center;
+        .children {
+            
+            overflow: hidden;
+            height: 0;
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+        }
+
+        .children.open {
+            height: auto;
+            opacity: 1;
             display: flex;
         }
 
-        .category {
-            width: 8.2rem;
-            height: 3.6rem;
-
-            h5 {
-                color: var(--gray600);
-                font-size: 1.2rem;
-            }
-
+        > .cateItem {
+            width: 100%;
         }
 
-        .category:hover {
-            color: var(--white);
-            background-color: var(--black);
-
-            h5 {
-                color: var(--white);
-            }
+        .mid, .bot {
+            width: 95%;
         }
-
-        .plus {
-            width: 5.6rem;
-            height: 3.6rem;
+        .pluscate{
+            display: flex;
             color: var(--gray600);
-            font-size: 1.2rem;
+            background-color: #e6e6e6;
+            font-size: 1.6rem;
+            cursor: pointer;
+                border: solid 1px #c2c2c2;
+                font-size: 1.5rem;
+                color: var(--gray600);
+                width: 100%;
+                height: 5.7rem;
+                display: flex;
+                justify-content: start;
+                gap: 1.5rem;
+                align-items: center;
+                padding: 0 2rem;
+            .plus_btn{
+                font-weight: bold;
+            }
         }
+        .cateItem,  .pluscate {
+            width: 100%;
+            
+            .inner, .pluscate {
+                cursor: pointer;
+                border: solid 1px #c2c2c2;
+                font-size: 1.5rem;
+                color: var(--gray600);
+                width: 100%;
+                height: 5.7rem;
+                display: flex;
+                justify-content: start;
+                gap: 1.5rem;
+                align-items: center;
+                padding: 0 2rem;
 
-        .plus:hover {
-            color: var(--white);
-            background-color: var(--black);
+                .semo {
+                    width: 17px;
+                    height: 15px;
+                    border-left: 1.2rem solid transparent;
+                    border-right: 1.2rem solid transparent;
+                    border-bottom: 1.8rem solid var(--gray400);
+                    transition: transform 0.3s ease;
+                    margin-right: 8px;
+                }
+
+                .semo.open {
+                    transform: rotate(180deg);
+                }
+            }
         }
-
     }
 
     .btn {
@@ -77,41 +127,5 @@
         margin: 0 auto;
         font-size: 1.5rem;
         font-weight: bold;
-    }
-
-    .input {
-        position: relative;
-        width: fit-content;
-        padding: 0 1rem;
-        gap: 0.5rem;
-        height: 3.6rem;
-        display: flex ;
-        font-size: 1.2rem;
-        color: var(--gray600);
-        min-width: 5rem;
-
-        input {
-            margin: 0 auto;
-            display: flex ;
-            outline: none;
-            font-size: 1.2rem;
-            color: var(--gray600);
-            text-align: center;
-            background: var(--none);
-        }
-
-        .minus {
-            position: absolute;
-            width: 3.2rem;
-            height: 1.4rem;
-            justify-content: center;
-            align-items: center;
-            top: -1.4rem;
-            right: 0;
-        }
-        .minus:hover{
-            color: var(--white);
-            background-color: var(--black);
-        }
     }
 }
