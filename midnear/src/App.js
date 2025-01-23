@@ -39,7 +39,6 @@ import NoMemInfo from './components/Cart/Order/NoMemInfo';
 import MemInfo from './components/Cart/Order/MemInfo';
 import NewAddress from './components/Cart/Order/NewAddress';
 import SelectAdd from './components/Cart/Order/SelectAdd';
-import EditAdd from './components/Cart/Order/EditAdd';
 import MagazineList from './components/Magazine/MagazineList';
 import MagazinDetail from './components/Magazine/MagazinDetail';
 
@@ -90,8 +89,7 @@ function App() {
         <Route path='/order/delivery/no-member' element={<NoMemInfo/>} />   
         <Route path='/order/delivery/member' element={<MemInfo />} />       
         <Route path='/order/delivery/new-address' element={<NewAddress />} />   
-        <Route path='/order/delivery/select-address' element={<SelectAdd />} />   
-        <Route path='/order/delivery/edit-address' element={<EditAdd />} />   
+        <Route path='/order/delivery/select-address' element={<SelectAdd />} />  
         <Route path='/others/magazine' element={<MagazineList />} />
         <Route path='/others/magazine/detail' element={<MagazinDetail />} />
 

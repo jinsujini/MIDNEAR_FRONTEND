@@ -4,6 +4,7 @@ import {motion, AnimatePresence} from 'framer-motion';
 import logo from "../../assets/img/logo/header_logo.svg";
 import ShoppingCart from '../Cart/ShoppingCart';
 import frontImg from '../../assets/img/product/prod1.png'
+import ham from '../../assets/img/main_img/ham.svg'
 
 const Header = () => {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ const Header = () => {
   const [activeSubCate1, setActiveSubCate1] = useState(false);
   const [activeSubCate2, setActiveSubCate2] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isHamOpen, setHamOpen] = useState(false);
   const [cartList, setCartList] = useState([
     {
       id: 1,
@@ -47,6 +49,7 @@ const Header = () => {
   const toggleCart = () => {
     setIsCartOpen((prev)=>!prev);
   }
+
   const cartVariants = {
     hidden: { x: "43.7rem" },
     visible: { x: 0 },
@@ -58,14 +61,23 @@ const Header = () => {
     exit: { opacity: 0, transition: { duration: 0.5, ease: "easeInOut" } }
   };
 
+  const toggleHamList = () => {
+    console.log('햄부기햄부기온앤온');
+    setHamOpen(!isHamOpen);
+  };
+
   return (
     <div className='header-container'>
     <div className="header">
+      <div className='mobile-header'>
       <div className="logo" onClick={goHome}>
         <img src={logo} alt="logo" />
       </div>
-
-      <div className="sc1">
+      <div className='hamBar' onClick={toggleHamList}>
+        <img src={ham} alt='ham' />
+      </div>
+      </div>
+      <div className={`sc1 ${isHamOpen ? 'display' : ''}`}>
         <div className="SHOP">
           <p className={` ${activeSub1 ? 'bold' : ''}`} onClick={openCate1}>
             SHOP
@@ -106,7 +118,7 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="sc2">
+      <div  className={`sc2 ${isHamOpen ? 'display' : ''}`}>
         <p className="SEARCH">SEARCH</p>
         <p className="LOGIN">LOGIN</p>
         <p className="ACCOUNT">ACCOUNT</p>

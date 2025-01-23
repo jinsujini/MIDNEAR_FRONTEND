@@ -2,20 +2,38 @@ import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import check from '../../assets/img/cart/check.svg'
 
-const OrderList = ({productList, toggleCart, point}) => {
+const OrderList = ({productList, toggleCart, point, selectedCoupon }) => {
   const [cartItems, setCartItems] = useState(productList); 
   const [total, setTotal] = useState(0); //{total.toLocaleString('ko-KR')}
   const [checkedItems, setCheckedItems] = useState([]);
   const [selectedTotal, setSelectedTotal] = useState(0);
   const [quantity, setQuantity] = useState(0);
-
-  const totalPrice = total - point; // 상품 가격 + 배송비 - 포인트, 배송비는 아직
+  const [discountedTotal, setDiscountedTotal] = useState(0);
+  const totalPrice = discountedTotal - point; // 상품 가격 + 배송비 - 포인트, 배송비는 아직
+  const totalCartPrice = selectedTotal; // 선택한 상품 가격 + 배송비(선택한 상품 없을 때 배송비 없게 해야함)
   useEffect(() => {
     const initialTotal = cartItems.reduce(
       (sum, item) => sum + item.price * item.count, 0
     );
     setTotal(initialTotal);
-  }, []);
+  }, [cartItems]);
+  // 장바구니에서 선택한 상품 금액 계산
+  useEffect(()=>{
+    const newSelectedTotal = checkedItems.reduce(
+      (sum, item) => sum + item.price * item.count, 0
+    );
+    setSelectedTotal(newSelectedTotal);
+  }, [checkedItems]);
+
+  // 배송 할인쿠폰 적용 금액
+  useEffect(() => {
+    if (selectedCoupon) {
+      const discount = (total * selectedCoupon.sale) / 100;
+      setDiscountedTotal(total - discount);
+    } else {
+      setDiscountedTotal(total);
+    }
+  }, [total, selectedCoupon]);
 
   useEffect(() => {
     const calQuantity = cartItems.reduce(
@@ -34,15 +52,27 @@ const OrderList = ({productList, toggleCart, point}) => {
 
   const decreaseNum = (id) => {
     setCartItems((prev) =>
-    prev.map((item) => 
-    item.id === id && item.count > 1 ? {...item, count : item.count - 1} : item
-  ))
+      prev.map((item) => 
+        item.id === id && item.count > 1 ? {...item, count : item.count - 1} : item
+      )
+    );
+    setCheckedItems((prev) =>
+      prev.map((item) =>
+        item.id === id && item.count > 1 ? { ...item, count: item.count - 1 } : item
+      )
+    );
   }
   const increaseNum = (id) => {
     setCartItems((prev) => 
-    prev.map((item) =>
-    item.id === id ? {...item, count: item.count + 1 } : item
-  ))
+      prev.map((item) =>
+        item.id === id ? {...item, count: item.count + 1 } : item
+      )
+    );
+    setCheckedItems((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, count: item.count + 1 } : item
+      )
+    );
   }
   useEffect(() => {
     const updatedTotal = cartItems.reduce(
@@ -73,13 +103,6 @@ const OrderList = ({productList, toggleCart, point}) => {
     const { checked } = e.target;
     checkItemHandler(item, checked);
   };
-
-  useEffect(()=>{
-    const newSelectedTotal = checkedItems.reduce(
-      (sum, item) => sum + item.price * item.count, 0
-    );
-    setSelectedTotal(newSelectedTotal);
-  }, [checkedItems]);
 
   return (
     <>
@@ -155,7 +178,7 @@ const OrderList = ({productList, toggleCart, point}) => {
         </div>
         <div className='total-price'>
           <p>총 결제 금액</p>
-          <p className='sum-price'>&#xffe6; {selectedTotal.toLocaleString('ko-KR')}</p>
+          <p className='sum-price'>&#xffe6; {totalCartPrice.toLocaleString('ko-KR')}</p>
         </div>
       </div>
       
@@ -180,8 +203,13 @@ const OrderList = ({productList, toggleCart, point}) => {
         <div className='total'>
             <p className='text'>상품 합계</p> 
             <div className='price'>
-              <p className='origin'>&#xffe6; {total.toLocaleString('ko-KR')}</p> 
-              <p className='dc'>&#xffe6; {total.toLocaleString('ko-KR')}</p>
+              <p className={`origin ${selectedCoupon ? 'line' : ''}`}>&#xffe6; {total.toLocaleString('ko-KR')}</p> 
+              {selectedCoupon &&
+              <div className='dc-info'>
+                <p className='dc-name'> {selectedCoupon.name} 적용시</p>
+                <p className='dc'>&#xffe6; {discountedTotal.toLocaleString('ko-KR')}</p>
+                </div>
+              }
             </div>
         </div>
         <div className='fee'>
