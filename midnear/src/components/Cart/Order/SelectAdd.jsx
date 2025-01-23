@@ -25,6 +25,10 @@ const SelectAdd = () => {
     const newAdd = () => {
         navigate('/order/delivery/new-address');
     };
+
+    const changeAdd = () => {
+        navigate('/order/delivery/member');
+    };
     const [addressList, setAddressList] = useState([
         {   
             id: 1,
@@ -95,7 +99,6 @@ const SelectAdd = () => {
                             <p className='g_txt'>{item.number}</p>
                         </div>
                         <div className='edit'>
-                            <Link to='/order/delivery/edit-address' state={{address: item}}><div className='edit-btn'>수정</div></Link>
                             <div className='edit-btn' onClick={() => openModal(item.id)}>삭제</div>
                             <DelModal isOpen={isModalOpen} closeModal={closeModal} deleteAddress={deleteAddress} />
                         </div>
@@ -108,7 +111,7 @@ const SelectAdd = () => {
                 </label>
                 </div>
                 ))}
-                <button className='add-btn'  onClick={newAdd}>배송지 추가하기</button>
+                <button className='add-btn'  onClick={changeAdd}>기본 배송지 변경하기</button>
             </div>
         </div>
         

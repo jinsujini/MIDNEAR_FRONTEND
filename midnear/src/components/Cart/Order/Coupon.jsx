@@ -1,14 +1,9 @@
 import React, {useState, useEffect, useRef} from 'react'
 
-const Coupon = () => {
+const Coupon = ({ onSelectCoupon, onResetCoupon, couponList }) => {
         const [isOpen, setIsOpen] = useState(false);
         const [select, setSelect] = useState(null);
         const ref = useRef(null);
-        const couponList = [
-            {id: 1, name: '고객 감사 깜짝 20% 할인 쿠폰', slae: 20},
-            {id: 2, name: '10% 할인 쿠폰', slae: 10},
-            {id: 3, name: '30% 할인 쿠폰', slae: 30},
-        ];
     
         // 드롭다운 메뉴
         const removeHandler = () => {
@@ -16,10 +11,12 @@ const Coupon = () => {
         }
         const handleSelect = (value) =>{
             setSelect(value);
+            onSelectCoupon(value);
             setIsOpen(false);
         }
         const handleReset = () => {
           setSelect(null);
+          onResetCoupon();
           setIsOpen(false);
         };
         useEffect(() => {
@@ -39,7 +36,7 @@ const Coupon = () => {
   return (
     <div className='dc-btn' ref={ref}>
               <div className="selected" onClick={removeHandler}>
-                <div className='coupon'>{select ? couponList.find(coupon => coupon.id === select)?.name : '할인 쿠폰 적용하기'}</div>
+                <div className='coupon'>{select ? select.name : "할인 쿠폰 적용하기"}</div>
               </div>
         
               {isOpen && (
@@ -53,7 +50,7 @@ const Coupon = () => {
               <div
                 className="coupon"
                 key={coupon.id}
-                onClick={() => handleSelect(coupon.id)}
+                onClick={() => handleSelect(coupon)}
               >
                 {coupon.name}
               </div>
