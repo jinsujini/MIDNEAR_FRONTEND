@@ -19,7 +19,16 @@ const MemInfo = () => {
   const [isValidate, setIsValidate] = useState(false);
 
   const [isButtonEnabled, setIsButtonEnabled] = useState(false);
+  const [selectedCoupon, setSelectedCoupon] = useState(null);
 
+  const handleSelectCoupon = (coupon) => setSelectedCoupon(coupon);
+  const handleResetCoupon = () => setSelectedCoupon(null);
+  
+  const couponList = [
+    {id: 1, name: '고객 감사 깜짝 20% 할인 쿠폰', sale: 20},
+    {id: 2, name: '10% 할인 쿠폰', sale: 10},
+    {id: 3, name: '30% 할인 쿠폰', sale: 30},
+  ];
 
   const hadleIsValidate = (e) => {
     const userInput = e.target.value;
@@ -88,11 +97,10 @@ const MemInfo = () => {
 
                     </div>
                   </div> 
-                </div>
-                </div>
 
+                </div>
                 <div className='point'>
-                  <div className='use-coupon'><Coupon/></div>
+                  <div className='use-coupon'><Coupon couponList={couponList} onSelectCoupon={handleSelectCoupon} onResetCoupon={handleResetCoupon}/></div>
                   <p className='mid_text_ex'>포인트 사용 / 보유 포인트: {userPoint.toLocaleString('ko-KR')} 포인트</p> 
                   <div className='use-point'>
                     <input type='text' name='point' className='use-text' placeholder='예) 9,999사용'  
@@ -101,20 +109,28 @@ const MemInfo = () => {
                     <div className='use-btn' onClick={handleUseAllPoints}>전액 사용</div>
                   </div>
                   <div className='error'>{error}</div>{/* 오류 메시지 표시 */}
-                  <Link to='/order/pay-succeed' className='pay-link'>
+                  
+                </div>
+                </div>
+
+               
+                <Link to='/order/pay-succeed' className='pay-link'>
                     <button 
                      className={`btn ${isButtonEnabled ? 'enabled' : 'disabled'}`}
                      disabled={!isButtonEnabled}
                      >
                       결제하기</button>
-                      </Link>
-                </div>
+                </Link>
         </div>
 
           <div className='order_content'>
             <div className='title'>주문 내용</div>
             <div className='s_title'>상품</div>
-            <OrderList productList={items} point={inputValue} />
+            <OrderList 
+              productList={items}
+              point={Number(inputValue.replace(/,/g, '') || 0)}
+              selectedCoupon={selectedCoupon}
+             />
           </div>
         </div>
     </div>
