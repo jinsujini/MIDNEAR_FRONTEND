@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import PrivacyModal from './PrivacyModal'
 import check from '../../../assets/img/cart/check.svg'
 import StepHeader from '../StepHeader'
@@ -97,13 +97,14 @@ const NewAddress = () => {
                 <p className='privacy' onClick={openModal}>[필수] 개인정보 수집 및 이용 동의</p>
                 <PrivacyModal isOpen={isModalOpen} closeModal={closeModal} setIsChecked={setIsChecked} isChecked={isChecked}  />
             </div>
+            <Link to='/order/delivery/select-address'>
             <button 
             className={`btn ${isButtonEnabled ? 'enabled' : 'disabled'}`}
             disabled={!isButtonEnabled}
             >
                 저장
             </button>
-           
+            </Link>
         </div>
         
     </div>
