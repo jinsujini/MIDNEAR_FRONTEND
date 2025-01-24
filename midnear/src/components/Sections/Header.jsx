@@ -5,6 +5,7 @@ import logo from "../../assets/img/logo/header_logo.svg";
 import ShoppingCart from '../Cart/ShoppingCart';
 import frontImg from '../../assets/img/product/prod1.png'
 import ham from '../../assets/img/main_img/ham.svg'
+import close from '../../assets/img/product/close.svg'
 
 const Header = () => {
   const navigate = useNavigate();
@@ -62,22 +63,28 @@ const Header = () => {
   };
 
   const toggleHamList = () => {
-    console.log('햄부기햄부기온앤온');
     setHamOpen(!isHamOpen);
   };
 
+
   return (
     <div className='header-container'>
-    <div className="header">
+    <div className={`header ${isHamOpen ? 'border' : ''}`}>
       <div className='mobile-header'>
-      <div className="logo" onClick={goHome}>
+      <div className={`logo ${isHamOpen ? 'show' : ''}`} onClick={goHome}>
         <img src={logo} alt="logo" />
+      </div>
+      <div className={`close ${isHamOpen ? 'show' : ''}`} onClick={toggleHamList}>
+        <img src={close} alt='close' />
       </div>
       <div className='hamBar' onClick={toggleHamList}>
         <img src={ham} alt='ham' />
       </div>
       </div>
-      <div className={`sc1 ${isHamOpen ? 'display' : ''}`}>
+      <div
+        className={`sc-container ${isHamOpen ? 'show' : ''}`}
+      >
+      <div className={`sc1 ${isHamOpen ? 'show' : ''}`}>
         <div className="SHOP">
           <p className={` ${activeSub1 ? 'bold' : ''}`} onClick={openCate1}>
             SHOP
@@ -118,13 +125,14 @@ const Header = () => {
         </div>
       </div>
 
-      <div  className={`sc2 ${isHamOpen ? 'display' : ''}`}>
+      <div  className={`sc2 ${isHamOpen ? 'show' : ''}`}>
         <p className="SEARCH">SEARCH</p>
         <p className="LOGIN">LOGIN</p>
         <p className="ACCOUNT">ACCOUNT</p>
         <p className="BAG" onClick={toggleCart}>
           BAG <span>({cartList.length})</span>
         </p>
+      </div>
       </div>
     </div>
     <AnimatePresence>

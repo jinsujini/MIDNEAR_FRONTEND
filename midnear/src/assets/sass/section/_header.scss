@@ -10,7 +10,7 @@
     font-size: 1.11vh;
     overflow: visible;
     z-index: 2;
-    .hamBar{display: none;}
+    .close, .hamBar{display: none;}
 
     .logo {
         display: flex;
@@ -24,7 +24,13 @@
             width: auto;
         }
     }
-
+    .sc-container{
+        display: flex;
+        width: 100%;
+        height: 4.63vh;
+        justify-content: space-between;
+        align-items: center;
+    }
     .sc1 {
 
         height: 4.63vh;
@@ -210,40 +216,126 @@
     }
 }
 
-@media (max-width: 36rem){
+@media (max-width: 50rem){
     .header{
         flex-direction: column;
-        width: 36rem;
-        height: auto;
+        height: 4.63vh;        
         .mobile-header{
-            position: fixed;
-            top: 0;
-            height: 4.63vh;
-            width: 36rem;
+            min-height: 4.63vh;
+            width: 100%;
             display: flex;
-            flex-wrap: wrap;
-            align-content: center;
+            align-items: center;
             justify-content: space-between;
+            background-color: var(--white);
             z-index: 10;
+            .logo.show{display: none;}
+            .close{display: none;}
+            .close.show{
+                display: flex;
+                margin-left: 1.5rem;
+            }
             .hamBar{
                 display: flex;
                 margin-right: 1.5rem;
             }
-            
         }
-        .sc1, .sc2{
+        .sc-container{
+            flex-direction: column;
             display: none;
         }
-        .sc1.display, .sc2.display{
-            position: relative;
-            left: 0;
-            display: flex;
-            flex-direction: column;
-            width: 36rem;
-            font-size: 1.2rem;
-            font-weight: 500;
-            margin: 0;
-            padding: 0;
-        }
+        .sc-container.show{display: flex;}
+            .sc1, .sc2{
+                display: flex;
+                background-color: var(--white);
+                width: 100%;
+                position: relative;
+                left: 0;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                font-size: 1.2rem;
+                font-weight: 600;
+                margin: 0;
+                padding: 0;
+                gap: 0;
+            }
+            .sc1{
+                height: auto;
+                padding-top: 6.4rem;
+                border-bottom: solid 0.1rem var(--gray800);
+                .SHOP, .OTHERS{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    height: auto;  
+                    width: 100%;
+                    border-top: solid 0.1rem var(--gray800);
+                    a, p{
+                        height: 4.8rem;
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                        padding-left: 3.6rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+                    } 
+                    a{  font-weight: 400;}
+                    .sub{
+                        height: auto;
+                        display: none;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        align-items: flex-start;
+                      
+                    }
+                }
+                
+                .newCloth, .second{
+                    display: flex;
+                    flex-direction: column;
+                    position: relative;
+                    border: none;
+                    height: auto;
+                    .newCloth-sub, .second-sub{
+                        display: none;
+                        flex-direction: column;
+                        position: relative;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        border: none;
+                        height: auto;
+                        font-weight: 400;
+                        a{
+                            position: relative;
+                            height: 4.8rem;
+                            width: 100%;
+                            margin: 0;
+                            padding: 0;
+                            padding-left: 3.6rem;
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-start;
+                        }
+                    }
+                }
+            }
+            .sc2{ 
+                min-height: calc(100vh - 4.63vh - 16rem);
+                    p{
+                    height: 4.8rem;
+                    width: 100%;
+                    padding-left: 3.6rem;
+                    display: flex;
+                    align-items: center;
+                    border-bottom: solid 0.1rem var(--gray800);
+                }
+            }
+            .sc1.show, .sc2.show{
+                display: flex;
+            }
+        
     }
+    .header.border{border-bottom:none}
 }
