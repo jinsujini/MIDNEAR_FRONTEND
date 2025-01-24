@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 const NoticeList = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  const [array, setArray] = useState(''); 
 
   const noticesTop = [
     {
@@ -56,18 +57,26 @@ const NoticeList = () => {
     setCurrentPage(page);
   };
 
+  const handleArrrayChange = (event) => {
+      setArray(event.target.value);
+    };
+
   return (
     <div className="container">
       <div className="notice">
         <div className="mypage_title">NOTICE</div>
         <div className='notice_nav_contianer'>
             <div className='notice_nav-time'>
-                <p>일주일</p>
-                <img src={triangle} />
-            </div>
-            <div className='notice_nav-array'>
-                <p>제목</p>
-                <img src={triangle} />
+            <select 
+                  className="array-select" 
+                  value={array} 
+                  onChange={handleArrrayChange}
+              >
+                  <option value="">일주일</option>
+                  <option value="한 달">한 달</option>
+                  <option value="전체">전체</option>
+              </select>
+              <img src={triangle} />
             </div>
             <div className="notice-search-bar">
             <input

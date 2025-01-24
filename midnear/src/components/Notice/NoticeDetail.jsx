@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import eximage from '../../assets/img/orderlist/Mask group.png'
 
 const NoticeDetail = () => {
 
@@ -21,6 +22,7 @@ const NoticeDetail = () => {
             </ul>
 
             <div className='notice-detail_content'>
+                <img src={eximage} className='detail_image'/>
                 <div className='notice-detail_text'>
                 <h1>소설은 대표적 산문 문학으로서 근대 이후 많이 사랑받고 있는 문학의 장르다.</h1> <br />
 

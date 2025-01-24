@@ -17,8 +17,6 @@ import Login from './components/User/Login';
 import FindID from './components/User/FindID';
 import FindPW from './components/User/FindPW';
 import ChangePW from './components/User/ChangePW';
-import AllShop from './components/Shop/AllShop';
-import ProdDetail from './components/Shop/ProdDetail';
 import SelectContents from './components/Mypage/OrderList/SelectContents';
 import ExchangeReson from './components/Mypage/OrderList/Exchange/ExchangeReson';
 import RefundReson from './components/Mypage/OrderList/Refund/RefundReson';
@@ -31,17 +29,6 @@ import Colligation from './components/Mypage/Cupon/Colligation';
 import CuponList from './components/Mypage/Cupon/CuponList';
 import PointList from './components/Mypage/Cupon/PointList';
 import DeliveryAddress from './components/Mypage/UserInformation/DeliveryAddress';
-import ReviewImage from './components/Shop/ReviewImage';
-import GotoLogin from './components/Cart/GotoLogin';
-import PaySucceed from './components/Cart/Pay/PaySucceed';
-import PayFailed from './components/Cart/Pay/PayFailed';
-import NoMemInfo from './components/Cart/Order/NoMemInfo';
-import MemInfo from './components/Cart/Order/MemInfo';
-import NewAddress from './components/Cart/Order/NewAddress';
-import SelectAdd from './components/Cart/Order/SelectAdd';
-import EditAdd from './components/Cart/Order/EditAdd';
-import MagazineList from './components/Magazine/MagazineList';
-import MagazinDetail from './components/Magazine/MagazinDetail';
 import NoticeList from './components/Notice/NoticeList';
 import NoticeDetail from './components/Notice/NoticeDetail';
 
@@ -77,27 +64,12 @@ function App() {
         
         <Route path='/others/notice' element={<NoticeList />} />
         <Route path='/others/notice/detail' element={<NoticeDetail />} />
-        
-        <Route path='/shop/:category/:subCategory' element={<AllShop />} />
-        <Route path='/shop/:category' element={<AllShop />} />
 
         <Route path="user/join" element={<Join />} />
         <Route path='user/login' element={<Login />} />
         <Route path='user/find/id' element={<FindID />} />
         <Route path='user/find/pw' element={<FindPW />} />
         <Route path='user/change/pw' element={<ChangePW />} />
-        <Route path='/products/detail' element={<ProdDetail />} />        
-        <Route path='/review/images' element={<ReviewImage />} />  
-        <Route path='/order/login' element={<GotoLogin />} />    
-        <Route path='/order/pay-succeed' element={<PaySucceed />} />    
-        <Route path='/order/pay-failed' element={<PayFailed />} />     
-        <Route path='/order/delivery/no-member' element={<NoMemInfo/>} />   
-        <Route path='/order/delivery/member' element={<MemInfo />} />       
-        <Route path='/order/delivery/new-address' element={<NewAddress />} />   
-        <Route path='/order/delivery/select-address' element={<SelectAdd />} />   
-        <Route path='/order/delivery/edit-address' element={<EditAdd />} />   
-        <Route path='/others/magazine' element={<MagazineList />} />
-        <Route path='/others/magazine/detail' element={<MagazinDetail />} />
 
         {/* 관리자 페이지 */}
         <Route path="/manager/*" element={<Manager />} />
