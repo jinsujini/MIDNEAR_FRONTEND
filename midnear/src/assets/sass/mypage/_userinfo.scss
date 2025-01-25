@@ -3,6 +3,7 @@
 .field_container {
     display: flex;
     margin-top: 5.8rem;
+    margin-bottom: 5rem;
 }
 
 .field_container_content {
@@ -25,6 +26,18 @@
     color: var(--gray700);
     border-bottom: 0.1rem solid var(--gray300);
     outline: none;
+}
+
+.mypage_input_field.invalid, .mypage_input_field_top.invalid {
+    border-bottom: 0.1rem solid #EA0000;
+    color: #EA0000;
+  }
+
+.error_message {
+    font-size: 1rem;
+    color: #EA0000;
+    margin-top: 0.5rem;
+    margin-bottom: -1rem;
 }
 
 .mypage_input_field_top {

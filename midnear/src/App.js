@@ -32,6 +32,11 @@ import CuponList from './components/Mypage/Cupon/CuponList';
 import PointList from './components/Mypage/Cupon/PointList';
 import DeliveryAddress from './components/Mypage/UserInformation/DeliveryAddress';
 import ReviewImage from './components/Shop/ReviewImage';
+import ChangeSuccess from './components/User/FindPW/ChangeSuccess';
+import OrderCancelStart from './components/Mypage/OrderList/OrderCancel/OrderCancelStart';
+import OrderCancelReaon from './components/Mypage/OrderList/OrderCancel/OrderCancelReaon';
+import OrderCancelDone from './components/Mypage/OrderList/OrderCancel/OrderCancelDone';
+import CanceledOrder from './components/Mypage/OrderList/CanceledOrder';
 
 function App() {
   const location = useLocation();
@@ -57,6 +62,11 @@ function App() {
         <Route path="/mypage/orderlist/option/refund" element={<RefundReson />} />
         <Route path="/mypage/orderlist/option/exchange/done" element={<ExchangeDone />} />
         <Route path="/mypage/orderlist/option/refund/done" element={<RefundDone />} />
+        <Route path="/mypage/orderlist/option/ordercancel/application" element={<OrderCancelStart />} />
+        <Route path="/mypage/orderlist/option/ordercancel" element={<OrderCancelReaon />} />
+        <Route path="/mypage/orderlist/option/ordercancel/done" element={<OrderCancelDone />} />
+        <Route path="/mypage/cancellist" element={<CanceledOrder />} />
+
         <Route path="/mypage/question/create" element={<Ask />} />
         <Route path="/mypage/question/list" element={<AskedList />} />
         <Route path="/mypage/question/detail" element={<AskDetail/>} />
@@ -74,6 +84,7 @@ function App() {
         <Route path='user/change/pw' element={<ChangePW />} />
         <Route path='/products/detail' element={<ProdDetail />} />        
         <Route path='/review/images' element={<ReviewImage />} />
+        <Route path='/user/change/success' element={<ChangeSuccess />} />
 
         {/* 관리자 페이지 */}
         <Route path="/manager/*" element={<Manager />} />
