@@ -1,0 +1,197 @@
+.address{    
+    display: flex;
+    justify-content: center; 
+    .step-header{
+        .delivery-info{
+            color: var(--black);
+            border-bottom: 1px solid var(--black);
+        }
+    }
+    .container{
+        min-height: calc(100vh - 4.63vh);
+    }
+    .find{
+        margin-bottom: 3rem;
+        .title{
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top:8.3rem;
+        }
+        .select_content{
+            margin-top: 2.4rem;
+            width: 36.1rem;
+            
+            .activate_box, .unactivate_box{
+                width: 8.9rem;
+                height: 3.5rem;
+                cursor: pointer;
+            }
+            
+            .activate_box{
+                border: 0.1rem solid var(--gray1100);
+                color: var(--gray600);
+            }
+
+            .unactivate_box{
+                color: #B1B1B1;
+                background-color: var(--gray1100);
+            }
+            .empty{
+                width:18.3rem;
+                border-bottom: solid 0.1rem var(--gray1100);
+            }
+        }
+        .bottom{
+            margin: 0 0 1.5rem;
+        }
+        .post_code{
+            display: flex;
+            justify-content: space-between;
+            border-bottom: solid 0.1rem var(--gray300);
+            padding: 1rem;
+            margin-top: 2.5rem;
+            .text{
+                font-size: 1.2rem;
+            }
+            .search{
+                width: 8.4rem;
+                height: 2rem;
+                border-radius: 0.3rem;
+                background-color: #333333;
+                color: var(--white);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size:1.2rem;
+                cursor: pointer;
+            }
+        }
+        
+        .check{
+            width: 36.1rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            margin: 0.2rem 0;
+            .checkbox{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 1.8rem;
+                height: 1.8rem;
+                border: solid 0.1rem var(--gray300);
+                border-radius: 0.2rem;
+                cursor: pointer;
+                img{
+                    width: 1.3rem;
+                    height: 1.1rem;
+                }
+            }
+            p{
+                font-size: 1.2rem;
+                margin-left: 1rem;
+            }
+            .privacy{
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+        .add-btn, .btn{
+            width: 36.1rem;
+            height: 4rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--black);
+            border: 0.1rem solid var(--gray500);
+            outline: none;
+            background-color: var(--white);
+        }
+        .add-btn{margin-top: 1.5rem;}
+        .add-btn:hover{
+            cursor: pointer;
+            background-color: #333333;
+            border: 0.1rem solid #333333;
+            color: var(--white);
+        }
+        .btn{margin-top: 2rem;}
+        .btn.enabled{
+            cursor: pointer;
+            background-color: #333333;
+            color: var(--white);
+    
+        }
+        .addList{
+            .btn{
+                margin-top: 1.5rem;
+            }
+        }
+    }
+}
+.addList{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    .radio-label{
+        margin: 0;
+        align-items: flex-start;
+    }
+    .left{
+        width: 33.1rem;
+    }
+    .default_add{
+        height: 14.5rem;
+        padding: 1.6rem 0;
+        border-bottom: solid 0.1rem var(--gray1100);
+        background-color: var(--white);
+        display: flex;
+        flex-direction: column;
+        margin: 0.8rem 0;
+        .desti-info{
+            display: flex;
+            align-items: center;
+            div{ 
+                width: 1.9rem;
+                height: 1.1rem;
+                border: solid 0.1rem var(--gray1100);
+                color: var(--gray1100);
+                border-radius: 0.2rem;
+                font-size: 0.6rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-weight: 600;
+                margin-left: 0.4rem;
+            }
+        }
+            .edit-btn{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding-top: 0.2rem;
+                width: 4rem;
+                height: 1.9rem;
+                border: solid 0.1rem var(--gray1100);
+                border-radius: 0.5rem;
+                color: var(--gray600);
+                font-size: 1.2rem;
+                &:hover{
+                    background-color: #333333;
+                    border: 0.1rem solid #333333;
+                    color: var(--white);
+                    cursor: pointer;
+                }
+            }
+            
+        
+    }
+}
+.modal-open {
+    pointer-events: none; /* 전체 배경 클릭 차단 */
+  }
+  
+  /* 모달 자체는 클릭 가능 */
+  .modal-open .DelModal {
+    pointer-events: all; /* 모달 내부는 클릭 가능 */
+    cursor: default;
+  }
