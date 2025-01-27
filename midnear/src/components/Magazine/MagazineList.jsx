@@ -95,6 +95,7 @@ const MagazineList = () => {
   const bottomList = dummyList.filter((_, index) => index % 2 !== 0);
   const clickSearchBtn = ()=>{
     setClickBtn(!isClickBtn);
+    console.log('눌렀잖슨');
   };
   
   useEffect(()=>{
@@ -113,7 +114,7 @@ const MagazineList = () => {
         <div className='top'>
           <div className='title'>MAGAZINE</div>
           <div className='left-el'>
-              <div className='sort'>
+              <div className={`sort  ${isClickBtn ? 'click' : ''}`}>
                 <SortMenu />
               </div>
               {!isMobile && (
@@ -125,7 +126,7 @@ const MagazineList = () => {
               {isMobile && (
                 <div className={`search-bar ${isClickBtn ? 'click' : ''}`}>
                 <input type='text' />
-                <img src={search} className='search-btn' />
+                <img src={search} className='search-btn' onClick={clickSearchBtn}/>
               </div>
               )}
             </div>
