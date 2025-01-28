@@ -10,7 +10,10 @@
     font-size: 1.11vh;
     overflow: visible;
     z-index: 2;
-    .close, .hamBar{display: none;}
+    
+    .mobile-header{
+        .hamBar, .close{display: none;}
+    }
 
     .logo {
         display: flex;
@@ -216,7 +219,7 @@
     }
 }
 
-@media (max-width: 50rem){
+@media (max-width: 500px){
     .header{
         flex-direction: column;
         height: 4.63vh;   
