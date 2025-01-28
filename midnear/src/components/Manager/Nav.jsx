@@ -28,7 +28,7 @@ const Nav = () => {
                 transition={{ duration: 0.3 }}
             >
                 <Link to="/manager/Goods/AddGoods">상품 추가</Link>
-                <p>상품 관리</p>
+                <Link to="/manager/Goods/GoodsManagement">상품 관리</Link>
                 <p>코디 상품 관리</p>
                 <p>SHIPPING & RETURNS</p>
             </motion.div>

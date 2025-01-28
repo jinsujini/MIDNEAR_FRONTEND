@@ -1,0 +1,27 @@
+.goodsManagement{
+    .table{
+        display: flex;
+        flex-direction: column;
+        .header{
+            display: flex;
+            div{
+                height: 3.6rem;
+                display: flex;
+                background-color: var(--gray800);
+                justify-content: center;
+                align-items: center;
+                border: 1px solid var(--gray300);
+            }
+            .category{flex: 3; }
+            .name{flex: 3; }
+            .color{ flex: 2.5; }
+            .price{flex: 2;  }
+            .dis_persent{flex: 1;  }
+            .dis_price{flex: 2;  }
+            .status{ flex: 1; }
+            .size{flex: 10; }
+            .day{flex: 5; }
+            .check{flex: 0.8;}
+        }
+    }
+}
