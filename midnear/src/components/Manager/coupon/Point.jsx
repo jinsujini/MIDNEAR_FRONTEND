@@ -77,8 +77,8 @@ const PaymentComponent = () => {
                             <tbody>
                                 {paginatedUsers.map((user) => (
                                     <tr key={user}>
-                                        <td>{user}</td>
-                                        <td style={{ width: '35px' }}>
+                                        <td className="cp-user-table-user">{user}</td>
+                                        <td className="cp-user-table-checkbox ">
                                             <input type="checkbox" checked={selectedUsers.includes(user)} onChange={() => handleUserSelect(user)} />
                                         </td>
                                     </tr>

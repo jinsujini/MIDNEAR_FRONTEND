@@ -168,7 +168,7 @@ const NoticeTableComponent = () => {
             </div>
 
             <div className="notice-table-container">
-                <table className="notice-table">
+                <table className="table">
                     <thead>
                         <tr>
                             <th>제목</th>

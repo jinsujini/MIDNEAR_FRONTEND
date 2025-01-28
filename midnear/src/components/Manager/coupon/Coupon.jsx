@@ -80,15 +80,6 @@ const PaymentComponent = () => {
                 <div className="payment-fields">
                     <label htmlFor="userId">사용자 아이디 검색</label>
                     <div className="input-group">
-                        {/* <input 
-                            type="text" 
-                            id="userId" 
-                            value={userId} 
-                            onChange={(e) => setUserId(e.target.value)} 
-                            placeholder="사용자 아이디 입력" 
-                        />
-                        <div className="search-icon">🔍</div> */}
-
                         <div class="search-container">
                             <input type="text"  id="userId" 
                             value={userId} 
@@ -103,7 +94,7 @@ const PaymentComponent = () => {
                                 {paginatedUsers.map((user) => (
                                     <tr key={user}>
                                         <td>{user}</td>
-                                        <td style={{ width: '35px' }}>
+                                        <td >
                                             <input type="checkbox" checked={selectedUsers.includes(user)} onChange={() => handleUserSelect(user)} />
                                         </td>
                                     </tr>

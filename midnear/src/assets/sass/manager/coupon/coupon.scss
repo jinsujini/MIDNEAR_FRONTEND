@@ -114,14 +114,24 @@
 
 .cp-user-table th,
 .cp-user-table td {
-    border: 1px solid #ddd;
+    border: 1px solid var(--gray800);
     text-align: center;
-    width: 300px; 
+
     height: 35px; 
 }
+
+.cp-user-table-checkbox {
+    width: 35px; 
+}
+
+.cp-user-table-user {
+    width: 300px; 
+}
+
+
 /* 체크박스 스타일 변경 */
 .cp-user-table td input[type="checkbox"] {
-    appearance: none; /* 기본 체크박스 스타일 제거 */
+    appearance: none;
     width: 16px;
     height: 16px;
     border: none; 
@@ -257,7 +267,7 @@
   
   .search-input {
     padding: 8px 12px 8px 32px; 
-    border: 1px solid #ccc;
+    border: 1px solid var(--gray800);
     border-radius: 4px;
   }
   
