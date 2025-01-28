@@ -26,6 +26,7 @@ const StepHeader = () => {
             </div>
 
             <div className='continue'><p onClick={goHome}>쇼핑 계속하기</p></div>
+            {/** 모바일 햄버거 넣기 */}
         </div>
     </div>
   )

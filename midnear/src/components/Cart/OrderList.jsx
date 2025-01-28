@@ -124,112 +124,116 @@ const OrderList = ({productList, toggleCart, point, selectedCoupon }) => {
         </div>
       </div>
       {/** 공통 */}
-      <div className='prodList'>
-        {cartItems.map((item,index)=>(
-          <div className='prod' key={index}>
-            <img src={item.frontImg} alt='thumbnail' className='thumbnail'/>
+      <div className='all-list'>
+        <div className='prodList'>
+          {cartItems.map((item,index)=>(
+            <div className='prod' key={index}>
+              <div className='img-info'>
+                <img src={item.frontImg} alt='thumbnail' className='thumbnail'/>
 
-            <div className='info'>
-              <div className='top'>
-                <p className='name'>{item.name}</p>
-                <p className='price'>&#xffe6; {item.price.toLocaleString('ko-KR')}</p>
-                {/**
-                <p className='dc-price'>&#xffe6; {item.dcPrice}</p>
-                */}
-              </div>
-              <div className='bottom'>
-                <p>{item.color}<span className='slash'>/</span>{item.size}</p>
-                <div className='quantity'>
-                  <button className='minus' onClick={()=>decreaseNum(item.id)}>-</button>
-                  <p className='cal'>{item.count}</p>
-                  <button className='plus' onClick={()=>increaseNum(item.id)}>+</button>
+                <div className='info'>
+                  <div className='top'>
+                    <p className='name'>{item.name}</p>
+                    <p className='price'>&#xffe6; {item.price.toLocaleString('ko-KR')}</p>
+                    {/**
+                    <p className='dc-price'>&#xffe6; {item.dcPrice}</p>
+                    */}
+                  </div>
+                  <div className='bottom'>
+                    <p>{item.color}<span className='slash'>/</span>{item.size}</p>
+                    <div className='quantity'>
+                      <button className='minus' onClick={()=>decreaseNum(item.id)}>-</button>
+                      <p className='cal'>{item.count}</p>
+                      <button className='plus' onClick={()=>increaseNum(item.id)}>+</button>
+                    </div>
+                  </div>
                 </div>
               </div>
+              {/** 장바구니 화면에만 보임 */}
+              <label className='checkbox'>
+                <input
+                  type="checkbox"
+                  id={item.id}
+                  checked={checkedItems.some((checkedItem) => checkedItem.id === item.id)}
+                  onChange={(e) => isCheckItem(e, item)} 
+                />
+                {checkedItems.some((checkedItem) => checkedItem.id === item.id)  && ( 
+                    <img src={check} alt='check' className='checkImg'/>
+                  )}
+              </label>
             </div>
-            {/** 장바구니 화면에만 보임 */}
-            <label className='checkbox'>
-              <input
-                type="checkbox"
-                id={item.id}
-                checked={checkedItems.some((checkedItem) => checkedItem.id === item.id)}
-                onChange={(e) => isCheckItem(e, item)} 
-               />
-               {checkedItems.some((checkedItem) => checkedItem.id === item.id)  && ( 
-                  <img src={check} alt='check' className='checkImg'/>
-                )}
-            </label>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      {/** 장바구니 화면에만 보임 */}
-      <div className='only-cart'>
-      <div className='total'>
-        <div className='total-price'>
-          <p>총 상품 금액</p>
-          <p className='sum-price'>&#xffe6; {selectedTotal.toLocaleString('ko-KR')}</p>
-        </div>
-        <div className='fee'>
-          <div>
-            <p className='text'>배송비</p>
-            <p className='ship-alt'>* 100,000원 이상 배송비 무료</p>
+        {/** 장바구니 화면에만 보임 */}
+        <div className='only-cart'>
+          <div className='total'>
+            <div className='total-price'>
+              <p>총 상품 금액</p>
+              <p className='sum-price'>&#xffe6; {selectedTotal.toLocaleString('ko-KR')}</p>
+            </div>
+            <div className='fee'>
+              <div>
+                <p className='text'>배송비</p>
+                <p className='ship-alt'>* 100,000원 이상 배송비 무료</p>
+              </div>
+              <p>&#xffe6; 0</p>
+            </div>
+            <div className='total-price'>
+              <p>총 결제 금액</p>
+              <p className='sum-price'>&#xffe6; {totalCartPrice.toLocaleString('ko-KR')}</p>
+            </div>
           </div>
-          <p>&#xffe6; 0</p>
-        </div>
-        <div className='total-price'>
-          <p>총 결제 금액</p>
-          <p className='sum-price'>&#xffe6; {totalCartPrice.toLocaleString('ko-KR')}</p>
-        </div>
-      </div>
-      
-      <div className='goto-pay'>
-        {/** 로그인 X
-        <Link to="/order/login" state= {{ items: checkedItems }}>
-          <div className='box' onClick={toggleCart}>선택한 상품만 결제</div>
-        </Link>
-        <Link to="/order/login" state={{ items: cartItems }}>
-          <div className='box' onClick={toggleCart}>전체 결제</div>
-        </Link>
-        **/}
-        {/** 로그인 o **/}
-        <Link to="/order/delivery/member" state= {{ items: checkedItems }}><div className='box' onClick={toggleCart}>선택한 상품만 결제</div></Link>
-        <Link to="/order/delivery/member"  state={{ items: cartItems }}><div className='box' onClick={toggleCart}>전체 결제</div></Link>
         
-      </div>
-      </div>
-
-      {/** 배송 화면에서 보임 */}
-      <div className='only-order'>
-        <div className='total'>
-            <p className='text'>상품 합계</p> 
-            <div className='price'>
-              <p className={`origin ${selectedCoupon ? 'line' : ''}`}>&#xffe6; {total.toLocaleString('ko-KR')}</p> 
-              {selectedCoupon &&
-              <div className='dc-info'>
-                <p className='dc-name'> {selectedCoupon.name} 적용시</p>
-                <p className='dc'>&#xffe6; {discountedTotal.toLocaleString('ko-KR')}</p>
-                </div>
-              }
-            </div>
-        </div>
-        <div className='fee'>
-          <div>
-            <p className='text'>배송비</p>
-            <p className='ship-alt'>* 100,000원 이상 배송비 무료</p>
+          <div className='goto-pay'>
+            {/** 로그인 X **/}
+            <Link to="/order/login" state= {{ items: checkedItems }}>
+              <div className='box' onClick={toggleCart}>선택한 상품만 결제</div>
+            </Link>
+            <Link to="/order/login" state={{ items: cartItems }}>
+              <div className='box' onClick={toggleCart}>전체 결제</div>
+            </Link>
+           
+            {/** 로그인 o  
+            <Link to="/order/delivery/member" state= {{ items: checkedItems }}><div className='box' onClick={toggleCart}>선택한 상품만 결제</div></Link>
+            <Link to="/order/delivery/member"  state={{ items: cartItems }}><div className='box' onClick={toggleCart}>전체 결제</div></Link>
+           **/}
           </div>
-          <p>&#xffe6; 0</p>
         </div>
-        {/** 회원만 보임 */}
-        <div className='use-point'>
-            <p className='text'>포인트 사용</p> 
-            { point > 0 && (
-              <p>- &#xffe6;  {point.toLocaleString('ko-KR')}</p>
-            )}
+
+        {/** 배송 화면에서 보임 */}
+        <div className='only-order'>
+          <div className='total'>
+              <p className='text'>상품 합계</p> 
+              <div className='price'>
+                <p className={`origin ${selectedCoupon ? 'line' : ''}`}>&#xffe6; {total.toLocaleString('ko-KR')}</p> 
+                {selectedCoupon &&
+                <div className='dc-info'>
+                  <p className='dc-name'> {selectedCoupon.name} 적용시</p>
+                  <p className='dc'>&#xffe6; {discountedTotal.toLocaleString('ko-KR')}</p>
+                  </div>
+                }
+              </div>
+          </div>
+          <div className='fee'>
+            <div>
+              <p className='text'>배송비</p>
+              <p className='ship-alt'>* 100,000원 이상 배송비 무료</p>
+            </div>
+            <p>&#xffe6; 0</p>
+          </div>
+          {/** 회원만 보임 */}
+          <div className='use-point'>
+              <p className='text'>포인트 사용</p> 
+              { point > 0 && (
+                <p>- &#xffe6;  {point.toLocaleString('ko-KR')}</p>
+              )}
+          </div>
+          <div className='total-fee'>
+              <p className='text'>총 합계(수량:{quantity})</p> <p>&#xffe6; {totalPrice.toLocaleString('ko-KR')}</p>
+          </div>
         </div>
-        <div className='total-fee'>
-            <p className='text'>총 합계(수량:{quantity})</p> <p>&#xffe6; {totalPrice.toLocaleString('ko-KR')}</p>
-        </div>
-        </div>
+      </div>
     </>
     
   )

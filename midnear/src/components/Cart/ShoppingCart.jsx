@@ -8,17 +8,16 @@ const ShoppingCart = ({ toggleCart, cartList}) => {
     <div className='cart_content'>
       <div className='cart'>
         <div className='cart_nav'>
-        <img src={Close} className='close' onClick={toggleCart}/>
-        <div className="sc2">
-          <p className="SEARCH">SEARCH</p>
-          <p className="LOGIN">LOGIN</p>
-          <p className="ACCOUNT">ACCOUNT</p>
-          <p className="BAG">
-             BAG <span>({cartList.length})</span>
-          </p>
-        </div>
+          <img src={Close} className='close' onClick={toggleCart}/>
+          <div className="sc2">
+            <p className="SEARCH">SEARCH</p>
+            <p className="LOGIN">LOGIN</p>
+            <p className="ACCOUNT">ACCOUNT</p>
+            <p className="BAG">
+              BAG <span>({cartList.length})</span>
+            </p>
+          </div>
       </div>
-  
       < OrderList productList={cartList} toggleCart={toggleCart} point={0}/>
      </div>
     </div>
