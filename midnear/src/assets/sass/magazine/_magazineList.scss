@@ -121,3 +121,94 @@ input{ outline: none;}
   width: calc((120rem - 43.7rem)/2);;
   background-color: var(--none); 
 }
+
+@media (max-width: 50rem){
+    .Magazine{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        .container{ padding: 0 2.5rem; }
+        .top{
+            width: 100%;
+            margin-bottom: 3rem;
+            .title{
+                font-size: 2.5rem;
+            }
+            .left-el{
+                display: flex;
+                justify-content: flex-end;
+                margin-top: 1.2rem;
+                width: 11rem;
+                gap: 1rem;
+             
+                .search-bar{
+                    width: 2.4rem;
+                    height: 2.4rem;
+                    padding: 0;
+                    margin: 0;
+                    border-color: var(--none);
+                    .input{display: none;}
+                    .search-btn{
+                        width: 2.4rem;
+                        height: 2.4rem;
+                        margin: 0;
+                    }
+                }
+                .sort.click{ display: none;  }
+                .search-bar.click{
+                    flex-shrink: 0;
+                    width: 18rem;
+                    height: 2.4rem;
+                    margin: 0 0 0 1.2rem;
+                    background-color: var(--white);
+                    border-color: var(--gray800);
+                    .search-btn{
+                        width: 1.8rem;
+                        height: 1.8rem;
+                        margin-right: 0.3rem;
+                    }
+                }
+            }
+        }
+        .bottom{
+            margin-bottom: 10rem;
+            .magazine-list{
+                height: auto;
+                overflow-y: hidden;
+                width: 100%;
+                padding-bottom: 1rem;
+                max-width: 40rem;
+          
+                .list-section{
+                    width: 100%;
+                    height:auto;
+                    .magazine{
+                        min-width: 40rem;
+                        height: 28rem;
+                        .thumbnail{
+                            width: 100%;
+                            height: auto;
+                            object-fit: cover;
+                            aspect-ratio: 4 / 2.7;
+                        }
+                        .magazine-info{
+                            width: 100%;
+                            height: auto;
+                            aspect-ratio: 4 / 2.7;
+                            padding:1rem;
+                            background-color: rgba(0,0,0,0.6);
+                            display: flex;
+                            justify-content: space-between;
+                            opacity: 0;
+                        }           
+                        
+                    } 
+                }
+                .list-section.top-list{margin-bottom: 1rem;}
+    
+                
+            }
+        }
+    }
+}
