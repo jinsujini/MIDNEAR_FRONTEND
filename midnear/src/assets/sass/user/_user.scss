@@ -53,6 +53,28 @@
             margin-top: 2.5rem;
         }
 
+        .min_text.invalid {
+            border-bottom: 0.1rem solid #EA0000;
+          }
+
+        .min_text.invalid::placeholder {
+            color: #EA0000;
+        }
+
+        .error_message {
+            font-size: 1rem;
+            color: #EA0000;
+            margin-top: 0.5rem;
+            margin-bottom: -1rem;
+        }
+
+        .success_message {
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            color: #0400FF;
+            margin-bottom: -1rem;
+        }
+
     .user_btn {
         width: 36.1rem;
         height: 4rem;
@@ -63,6 +85,8 @@
         outline: none;
         margin-top: 3.6rem;
         background-color: var(--white);
+        cursor: pointer;
+        transition: 0.3ms;
 
         &:hover {
             color: var(--white);
@@ -70,16 +94,17 @@
         }
     }
 
-        .user_btn_id {
-            width: 36.1rem;
-            height: 4rem;
-            font-size: 1.2rem;
-            color: var(--gray600) ;
-            border: 0.1rem solid var(--black);
-            outline: none;
-            margin-top: 7.8rem;
-            background-color: var(--white);
-        }
+    .user_btn-ex{
+        width: 36.1rem;
+        height: 4rem;
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: var(--black);
+        border: 0.1rem solid var(--gray500);
+        outline: none;
+        margin-top: 3.6rem;
+        background-color: var(--white);
+    }
 
     .certi_btn, .pw_check {
         font-size: 1.2rem;
@@ -109,6 +134,7 @@
     .select_content{
         display: flex;
         margin-top: 8rem;
+        cursor: pointer;
     }
 
         .activate_box{
@@ -192,7 +218,65 @@
         margin-top: 3.3rem;
     }
 
+.provision {
+    margin-top: 2rem;
+}
+    .agree_contents {
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    
+        .keep_login {
+          appearance: none; 
+          width: 1.8rem;
+          height: 1.8rem;
+          border: 0.1rem solid var(--gray300);
+          border-radius: 0.2rem;
+          cursor: pointer;
+          background-color: var(--white);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        .keep_login:checked {
+          background-color: var(--white);
+        }
+        
+        .keep_login:checked::after {
+          content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none"%3E%3Cpath d="M1 5L4 9L11 1" stroke="%23585858" stroke-width="1.5"/%3E%3C/svg%3E');
+          width: 1rem;
+          height: 1.7rem;
+        }
+    
+        p {
+          font-size: 1.2rem;
+          color: #333;
+          margin: 0;
+          text-decoration: underline;
+        }
+      }
+
+.toggle_join {
+    width: 48.8rem;
+    height: 4.1rem;
+    background-color: #F7F7F7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    border-radius: 8rem;
+
+    p {
+        font-size: 1.4rem;
+        span {
+            color: #FF0000;
+        }
+    }
+
 .field_container_content{
     display: flex;
     flex-direction: column;
+
 }
