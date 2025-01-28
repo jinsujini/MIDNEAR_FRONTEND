@@ -11,15 +11,15 @@
         display: none;
     }
 
-    .contents {
+    >.contents {
         padding: 24px;
         height: auto;
 
-        >.container {
+        .container {
             width: 88.125vw;
             background-color: var(--white);
             padding: 2rem;
-            min-height: fit-content;
+            min-height: fit-content ;
             position: relative;
         }
     }
