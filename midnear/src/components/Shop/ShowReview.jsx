@@ -11,6 +11,17 @@ import rvUp from '../../assets/img/product/rvUp.svg'
 const ShowReview = () => {
   const [isSelected, setIsSelected] = useState(null);   
   const ref = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(()=>{
+      const checkMax =() => {
+        setIsMobile(window.innerWidth <= 500);
+        };
+        checkMax();
+        window.addEventListener("resize", checkMax);
+        return () => window.removeEventListener("resize", checkMax);
+  },[]);
+
   const showComment = (item)=>{
     setIsSelected((prev) => (prev === item ? null : item));
    };
@@ -27,6 +38,7 @@ const ShowReview = () => {
           window.removeEventListener("click", onClick);
       };
     }, []);
+
     const transUserId = (userId) => {    
       const firstPart = userId.slice(0, 3); // 앞 3글자
       const lastPart = userId.slice(-2);    // 뒤 2글자
@@ -59,20 +71,39 @@ const ShowReview = () => {
       ]
       const allImages = reviewList.flatMap(review => review.image);
       const topImage = allImages.length > 5 ? allImages.slice(0, 4) : allImages;
+      const mobileTopImage = allImages.length > 3 ? allImages.slice(0,2) : allImages;
   return (
     <div className='ShowReview'>
         <p className='title'>상품리뷰</p>
         <div className='all-image'>
-          {topImage.map((item, index)=>(
-            <img key={index} src={item} className='userImg'/>
-          ))}
-          {allImages.length > 5 && (
-          <Link to=  "/review/images">
-            <div className='moreImage'>
-                {allImages.length - 4}개<br />더보기
-            </div>
-          </Link>
-        )}
+          {!isMobile && (
+            <>
+              {topImage.map((item, index)=>(
+                <img key={index} src={item} className='userImg'/>
+              ))}
+              {allImages.length > 5 && (
+              <Link to=  "/review/images">
+                <div className='moreImage'>
+                    {allImages.length - 4}개<br />더보기
+                </div>
+              </Link>
+              )}
+            </>
+          )}
+          {isMobile && allImages.length > 3 && (
+            <>
+              {mobileTopImage.map((item, index)=>(
+                <img key={index} src={item} className='userImg'/>
+              ))}
+              {allImages.length > 3 && (
+              <Link to=  "/review/images">
+                <div className='moreImage'>
+                    {allImages.length - 2}개<br />더보기
+                </div>
+              </Link>
+              )}
+            </>
+          )}
         </div>
         <div className='top-el'>
             <p className='number'>총 {reviewList.length}건</p>
