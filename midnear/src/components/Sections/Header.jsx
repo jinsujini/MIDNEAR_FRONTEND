@@ -26,7 +26,7 @@ const Header = () => {
       color: "BLACK",
       size: "M",
       count: 2,
-    },
+    }
   ]);
 
   const goHome = () => {
@@ -90,6 +90,11 @@ const Header = () => {
     window.addEventListener("resize", checkMax);
     return () => window.removeEventListener("resize", checkMax);
 },[]);
+
+const mobileCart = () => {
+  toggleHamList();
+  toggleCart();
+}
 
 
   return (
@@ -252,7 +257,7 @@ const Header = () => {
             <p className="SEARCH">SEARCH</p>
             <p className="LOGIN">LOGIN</p>
             <p className="ACCOUNT">ACCOUNT</p>
-            <p className="BAG" onClick={toggleCart}>
+            <p className="BAG" onClick={mobileCart}>
               BAG <span>({cartList.length})</span>
             </p>
           </div>

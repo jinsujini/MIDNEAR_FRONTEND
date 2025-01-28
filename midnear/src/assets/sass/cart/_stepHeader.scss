@@ -4,7 +4,9 @@
     top: 0; 
     width: 100%;
     z-index: 10;
+    height: 5rem;
     .header{
+        height: 5rem;
         cursor: default;
         justify-content: space-between;
         .logo{
@@ -43,6 +45,35 @@
                 text-decoration-line: underline;
                 cursor: pointer;
             }
+        }
+    }
+}
+
+@media (max-width: 50rem){
+    .step-header{
+        background-color: var(--white);
+        position: absolute; 
+        top: 0; 
+        width: 100%;
+        z-index: 200;
+        .header{
+            flex-direction: row;
+            .logo{min-width: 8rem;}
+            .center{
+                display: flex;
+                justify-content: space-between;
+                width: 120rem;
+                height: 4.63vh;
+                align-items: center;
+                .title{
+                    width: 2.5rem;
+                    font-weight: 500;
+                    font-size: 1.3rem;
+                }
+                .step{display: none;
+                }
+            }
+            .continue{display: none;}
         }
     }
 }
