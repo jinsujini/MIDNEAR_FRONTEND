@@ -21,7 +21,6 @@ import ChangePW from './components/User/ChangePW';
 import Successful from './components/User/FindID/Successful';
 import Failed from './components/User/FindID/Failed';
 import UntilChange from './components/User/FindPW/UntilChange';
-import ChangeSuccess from './components/User/FindPW/ChangeSuccess';
 import SuccessJoin from './components/User/Join/SuccessJoin';
 
 import AllShop from './components/Shop/AllShop';
@@ -107,9 +106,6 @@ function App() {
         
         <Route path='/products/detail' element={<ProdDetail />} />        
         <Route path='/review/images' element={<ReviewImage />} />
-        <Route path='/user/change/success' element={<ChangeSuccess />} />
-
-        <Route path='/review/images' element={<ReviewImage />} />  
         <Route path='/order/login' element={<GotoLogin />} />    
         <Route path='/order/pay-succeed' element={<PaySucceed />} />    
         <Route path='/order/pay-failed' element={<PayFailed />} />     
