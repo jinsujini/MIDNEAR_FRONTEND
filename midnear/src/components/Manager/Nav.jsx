@@ -27,7 +27,7 @@ const Nav = () => {
                 variants={variants}
                 transition={{ duration: 0.3 }}
             >
-                <p>상품 추가</p>
+                <Link to="/manager/Goods/AddGoods">상품 추가</Link>
                 <p>상품 관리</p>
                 <p>코디 상품 관리</p>
                 <p>SHIPPING & RETURNS</p>
