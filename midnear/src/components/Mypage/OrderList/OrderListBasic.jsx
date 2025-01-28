@@ -4,15 +4,11 @@ import OrderItem from './Orderitem';
 import search from '../../../assets/img/orderlist/search.svg'
 import defaultimage from '../../../assets/img/orderlist/default.svg';
 import { Link } from 'react-router-dom';
+import Modal from '../../User/Modal/Modal';
 
 const OrderListBasic = () => {
-  const modalRef = useRef();
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 5;
-
-  const showSuccessModal = () => {
-    modalRef.current.openModal("정말 주문취소를 하시겠습니까?", "/mypage/orderlist/cancel");
-  };
+  const totalPages = 1;
 
   const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages) {
@@ -20,10 +16,18 @@ const OrderListBasic = () => {
     }
   };
 
+  const modalRef = useRef();
+
+  const showReasonModal = () => {
+      modalRef.current.openModal(
+        "취소 거절 사유 | 상품 준비 완료"
+      );
+    };
+
   return (
     <div className="container">
       <div className="field_container">
-        <MyPageModal ref={modalRef} />
+        <MyPageModal />
         <div className="field_container_content">
           <div>
             <div className="mypage_title">주문 내역</div>
@@ -36,7 +40,7 @@ const OrderListBasic = () => {
             <div className="order_title">최신순</div>
 
             <OrderItem
-              state="상품준비중"
+              state="상품 준비 중"
               date="2024.12.25 주문"
               image={defaultimage}
               info="상품 정보 : 예시 상품"
@@ -46,13 +50,13 @@ const OrderListBasic = () => {
                 <>
                   <Link to="/mypage/orderlist/detail" className="order_detail">주문 상세보기 &gt;</Link>
                   <button className="order_option">배송조회</button>
-                  <button className="order_option" onClick={showSuccessModal}>주문취소</button>
+                  <Link to="/mypage/orderlist/option/ordercancel/application" className="order_option">주문취소</Link>
                 </>
               }
             />
 
             <OrderItem
-              state="배송완료"
+              state="배송 완료"
               date="2024.12.25 주문"
               image={defaultimage}
               info="상품 정보: 배송 완료 상품"
@@ -64,6 +68,36 @@ const OrderListBasic = () => {
                   <button className="order_option">배송조회</button>
                   <Link to="/mypage/orderlist/option" className="order_option">교환, 반품 신청</Link>
                   <Link to="/mypage/orderlist/writingReview" className="order_option">리뷰 작성하기</Link>
+                </>
+              }
+            />
+
+            <OrderItem
+              state="취소 진행 중"
+              date="2024.12.25 주문"
+              image={defaultimage}
+              info="상품 정보: 배송 완료 상품"
+              price="₩ 99,999"
+              quantity={1}
+              actions={
+                <>
+                  <Link to="/mypage/orderlist/detail" className="order_detail">주문 상세보기 &gt;</Link>
+                  <button className="order_option">자세히 보기</button>
+                </>
+              }
+            />
+
+            <OrderItem
+              state="취소 거절"
+              date="2024.12.25 주문"
+              image={defaultimage}
+              info="상품 정보: 배송 완료 상품"
+              price="₩ 99,999"
+              quantity={1}
+              actions={
+                <>
+                  <Link to="/mypage/orderlist/detail" className="order_detail">주문 상세보기 &gt;</Link>
+                  <button className="order_option" onClick={showReasonModal}>거절 사유 확인하기</button>
                 </>
               }
             />
@@ -96,6 +130,7 @@ const OrderListBasic = () => {
           </div>
         </div>
       </div>
+      <Modal ref={modalRef} />
     </div>
   );
 };
