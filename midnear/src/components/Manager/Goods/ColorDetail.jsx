@@ -5,19 +5,12 @@ const ColorDetail = ({ name }) => {
     const [sizelist, setSizelist] = useState([]);
     const [newSize, setNewSize] = useState("");
     const [newQuantity, setNewQuantity] = useState("");
+    const [thumbnail, setThumbnail] = useState(""); 
 
-    const [images, setImages] = useState([]);
-
-
-    const handleImageChange = (e) => {
-        const files = Array.from(e.target.files);
-        const newImages = files.map((file) => URL.createObjectURL(file));
-        setImages((prevImages) => [...prevImages, ...newImages]);
-    };
-
-    const handleRemoveImage = (index) => {
-        setImages(images.filter((_, i) => i !== index));
-    };
+    
+    const handleThumbnailChange = (imageUrl) => {
+        setThumbnail(imageUrl);
+      };
 
     const handleAddSize = () => {
         if (newSize.trim() === "" || newQuantity.trim() === "") {
@@ -32,10 +25,29 @@ const ColorDetail = ({ name }) => {
     const handleRemoveSize = (index) => {
         setSizelist(sizelist.filter((_, i) => i !== index));
     };
+ 
 
     return (
         <div className="color_detail container">
             <div className="color_name">{name}</div>
+            <div className="thumnail">
+                <div className="title">컬러별 썸네일 이미지</div>
+                <div className="upload-section">
+                    <label htmlFor="thumnail-upload" className="upload-button">
+                        <span>첨부파일</span>
+                    </label>
+                    <input
+                        type="file"
+                        id="thumnail-upload"
+                        accept="image/*"
+                        onChange={(e) => handleThumbnailChange(URL.createObjectURL(e.target.files[0]))}
+                    />
+                    <div className="thumbnail-preview">
+                        {thumbnail&& <img src={thumbnail} alt="썸네일" /> }
+                    </div>
+                </div>
+
+            </div>
             <div className="title">사이즈 및 수량</div>
             <div className="add_size">
                 <div className="size_list">
@@ -60,7 +72,7 @@ const ColorDetail = ({ name }) => {
                         onChange={(e) => setNewSize(e.target.value)}
                     />
                     <input
-                        type="text"
+                        type="number"
                         placeholder="수량"
                         value={newQuantity}
                         onChange={(e) => setNewQuantity(e.target.value)}
@@ -70,7 +82,7 @@ const ColorDetail = ({ name }) => {
             </div>
             <div className="title">상품 이미지</div>
             <div className="images">
-                <ImageUpload />
+                <ImageUpload  onThumbnailSelect={handleThumbnailChange}/>
             </div>
         </div>
     );

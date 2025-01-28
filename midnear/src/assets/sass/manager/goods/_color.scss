@@ -93,6 +93,45 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    position: relative;
+    .thumnail{
+        position: absolute;
+        right: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        justify-content: end;
+        gap: 1rem;
+        .upload-section {
+            display: flex;
+            align-items: end;
+            gap: 1rem;
+            input {
+                display: none;
+            }
+            .thumbnail-preview{
+         
+                height: 8.8rem;
+                img{
+                    height: 8.8rem;
+                }
+  
+            }
+            .upload-button {
+                border: 1px solid var(--gray300);
+                font-size: 1.4rem;
+                color: var(--gray600);
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0 1rem;
+                height: 3.7rem;
+                width: 12rem;
+                cursor: pointer;
+            }
+        }
+    }
 
     .color_name {
         border: 1px solid var(--gray300);
@@ -117,10 +156,11 @@
             align-items: center;
             position: relative;
             margin: 1.5rem 0;
-            max-width: 100rem;
+            max-width: 80rem;
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
+            margin-right: 1rem;
 
 
             .size {
@@ -166,10 +206,10 @@
         }
 
         .plus_size {
-
             display: flex;
-            position: absolute;
-            right: 0;
+            align-items: end;
+            justify-content: end;
+
 
             input {
                 border: 1px solid var(--gray300);
@@ -195,6 +235,7 @@
                 font-size: 1.4rem;
                 cursor: pointer;
                 padding: 1rem;
+                width: 4.8rem;
             }
 
             button:hover {
