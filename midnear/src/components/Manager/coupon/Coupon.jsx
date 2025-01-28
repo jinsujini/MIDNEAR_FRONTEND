@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import searchlogo from "../../../assets/img/logo/searchIcon.png";
 
 const PaymentComponent = () => {
     const [selectedTab, setSelectedTab] = useState('쿠폰'); // 기본 탭을 쿠폰으로 설정
@@ -79,14 +80,22 @@ const PaymentComponent = () => {
                 <div className="payment-fields">
                     <label htmlFor="userId">사용자 아이디 검색</label>
                     <div className="input-group">
-                        <input 
+                        {/* <input 
                             type="text" 
                             id="userId" 
                             value={userId} 
                             onChange={(e) => setUserId(e.target.value)} 
                             placeholder="사용자 아이디 입력" 
                         />
-                        <div className="search-icon">🔍</div>
+                        <div className="search-icon">🔍</div> */}
+
+                        <div class="search-container">
+                            <input type="text"  id="userId" 
+                            value={userId} 
+                            onChange={(e) => setUserId(e.target.value)} 
+                            placeholder="사용자 아이디 입력" class="search-input" />
+                            <img src={searchlogo} alt="검색" class="search-icon" />
+                        </div>
                     </div>
                     <div className="cp-table-container">
                         <table className="cp-user-table">

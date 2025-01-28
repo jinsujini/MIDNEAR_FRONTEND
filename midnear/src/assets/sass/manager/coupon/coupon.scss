@@ -139,7 +139,6 @@
 /* 체크된 상태에서 ✓ 아이콘 표시 */
 .cp-user-table td input[type="checkbox"]:checked::after {
     content: '✓'; /* 체크된 상태에서 아이콘 표시 */
-    // font-size: 14px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -220,7 +219,7 @@
 }
 
 .input-group input {
-    width: 161px;  /* 가로 길이 161px */
+    width: 75vw; 
 
     text-align: left;
 }
@@ -228,10 +227,6 @@
 .input-group .currency {
     font-weight: bold;
 
-}
-.search-icon {
-    padding: 0px;
-    font-size: 2rem;
 }
 
 .couponinput {
@@ -241,3 +236,28 @@
 .couponpercent {
     width: 10%;
 }
+
+
+.search-icon {
+
+    position: absolute;
+    right: 10px; 
+    top: 50%;
+    transform: translateY(-60%);
+    width: 16px; 
+    height: 16px;
+    pointer-events: none; 
+  }
+
+  .search-container {
+    position: relative;
+    display: flex;
+    width: 100%;
+  }
+  
+  .search-input {
+    padding: 8px 12px 8px 32px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
