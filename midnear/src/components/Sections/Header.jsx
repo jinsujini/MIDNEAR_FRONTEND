@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom'; 
 import {motion, AnimatePresence} from 'framer-motion';
 import logo from "../../assets/img/logo/header_logo.svg";
-import Login from '../User/Login';;
+import Login from '../User/Login';
 import ShoppingCart from '../Cart/ShoppingCart';
 import frontImg from '../../assets/img/product/prod1.png'
 import ham from '../../assets/img/main_img/ham.svg'
@@ -192,39 +192,29 @@ const mobileCart = () => {
                 BAG <span>({cartList.length})</span>
               </p>
             </div>
+            {showLoginModal && (
+              <Login onClose={toggleLoginModal} />
+            )}
           </div>       
         )}
         
         <AnimatePresence>
-            {isHamOpen && isMobile && (
-                <motion.div
-                className="sc-container"
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                variants={hamVariants}
-                >
-          <MobileHeader {...subStates} mobileCart={mobileCart} toggleCart={toggleCart} onLinkClick={onLinkClick}/>
-          </motion.div>
-        )}
+          {isHamOpen && isMobile && (
+            <motion.div
+              className="sc-container"
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={hamVariants}
+            >
+                <MobileHeader {...subStates} mobileCart={mobileCart} toggleCart={toggleCart} onLinkClick={onLinkClick}/>
+            </motion.div>
+          )}
         </AnimatePresence>
       </div>
 
-      <div className="sc2">
-        <p className="SEARCH">SEARCH</p>
-        <p className="LOGIN" onClick={toggleLoginModal} >LOGIN</p>
-        <p className="ACCOUNT">ACCOUNT</p>
-        <p className="BAG" onClick={toggleCart}>
-          BAG <span>({cartList.length})</span>
-        </p>
-      </div>
 
-      {showLoginModal && (
-        <Login onClose={toggleLoginModal} />
-      )}
-
-    </div>
-    <AnimatePresence>
+     
 
       <AnimatePresence>
         {isCartOpen && (
