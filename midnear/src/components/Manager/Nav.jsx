@@ -104,7 +104,7 @@ const Nav = () => {
                 variants={variants}
                 transition={{ duration: 0.3 }}
             >
-                <Link to="/manager/magazine/magazine">매거진 목록 및 작성성</Link>
+                <Link to="/manager/magazine/magazine">매거진 목록 및 작성</Link>
             </motion.div>
 
             <div onClick={() => toggleCategory("onebyone")} className={`${activeCategory === "onebyone" ? "display" : "category"}`}>
