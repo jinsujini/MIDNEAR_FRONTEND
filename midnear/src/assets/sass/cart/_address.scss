@@ -202,3 +202,12 @@
         
     }
 }
+.modal-open {
+    pointer-events: none; /* 전체 배경 클릭 차단 */
+  }
+  
+  /* 모달 자체는 클릭 가능 */
+  .modal-open .DelModal {
+    pointer-events: all; /* 모달 내부는 클릭 가능 */
+    cursor: default;
+  }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom'; 
 import {motion, AnimatePresence} from 'framer-motion';
 import logo from "../../assets/img/logo/header_logo.svg";
-import Login from '../User/Login';
+import Login from '../User/Login';;
 import ShoppingCart from '../Cart/ShoppingCart';
 import frontImg from '../../assets/img/product/prod1.png'
 import ham from '../../assets/img/main_img/ham.svg'
@@ -19,8 +19,8 @@ const Header = ({onLinkClick}) => {
   const [activeSubCate2, setActiveSubCate2] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);  
   const [isHamOpen, setHamOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [cartList, setCartList] = useState([
     {
       id: 1,
@@ -98,8 +98,8 @@ const Header = ({onLinkClick}) => {
     visible: { y: 0, opacity: 1, transition: { duration: 0.7, ease: "easeOut" } },
     exit: { y: "-100%", opacity: 0, transition: { duration: 0.5, ease: "easeIn" } },
   };
+
   
-      
   const openHamList = () => {
     setHamOpen(true);
   };
@@ -111,13 +111,13 @@ const Header = ({onLinkClick}) => {
     setActiveSubCate2(false);
 };
 
-useEffect(()=>{
-  const checkMax =() => {
-    setIsMobile(window.innerWidth <= 500);
-  };
-  checkMax();
-  window.addEventListener("resize", checkMax);
-  return () => window.removeEventListener("resize", checkMax);
+  useEffect(()=>{
+    const checkMax =() => {
+      setIsMobile(window.innerWidth <= 500);
+    };
+    checkMax();
+    window.addEventListener("resize", checkMax);
+    return () => window.removeEventListener("resize", checkMax);
 },[]);
 
 const mobileCart = () => {
@@ -126,7 +126,7 @@ const mobileCart = () => {
 }
   return (
     <div className='header-container'>
-      <div className={`header ${isHamOpen ? 'border' : ''}`}>
+    <div className={`header ${isHamOpen ? 'border' : ''}`}>
 
         <div className='mobile-header'>
           <div className={`logo ${isHamOpen ? 'show' : ''}`} onClick={goHome}>
@@ -142,56 +142,59 @@ const mobileCart = () => {
             </div>
         </div>
 
+      
         {!isMobile && (
           <div className='sc-container'>
-          <div className="sc1">
-            <div className="SHOP">
-              <p className={` ${activeSub1 ? 'bold' : ''}`} onClick={openCate1}>
-                SHOP
-              </p>
-              <div className={`sub ${activeSub1 ? 'display' : ''}`}>
-                <Link to="/shop/all">ALL SHOP</Link>
-                <Link to="/shop/new">NEW</Link>
-                <div className="newCloth">
-                  <p onClick={openSubCate1}>NEW CLOTH</p>
-                  <div className={`newCloth-sub ${activeSubCate1 ? 'display' : ''}`}>
-                    <Link to="/shop/newCloth/all">ALL</Link>
-                    <Link to="/shop/newCloth/top">TOP</Link>
-                    <Link to="/shop/newCloth/bottom">BOTTOM</Link>
-                  </div>
-                </div>
-                <div className="second">
-                  <p onClick={openSubCate2}>SECOND</p>
-                  <div className={`second-sub ${activeSubCate2 ? 'display' : ''}`}>
-                    <Link to="/shop/second/all">ALL</Link>
-                    <Link to="/shop/second/top">TOP</Link>
-                    <Link to="/shop/second/bottom">BOTTOM</Link>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div className="sc1">
 
-            <div className="OTHERS">
-              <p className={` ${activeSub2 ? 'bold' : ''}`} onClick={openCate2}>
-                OTHERS
-              </p>
-              <div className={`sub ${activeSub2 ? 'display' : ''}`}>
-                <Link to="/others/magazine">MAGAZINE</Link>
-                <Link to="/others/notice">NOTICE</Link>
+              <div className="SHOP">
+                <p className={` ${activeSub1 ? 'bold' : ''}`} onClick={openCate1}>
+                  SHOP
+                </p>
+                <div className={`sub ${activeSub1 ? 'display' : ''}`}>
+                  <Link to="/shop/all">ALL SHOP</Link>
+                  <Link to="/shop/new">NEW</Link>
+                  <div className="newCloth">
+                      <p onClick={openSubCate1}>NEW CLOTH</p>
+                      <div className={`newCloth-sub ${activeSubCate1 ? 'display' : ''}`}>
+                        <Link to="/shop/newCloth/all">ALL</Link>
+                        <Link to="/shop/newCloth/top">TOP</Link>
+                        <Link to="/shop/newCloth/bottom">BOTTOM</Link>
+                      </div>
+                  </div>
+                  <div className="second">
+                    <p onClick={openSubCate2}>SECOND</p>
+                    <div className={`second-sub ${activeSubCate2 ? 'display' : ''}`}>
+                      <Link to="/shop/second/all">ALL</Link>
+                      <Link to="/shop/second/top">TOP</Link>
+                      <Link to="/shop/second/bottom">BOTTOM</Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="OTHERS">
+                <p className={` ${activeSub2 ? 'bold' : ''}`} onClick={openCate2}>
+                  OTHERS
+                </p>
+                <div className={`sub ${activeSub2 ? 'display' : ''}`}>
+                  <Link to="/others/magazine">MAGAZINE</Link>
+                  <Link to="/others/notice">NOTICE</Link>
+                </div>
               </div>
             </div>
-          </div>
-                
-          <div className="sc2">
-            <p className="SEARCH">SEARCH</p>
-            <p className="LOGIN">LOGIN</p>
-            <p className="ACCOUNT">ACCOUNT</p>
-            <p className="BAG" onClick={mobileCart}>
-              BAG <span>({cartList.length})</span>
-            </p>
-          </div>
-        </div>
+            
+            <div className="sc2">
+              <p className="SEARCH">SEARCH</p>
+              <p className="LOGIN">LOGIN</p>
+              <p className="ACCOUNT">ACCOUNT</p>
+              <p className="BAG" onClick={toggleCart}>
+                BAG <span>({cartList.length})</span>
+              </p>
+            </div>
+          </div>       
         )}
+        
         <AnimatePresence>
             {isHamOpen && isMobile && (
                 <motion.div
@@ -206,6 +209,22 @@ const mobileCart = () => {
         )}
         </AnimatePresence>
       </div>
+
+      <div className="sc2">
+        <p className="SEARCH">SEARCH</p>
+        <p className="LOGIN" onClick={toggleLoginModal} >LOGIN</p>
+        <p className="ACCOUNT">ACCOUNT</p>
+        <p className="BAG" onClick={toggleCart}>
+          BAG <span>({cartList.length})</span>
+        </p>
+      </div>
+
+      {showLoginModal && (
+        <Login onClose={toggleLoginModal} />
+      )}
+
+    </div>
+    <AnimatePresence>
 
       <AnimatePresence>
         {isCartOpen && (
@@ -228,10 +247,9 @@ const mobileCart = () => {
               <ShoppingCart toggleCart={toggleCart} cartList={cartList} isCartOpen={isCartOpen}/>
             </motion.div>
             </>
-          )}        
+          )}   
       </AnimatePresence>
     </div>
-    
   );
 };
 
