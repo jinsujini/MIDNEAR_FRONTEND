@@ -1,7 +1,5 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import SortMenu from './SortMenu'
-import ProdList from './ProdList'
 import frontImg from '../../assets/img/product/prod1.png'
 import backImg from '../../assets/img/product/prod2.png'
 
@@ -80,12 +78,11 @@ const AllShop = () => {
       <div className='top-el'>
         <div className='title'>{title}</div>
         <div className='sort'>
-          <SortMenu />
+
         </div>
       </div>
       
       <div>
-        <ProdList productList={dummyList}/>
       </div>
     </div>
     </div>

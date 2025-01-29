@@ -1,7 +1,5 @@
 import React, {useState} from 'react'
 import { useNavigate, Link } from 'react-router-dom';
-import StepHeader from '../StepHeader';
-import { DelModal } from './DelModal';
  
 const SelectAdd = () => {    
     const navigate = useNavigate();
@@ -59,7 +57,6 @@ const SelectAdd = () => {
 
   return (
     <div className={`address ${isModalOpen ? 'modal-open' : ''}`}>
-    <StepHeader />
     <div className='container'>
         <div className='find'>
             <div className='title'>배송 정보 변경</div>
@@ -100,7 +97,6 @@ const SelectAdd = () => {
                         </div>
                         <div className='edit'>
                             <div className='edit-btn' onClick={() => openModal(item.id)}>삭제</div>
-                            <DelModal isOpen={isModalOpen} closeModal={closeModal} deleteAddress={deleteAddress} />
                         </div>
                         </div>
                     

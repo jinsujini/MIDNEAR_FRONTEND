@@ -5,7 +5,6 @@ import frontImg from '../../assets/img/product/prod1.png'
 import backImg from '../../assets/img/product/prod2.png'
 import down from '../../assets/img/product/down.svg'
 import up from '../../assets/img/product/up.svg'
-import ShippingModal from './ShippingModal';
 import ShowReview from './ShowReview';
 
 const ProdDetail = () => {
@@ -117,7 +116,6 @@ const ProdDetail = () => {
 
   return (
     <div className={`ProdDetail  ${isModalOpen ? 'modal-open' : ''}`}>
-    <ShippingModal isOpen={isModalOpen} closeModal={closeModal} />
     <div className='container'>
       <div className='prod-detail'>
         <div className='left-img'onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>

@@ -1,6 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react'
 import { Link } from 'react-router-dom'; 
-import SortMenu from './SortMenu'
 import frontImg from '../../assets/img/product/prod1.png'
 import backImg from '../../assets/img/product/prod2.png'
 import emptyStar from '../../assets/img/product/star.svg'
@@ -108,7 +107,7 @@ const ShowReview = () => {
         <div className='top-el'>
             <p className='number'>총 {reviewList.length}건</p>
             <div className='sort'>
-                <SortMenu />
+
             </div>
         </div>
         {reviewList.map((item, index)=>(
