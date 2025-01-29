@@ -98,7 +98,7 @@
             font-size: 1.3rem;
             color: var(--black);
         }
-        div{
+        .del-btn{
             display: flex;
             justify-content: center;
             align-items: center;
@@ -116,4 +116,101 @@
         }
     }
         }
+}
+
+.modal-open {
+    pointer-events: none; /* 전체 배경 클릭 차단 */
+  }
+  
+/* 모달 자체는 클릭 가능 */
+.modal-open{ 
+    .ShippingModal, .PrivacyModal, .DelModal {
+        pointer-events: all; /* 모달 내부는 클릭 가능 */
+        cursor: default;
+    }
+}
+
+@media (max-width: 50rem){
+    .ShippingModal{
+        position: relative;
+        height: auto;
+        top: -1.5rem;
+        align-items: flex-start;
+        padding-top: 2rem;
+        background-color: var(--white);
+        .modal{
+            padding: 0 1.5rem;
+            justify-content: flex-start;
+            height: 100%;
+            width: 100%;
+            border: none;
+            .modal-top{
+                width: 100%;
+                align-items: center;
+                margin: 1.5rem 0;
+                height: auto;
+                h2{
+                    margin:0;
+                }
+            }
+            .content{
+                min-height: auto;
+                width: 100%;
+                border: var(--none);
+                overflow-y: auto;
+                margin-top:1rem;
+                margin-bottom: 3rem;
+                p{  
+                    width: 100%;
+                    font-size: 1rem;
+                    line-height: 1.5;                     
+                    padding: 0 1rem;
+                }
+            }
+        }
+        }
+        
+    .PrivacyModal{
+        position: absolute;
+        top: 5rem;
+        left:0;
+        background-color: var(--white);
+        .ShippingModal{height: calc(100vh - 5rem);}
+        .modal .modal-bottom div{ font-size: 1.2rem; }
+    }
+        
+    .DelModal{
+        position: absolute;
+        z-index: 999;
+        top:0;
+        left: 0;
+        .ShippingModal{
+            width: 100vw;
+            height: 100vh;
+            align-items: center;
+            .modal{
+                width: 32rem;
+                padding: 1.5rem;
+                justify-content: space-between;
+                p{margin-top: 4rem;}
+                .del-btn{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: relative;
+                    bottom: 0;
+                    right: 0;
+                }
+            }
+            
+            .del-outer{
+                display: flex;
+                padding-right: 1.5rem;
+                width: 32rem;
+                height: 3rem;
+                align-items: flex-end;
+                justify-content: flex-end;
+            }
+        }
+    }
 }

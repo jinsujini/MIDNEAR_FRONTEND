@@ -219,7 +219,8 @@
 @media (max-width: 50rem){
     .header{
         flex-direction: column;
-        height: 4.63vh;        
+        height: 4.63vh;   
+        z-index: 100;     
         .mobile-header{
             min-height: 4.63vh;
             width: 100%;
@@ -228,6 +229,11 @@
             justify-content: space-between;
             background-color: var(--white);
             z-index: 10;
+            .open-ham.show{
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+            }
             .logo.show{display: none;}
             .close{display: none;}
             .close.show{

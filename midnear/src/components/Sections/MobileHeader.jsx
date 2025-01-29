@@ -18,6 +18,9 @@ const MobileHeader = ({
     setShowLoginModal,
     isHamOpen,
     setHamOpen,
+    mobileCart,
+    toggleCart,
+    onLinkClick,
   }) => {
     
     const [isMobile, setIsMobile] = useState(false);
@@ -57,29 +60,30 @@ const MobileHeader = ({
     const toggleLoginModal = () => {
         setShowLoginModal(!showLoginModal);
     };
-    const toggleCart = () => {
-        setIsCartOpen((prev)=>!prev);
-    }
-    const mobileCart = () => {
-        closeHamList();
-        toggleCart();
-    }
   
     const subVariants = {
         hidden: { y: "-20%", opacity: 0 },
         visible: { y: 0, opacity: 1, transition: { duration: 0.7, ease: "easeOut" } },
         exit: { y: "-20%", opacity: 0, transition: { duration: 0.5, ease: "easeIn" } },
      };
+     const closeMethod = (onLinkClick, closeHamList) => {
+        if(onLinkClick){
+            onLinkClick(closeHamList);
+        } else {
+            closeHamList();
+        }
+     };
+     
       
 
   return (
     <>
-            <div className={`sc1 ${isHamOpen ? 'show' : ''}`}>
-                <div className="SHOP">
-                    <p className={` ${activeSub1 ? 'bold' : ''}`} onClick={openCate1}>
-                        SHOP
-                    </p>
-                    <AnimatePresence>
+        <div className={`sc1 ${isHamOpen ? 'show' : ''}`}>
+            <div className="SHOP">
+                <p className={` ${activeSub1 ? 'bold' : ''}`} onClick={openCate1}>
+                    SHOP
+                </p>
+                <AnimatePresence>
                     { activeSub1 && (
                         <motion.div
                         initial="hidden"
@@ -88,10 +92,10 @@ const MobileHeader = ({
                         variants={subVariants}
                         >
                         <div className={`sub ${activeSub1 ? 'display' : ''}`}>
-                            <Link to="/shop/all" onClick={closeHamList}>ALL SHOP</Link>
-                            <Link to="/shop/new" onClick={closeHamList} >NEW</Link>
+                            <Link to="/shop/all" onClick={() => closeMethod(onLinkClick, closeHamList)}>ALL SHOP</Link>
+                            <Link to="/shop/new" onClick={() => closeMethod(onLinkClick, closeHamList)}>NEW</Link>
                             <div className="newCloth">
-                                <p onClick={openSubCate1}>NEW CLOTH</p>
+                                <p  onClick={() => closeMethod(onLinkClick, closeHamList)}>NEW CLOTH</p>
                                 <AnimatePresence>
                                 { activeSubCate1 && (
                                     <motion.div
@@ -101,9 +105,9 @@ const MobileHeader = ({
                                     variants={subVariants}
                                     className='newCloth-sub'
                                     >
-                                        <Link to="/shop/newCloth/all" onClick={closeHamList}>ALL</Link>
-                                        <Link to="/shop/newCloth/top" onClick={closeHamList}>TOP</Link>
-                                        <Link to="/shop/newCloth/bottom" onClick={closeHamList}>BOTTOM</Link>
+                                        <Link to="/shop/newCloth/all"  onClick={() => closeMethod(onLinkClick, closeHamList)}>ALL</Link>
+                                        <Link to="/shop/newCloth/top"  onClick={() => closeMethod(onLinkClick, closeHamList)}>TOP</Link>
+                                        <Link to="/shop/newCloth/bottom"  onClick={() => closeMethod(onLinkClick, closeHamList)}>BOTTOM</Link>
                                     </motion.div>
                                 )}
                                 </AnimatePresence>
@@ -120,9 +124,9 @@ const MobileHeader = ({
                                     variants={subVariants}
                                     className='second-sub'
                                     >
-                                        <Link to="/shop/second/all" onClick={closeHamList}>ALL</Link>
-                                        <Link to="/shop/second/top" onClick={closeHamList}>TOP</Link>
-                                        <Link to="/shop/second/bottom" onClick={closeHamList}>BOTTOM</Link>
+                                        <Link to="/shop/second/all"  onClick={() => closeMethod(onLinkClick, closeHamList)}>ALL</Link>
+                                        <Link to="/shop/second/top"  onClick={() => closeMethod(onLinkClick, closeHamList)}>TOP</Link>
+                                        <Link to="/shop/second/bottom"  onClick={() => closeMethod(onLinkClick, closeHamList)}>BOTTOM</Link>
                                     </motion.div>
                                 )}
                                 </AnimatePresence>
@@ -130,15 +134,15 @@ const MobileHeader = ({
                         </div>
                         </motion.div>
                     )}
-                    </AnimatePresence>
-                </div>
+                </AnimatePresence>
+            </div>
 
-                <div className="OTHERS">
-                    <p className={` ${activeSub2 ? 'bold' : ''}`} onClick={openCate2}>
-                        OTHERS
-                    </p>
-                    <AnimatePresence>
-                        {activeSub2 && (
+            <div className="OTHERS">
+                <p className={` ${activeSub2 ? 'bold' : ''}`} onClick={openCate2}>
+                    OTHERS
+                </p>
+                <AnimatePresence>
+                    {activeSub2 && (
                         <motion.div
                         className="sub"
                         initial="hidden"
@@ -146,22 +150,24 @@ const MobileHeader = ({
                         exit="exit"
                         variants={subVariants}
                         >
-                            <Link to="/others/magazine" onClick={closeHamList}>MAGAZINE</Link>
-                            <Link to="/others/notice" onClick={closeHamList}>NOTICE</Link>
+                            <Link to="/others/magazine"  onClick={() => closeMethod(onLinkClick, closeHamList)}>MAGAZINE</Link>
+                            <Link to="/others/notice"  onClick={() => closeMethod(onLinkClick, closeHamList)}>NOTICE</Link>
                         </motion.div>
-                        )}
-                    </AnimatePresence>
-                </div>
+                     )}
+                </AnimatePresence>
             </div>
+        </div>
 
-            <div  className={`sc2 ${isHamOpen ? 'show' : ''}`}>        
-                <p className="SEARCH">SEARCH</p>
-                <p className="LOGIN">LOGIN</p>
-                <p className="ACCOUNT">ACCOUNT</p>
-                <p className="BAG" onClick={mobileCart}>
-                  BAG <span>({cartList.length})</span>
-                </p>
-            </div>
+        <div  className={`sc2 ${isHamOpen ? 'show' : ''}`}>        
+            <p className="SEARCH">SEARCH</p>
+            <p className="LOGIN">LOGIN</p>
+            <p className="ACCOUNT">ACCOUNT</p>
+            <p className="BAG" onClick={mobileCart}>
+                BAG <span>({cartList.length})</span>
+            </p>
+        </div>
+
+        
     </>
   );
 };
