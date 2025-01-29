@@ -26,6 +26,7 @@
   align-items: center;
   justify-content: flex-end;
   width: 100%;
+// 
 }
 
 .dropdown, .search-bar {
@@ -40,12 +41,32 @@
   height: 2.5vh;
 }
 
+/* 드롭다운을 감싸는 컨테이너 */
+.dropdown-container {
+  position: relative;
+  width: 3.75vw;
+}
+
+/* 드롭다운 스타일 */
 .dropdown {
   width: 3.75vw;
-  text-align: center;
-  &:focus {
-    outline: none;
-  }
+  padding-right: 30px; /* 화살표와의 간격 */
+  padding-left: 10px;
+  appearance: none; /* 기본 드롭다운 화살표 숨김 */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  height: 2.5vh;
+
+}
+
+/* ▼ 기호 추가 */
+.dropdown-container::after {
+  content: " ▼"; /* ▼ 기호를 추가 */
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* 클릭 방지 */
 }
 
 .search-bar {
@@ -74,7 +95,7 @@
   border-collapse: collapse;
 }
 
-th, td {
+.table th, td {
   font-size: 0.63vw;
   height: 3.75vh;
   line-height: 3.75vh;
@@ -82,23 +103,23 @@ th, td {
   border: 0.05vw solid var(--gray800);
 }
 
-th {
-  background-color: var(--gray900);
-  color: var(--white);
-  font-size: 0.68vw;
+.table th {
+  background-color: var(--gray300);
+
+  font-size: 0.6vw;
 }
 
-th:nth-child(1) { width: 9.84vw; }
-th:nth-child(2) { width: 62.99vw; }
-th:nth-child(3) { width: 10.63vw; }
-th:nth-child(4) { width: 2.5vw; }
+.table th:nth-child(1) { width: 9.84vw; }
+.table th:nth-child(2) { width: 62.99vw; }
+.table th:nth-child(3) { width: 10.63vw; }
+.table th:nth-child(4) { width: 2.5vw; }
 
-td:nth-child(1) { width: 9.84vw; }
-td:nth-child(2) { width: 62.99vw; }
-td:nth-child(3) { width: 10.63vw; }
-td:nth-child(4) { width: 2.5vw; }
+.table td:nth-child(1) { width: 9.84vw; }
+.table td:nth-child(2) { width: 62.99vw; }
+.table td:nth-child(3) { width: 10.63vw; }
+.table td:nth-child(4) { width: 2.5vw; }
 
-tr {
+.table tr {
   height: 3.75vh;
 }
 
@@ -132,7 +153,7 @@ tr {
   color: var(--gray800);
 }
 
-.action-buttons {
+.bul-action-buttons {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -145,16 +166,17 @@ tr {
   }
 }
 
-.action-buttons button {
+.bul-action-buttons button {
   font-size: 0.63vw;
   width: 3.87vw;
   height: 3.33vh;
   cursor: pointer;
-  background-color: var(--white);
+  background-color: var(--gray900);
   border-left: 0.05vw solid var(--gray800);
+  color: var(--white);
 }
 
-.action-buttons button:hover {
+.bul-action-buttons button:hover {
   background-color: var(--black);
   color: var(--white);
 }

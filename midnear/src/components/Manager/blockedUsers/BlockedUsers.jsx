@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../../assets/sass/manager/blockedUsers/_blockedusers.scss';
+
 
 const BlockedUsers = () => {
   const [customerId, setCustomerId] = useState('');

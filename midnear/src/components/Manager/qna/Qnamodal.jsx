@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../../assets/sass/manager/qna/_qnamodal.scss';
 
 const Modal = ({ selectedItem, editorContent, setEditorContent, handleSave, handleCloseModal }) => {
     return (

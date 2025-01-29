@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import '../../../assets/sass/manager/qna/_qna.scss';
 import Modal from './Qnamodal'; // Modal을 Qnamodal로 변경
 
 const TableComponent = () => {
@@ -164,6 +163,8 @@ const TableComponent = () => {
             <div className="qna-header1">
                 <div className="qna-title">1:1 문의 내역</div>
                 <div className="qna-controls">
+                <div className="dropdown-container">
+
                     <select className="qna-dropdown" value={filter} onChange={handleFilterChange}>
                         <option value="오늘">오늘</option>
                         <option value="1주일">1주일</option>
@@ -171,10 +172,14 @@ const TableComponent = () => {
                         <option value="3개월">3개월</option>
                         <option value="전체">전체</option>
                     </select>
+                    </div>
+                <div className="dropdown-container">
+
                     <select className="qna-dropdown" value={sortOrder} onChange={handleSortChange}>
                         <option value="최신순">최신순</option>
                         <option value="오래된순">오래된순</option>
                     </select>
+                    </div>
                     <div className="qna-search-box">
                         <div className="qna-square-box">작성자</div>
                         <input
