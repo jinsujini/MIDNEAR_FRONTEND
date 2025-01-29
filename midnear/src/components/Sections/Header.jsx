@@ -10,7 +10,7 @@ import close from '../../assets/img/product/close.svg'
 import MobileHeader from './MobileHeader';
 
 
-const Header = () => {
+const Header = ({onLinkClick}) => {
   const navigate = useNavigate();
   const location = useLocation(); 
   const [activeSub1, setActiveSub1] = useState(false);
@@ -121,11 +121,9 @@ useEffect(()=>{
 },[]);
 
 const mobileCart = () => {
-  toggleHamList();
+  closeHamList();
   toggleCart();
 }
-
-
   return (
     <div className='header-container'>
       <div className={`header ${isHamOpen ? 'border' : ''}`}>
@@ -134,12 +132,14 @@ const mobileCart = () => {
           <div className={`logo ${isHamOpen ? 'show' : ''}`} onClick={goHome}>
             <img src={logo} alt="logo" />
           </div>
-          <div className={`close ${isHamOpen ? 'show' : ''}`} onClick={closeHamList}>
-            <img src={close} alt='close' />
-          </div>
-          <div className='hamBar' onClick={openHamList}>
-            <img src={ham} alt='ham' />
-          </div>
+            <div className={`open-ham ${isHamOpen ? 'show' : ''}`} >
+              <div className={`close ${isHamOpen ? 'show' : ''}`} onClick={closeHamList}>
+                <img src={close} alt='close' />
+              </div>
+              <div className='hamBar' onClick={openHamList}>
+                <img src={ham} alt='ham' />
+              </div>
+            </div>
         </div>
 
         {!isMobile && (
@@ -201,7 +201,7 @@ const mobileCart = () => {
                 exit="exit"
                 variants={hamVariants}
                 >
-          <MobileHeader {...subStates}/>
+          <MobileHeader {...subStates} mobileCart={mobileCart} toggleCart={toggleCart} onLinkClick={onLinkClick}/>
           </motion.div>
         )}
         </AnimatePresence>
@@ -225,7 +225,7 @@ const mobileCart = () => {
               variants={cartVariants}
               transition={{ type: "tween", duration: 1, }} 
             >
-              <ShoppingCart toggleCart={toggleCart} cartList={cartList}  />
+              <ShoppingCart toggleCart={toggleCart} cartList={cartList} isCartOpen={isCartOpen}/>
             </motion.div>
             </>
           )}        

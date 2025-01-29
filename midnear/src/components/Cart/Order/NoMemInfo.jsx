@@ -68,7 +68,7 @@ const NoMemInfo = () => {
                 <input type='text' name='secondAdd' className='min_text' placeholder='상세주소 입력' />
                 </div>
                 
-                <div className='check'>
+                <div className='check2'>
                     <label className='checkbox'>
                         <input type='checkbox' name='checkbox' className='default' 
                          id={1}
@@ -81,7 +81,7 @@ const NoMemInfo = () => {
                     </label>
                     <p>기본 배송지로 설정</p>
                  </div>
-                 <div className='check'>
+                 <div className='check2'>
                      <label className='checkbox'>
                          <input type='checkbox' name='checkbox' className='agree' 
                          id={2}
