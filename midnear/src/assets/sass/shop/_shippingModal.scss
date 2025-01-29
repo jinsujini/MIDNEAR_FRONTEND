@@ -132,11 +132,11 @@
 
 @media (max-width: 50rem){
     .ShippingModal{
-        position: relative;
+        position: absolute;
         height: auto;
-        top: -1.5rem;
+        top: 4.63vh;
         align-items: flex-start;
-        padding-top: 2rem;
+        padding: 1rem 0;
         background-color: var(--white);
         .modal{
             padding: 0 1.5rem;
@@ -168,15 +168,18 @@
                 }
             }
         }
-        }
+    }
         
     .PrivacyModal{
         position: absolute;
-        top: 5rem;
+        top:1.5rem;
         left:0;
         background-color: var(--white);
-        .ShippingModal{height: calc(100vh - 5rem);}
         .modal .modal-bottom div{ font-size: 1.2rem; }
+        .ShippingModal{
+            width: 100vw;
+            height:calc(100vh - 5rem);
+        }
     }
         
     .DelModal{
