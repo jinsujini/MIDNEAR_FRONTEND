@@ -1,5 +1,6 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { useNavigate} from 'react-router-dom'; 
+import Header from '../Sections/Header';
 import logo from "../../assets/img/logo/header_logo.svg";
 
 const StepHeader = () => {    
@@ -8,10 +9,20 @@ const StepHeader = () => {
     navigate('/'); 
   };
   
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(()=>{
+      const checkMax =() => {
+        setIsMobile(window.innerWidth <= 500);
+      };
+      checkMax();
+      window.addEventListener("resize", checkMax);
+      return () => window.removeEventListener("resize", checkMax);
+  },[]);
+  
   return (
     <div className='step-header'>
-        <div className="header">
-            <div className="logo" onClick={goHome}>
+        <div className="header2">
+            <div className="logo2" onClick={goHome}>
                 <img src={logo} alt="logo" />
             </div>
 
@@ -26,7 +37,9 @@ const StepHeader = () => {
             </div>
 
             <div className='continue'><p onClick={goHome}>쇼핑 계속하기</p></div>
-            {/** 모바일 햄버거 넣기 */}
+            {isMobile && (
+              <Header/>
+            )}
         </div>
     </div>
   )

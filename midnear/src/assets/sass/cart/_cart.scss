@@ -8,7 +8,7 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
-    z-index: 10;
+    z-index: 300;
 }
 
     .cart_content{
@@ -18,7 +18,7 @@
         position: fixed;
         top: 0;
         right: 0;
-        z-index: 100;
+        z-index: 400;
         .cart{
             width: 43.7rem;
             padding: 0 1.8rem;
@@ -31,13 +31,13 @@
                 justify-content: space-between;
                 align-items: center;                    
 
-                .close{
+                .close2{
                     width: 1.5rem;
                     height: 1.6rem;
                     cursor: pointer;
                 }
 
-                .sc2 {
+                .sc3 {
                     font-size: 1.2rem;
                     justify-content: end;
                     gap: 2.4rem;
@@ -149,17 +149,58 @@
     .ShoppingCart{
         margin-bottom: 10rem;
     }
-    
     .cart_content{
         width: 100%;
         .cart{
-            width: 100%;
-            .cart_nav{   
-                margin-bottom: 1.8rem;
-                .close{
+            padding: 0;
+            width: 100%;;
+            .cart_nav{    
+                justify-content: space-between;
+                margin:0;
+                .close2{
+                    position:absolute;
+                    left: 1.8rem;
+                    z-index: 200;
                 }
-    
-                .sc2 {
+                    
+                .header-container{
+                    width: 100%;
+                }
+                .sc3 {display: none;}
+                .header.border{z-index: 300;}
+                .header {
+                    .mobile-header {
+                        width:100%;
+                        justify-content: flex-end;
+                        .logo{display: none;}
+                        .open-ham{
+                            padding: 0 1.8rem;
+                            position: absolute;
+                            width: 10rem;
+                            display: flex;
+                            justify-content: flex-end;
+                            
+                        }
+                        .open-ham.show{
+                            position: absolute;
+                            justify-content: space-between;
+                            .close{
+                                 margin:0;
+                                 width: 1.5rem;
+                                 height: 1.6rem;
+                                }
+                            position: absolute;
+                            z-index: 300;
+                            background-color: var(--white);
+                            width: 100%;
+                        }
+                        .hamBar{ 
+                            margin:0;
+                            height: 1.4rem;
+                            width: 1.8rem;
+                        }
+                        
+                    }
                 }
             }
             
