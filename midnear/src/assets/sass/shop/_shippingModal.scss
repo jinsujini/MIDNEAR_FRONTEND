@@ -97,7 +97,7 @@
             font-size: 1.3rem;
             color: var(--black);
         }
-        div{
+        .del-btn{
             display: flex;
             justify-content: center;
             align-items: center;
@@ -133,7 +133,7 @@
     .ShippingModal{
         position: relative;
         height: auto;
-        top: -4.63vh;
+        top: -1.5rem;
         align-items: flex-start;
         padding-top: 2rem;
         background-color: var(--white);
@@ -165,6 +165,50 @@
                     line-height: 1.5;                     
                     padding: 0 1rem;
                 }
+            }
+        }
+        }
+        
+    .PrivacyModal{
+        position: absolute;
+        top: 5rem;
+        left:0;
+        background-color: var(--white);
+        .ShippingModal{height: calc(100vh - 5rem);}
+        .modal .modal-bottom div{ font-size: 1.2rem; }
+    }
+        
+    .DelModal{
+        position: absolute;
+        z-index: 999;
+        top:0;
+        left: 0;
+        .ShippingModal{
+            width: 100vw;
+            height: 100vh;
+            align-items: center;
+            .modal{
+                width: 32rem;
+                padding: 1.5rem;
+                justify-content: space-between;
+                p{margin-top: 4rem;}
+                .del-btn{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: relative;
+                    bottom: 0;
+                    right: 0;
+                }
+            }
+            
+            .del-outer{
+                display: flex;
+                padding-right: 1.5rem;
+                width: 32rem;
+                height: 3rem;
+                align-items: flex-end;
+                justify-content: flex-end;
             }
         }
     }

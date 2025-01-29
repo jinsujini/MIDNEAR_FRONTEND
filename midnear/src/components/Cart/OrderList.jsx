@@ -186,18 +186,18 @@ const OrderList = ({productList, toggleCart, point, selectedCoupon }) => {
           </div>
         
           <div className='goto-pay'>
-            {/** 로그인 X **/}
+            {/** 로그인 X 
             <Link to="/order/login" state= {{ items: checkedItems }}>
               <div className='box' onClick={toggleCart}>선택한 상품만 결제</div>
             </Link>
             <Link to="/order/login" state={{ items: cartItems }}>
               <div className='box' onClick={toggleCart}>전체 결제</div>
-            </Link>
+            </Link>**/}
            
-            {/** 로그인 o  
+            {/** 로그인 o  **/}
             <Link to="/order/delivery/member" state= {{ items: checkedItems }}><div className='box' onClick={toggleCart}>선택한 상품만 결제</div></Link>
             <Link to="/order/delivery/member"  state={{ items: cartItems }}><div className='box' onClick={toggleCart}>전체 결제</div></Link>
-           **/}
+           
           </div>
         </div>
 
