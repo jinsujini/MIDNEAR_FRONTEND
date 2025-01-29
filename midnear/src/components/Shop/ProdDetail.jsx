@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom';
 import frontImg from '../../assets/img/product/prod1.png'
@@ -15,40 +15,6 @@ const ProdDetail = () => {
 
      const openModal = () => setIsModalOpen(true);
      const closeModal = () => setIsModalOpen(false);
-
-     const [currentIndex, setCurrentIndex] = useState(0); 
-     const [startX, setStartX] = useState(0);
-     const [isMobile, setIsMobile] = useState(false);
-     
-    useEffect(()=>{
-         const checkMax =() => {
-           setIsMobile(window.innerWidth <= 500);
-         };
-         checkMax();
-         window.addEventListener("resize", checkMax);
-         return () => window.removeEventListener("resize", checkMax);
-     },[]);
-   
-     const handleTouchStart = (e) => {
-      if (!isMobile) return; 
-       setStartX(e.touches[0].clientX);
-     };
-
-     const handleTouchEnd = (e) => {
-      if (!isMobile) return; 
-       const endX = e.changedTouches[0].clientX;
-       const diff = startX - endX;
-   
-       if (diff > 50) {
-         if (currentIndex < prodImage.length - 1) {
-           setCurrentIndex(currentIndex + 1);
-         }
-       } else if (diff < -50) {
-         if (currentIndex > 0) {
-           setCurrentIndex(currentIndex - 1);
-         }
-       }
-     };
      
 
      const showDetail = (item)=>{
@@ -57,7 +23,7 @@ const ProdDetail = () => {
 
      const variants = {
       hidden: { height: 0, opacity: 0 },
-      visible: { height: "auto", opacity: 1,  marginBottom: "2rem", marginTop: "1rem", zIndex: 1},
+      visible: { height: "auto", opacity: 1,  marginBottom: "2.7rem", marginTop: "1rem", zIndex: 1},
       };
 
      const dummyList = [
@@ -72,7 +38,6 @@ const ProdDetail = () => {
           soldout: "SOLD OUT"
         },
      ]
-     const prodImage =[frontImg, backImg, frontImg];
      const size = ['S', 'M', 'L', 'XL'];
      const information = [
       {
@@ -90,6 +55,7 @@ const ProdDetail = () => {
           <p className='delivery'>00택배 (1588-3223)</p>
           <p>구매하신 제품은 수령하신 날로부터 7일 이내에 접수해 주셔야 합니다.</p>
           <p className='open-modal' onClick={openModal}>자세히 보기.</p>
+          <ShippingModal isOpen={isModalOpen} closeModal={closeModal} />
           </>
           )
       },
@@ -116,18 +82,11 @@ const ProdDetail = () => {
      
 
   return (
-    <div className={`ProdDetail  ${isModalOpen ? 'modal-open' : ''}`}>
-    <ShippingModal isOpen={isModalOpen} closeModal={closeModal} />
     <div className='container'>
       <div className='prod-detail'>
-        <div className='left-img'onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
-          <div className='img-container' style={{
-          transform: `translateX(${-currentIndex * 100}%)`, // 현재 이미지로 이동
-        }}>
-          {prodImage.map((item,index)=>
-          <img src={item} key={index} alt='prodimg'/>
-          )}
-          </div>
+        <div className='left-img'>
+          <img src={dummyList[0].frontImg}/>
+          <img src={dummyList[0].backImg}/>
         </div>
         <div className='right-info'>
           <div className='empty'></div>
@@ -186,7 +145,6 @@ const ProdDetail = () => {
           </div>
         </div>
       </div>
-    </div>
     </div>
   )
 }
