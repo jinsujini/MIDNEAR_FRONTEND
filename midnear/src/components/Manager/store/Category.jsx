@@ -1,48 +1,107 @@
 import React, { useState } from 'react';
+import Modal from './Modal';
+import CateItem from './CateItem';
+import PlusCate from './PlusCate';
 
 const Category = () => {
-  const [inputs, setInputs] = useState([]);
+  const [isAllOpen, setIsAllOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCompleted, setIsCompleted] = useState(false);
+  const [cateItems, setCateItems] = useState({
+    SHOP: {
+      'ALL SHOP': [],
+      'NEW': [],
+      'NEW CLOTH': ['ALL', 'TOP', 'BOTTOM'],
+    },
+    OTHERS: ['MAGAZINE', 'NOTICE'],
+  });
 
-  const handleInputChange = (e, index) => {
-    const updatedInputs = [...inputs];
-    updatedInputs[index] = e.target.value;
-    setInputs(updatedInputs);
+  const handleSave = () => {
+    setIsModalOpen(true);
   };
 
-  const handleAddInput = () => {
-    setInputs([...inputs, '']); 
+  const handleConfirm = () => {
+    setIsCompleted(true);
+    setIsModalOpen(false);
+
   };
 
-  const handleRemoveInput = (index) => {
-    const updatedInputs = inputs.filter((_, i) => i !== index);
-    setInputs(updatedInputs);
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const toggleAll = () => {
+    setIsAllOpen((prev) => !prev);
+  };
+
+  const addCateItem = (parentCategory, subCategory) => {
+    const newCateName = `NEW CATEGORY ${Date.now()}`;
+    setCateItems((prev) => {
+      const newCateItems = { ...prev };
+      if (subCategory) {
+        if (newCateItems[parentCategory][subCategory]) {
+          newCateItems[parentCategory][subCategory].push(newCateName);
+        }
+      } else {
+        newCateItems[parentCategory][newCateName] = [];
+      }
+      return newCateItems;
+    });
+  };
+
+  const renderCateItems = (category, subCategory) => {
+    if (Array.isArray(category)) {
+      return category.map((item, index) => (
+        <CateItem key={index} name={item} isBot={true} />
+      ));
+    } else if (typeof category === 'object') {
+      return Object.keys(category).map((key) => (
+        <CateItem key={key} name={key} isOpen={isAllOpen}>
+          <div className="bot">
+            {category[key].map((subItem, subIndex) => (
+              <CateItem key={subIndex} name={subItem} isBot={true} />
+            ))}
+            <PlusCate onAdd={() => addCateItem('SHOP', key)} />
+          </div>
+        </CateItem>
+      ));
+    }
   };
 
   return (
-    <div className='manager_category container'>
+    <div className="manager_category container">
       <div className="title">
-        <p className='b'>카테고리 관리</p>
-        <p>한번 클릭 시 카테고리 명 수정 더블 클릭 시 하위 카테고리 오픈</p>
-      </div>
-      <div className="catelist">
-        <div className="category">
-          <h5>SHOP</h5>
-          <div className="item"></div>
-        </div>
-        {inputs.map((inputValue, index) => (
-          <div className="input" key={index}>
-            <input
-              type='text'
-              value={inputValue}
-              onChange={(e) => handleInputChange(e, index)}
-              placeholder="입력"
-              size={inputValue.length + 1 || 2} />
-            <div className="minus" onClick={() => handleRemoveInput(index)}>-</div>
+        <p className="b">카테고리 관리</p>
+        <div className="btns">
+          <div className="all-open" onClick={toggleAll}>
+            {isAllOpen ? '전체 접기' : '전체 펼치기'}
           </div>
-        ))}
-        <div className="plus" onClick={handleAddInput}>+</div>
+        </div>
       </div>
-      <div className="btn">완료</div>
+      <div className="top">
+        <CateItem name="SHOP" isOpen={isAllOpen}>
+          <div className="mid">
+            {renderCateItems(cateItems.SHOP)}
+            <PlusCate onAdd={() => addCateItem('SHOP')} />
+          </div>
+        </CateItem>
+      </div>
+      <div className="top">
+        <CateItem name="OTHERS" isOthers={true}>
+          <div className="mid">
+            {cateItems.OTHERS.map((item, index) => (
+              <CateItem key={index} name={item} isBot={true} />
+            ))}
+            <PlusCate onAdd={() => addCateItem('OTHERS')} />
+          </div>
+        </CateItem>
+      </div>
+      <div className="btn" onClick={handleSave}>완료</div>
+      <Modal
+        show={isModalOpen}
+        onClose={handleCloseModal}
+        onConfirm={handleConfirm}
+      />
     </div>
   );
 };

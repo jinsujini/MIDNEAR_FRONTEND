@@ -84,7 +84,6 @@ const MagazineComponent = () => {
         navigate('/manager/magazine/magazine-create'); 
     };
 
-
     const handleFilterChange = (event) => {
         const selectedFilter = event.target.value;
         setFilter(selectedFilter);

@@ -78,7 +78,7 @@ const Header = () => {
 
       <div className="sc2">
         <p className="SEARCH">SEARCH</p>
-        <p className="LOGIN">LOGIN</p>
+        <Link to='user/login' className="LOGIN">LOGIN</Link>
         <p className="ACCOUNT">ACCOUNT</p>
         <p className="BAG">
           BAG <span>(1)</span>

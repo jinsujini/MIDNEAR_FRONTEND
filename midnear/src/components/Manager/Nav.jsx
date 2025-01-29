@@ -27,7 +27,7 @@ const Nav = () => {
                 variants={variants}
                 transition={{ duration: 0.3 }}
             >
-                <p>상품 추가</p>
+                <Link to="/manager/Goods/AddGoods">상품 추가</Link>
                 <p>상품 관리</p>
                 <p>코디 상품 관리</p>
                 <p>SHIPPING & RETURNS</p>
@@ -60,10 +60,11 @@ const Nav = () => {
                 <Link to="/manager/store/MainImage">메인화면 이미지 수정</Link>
                 <Link to="/manager/store/Logo">로고 수정</Link>
                 <Link to="/manager/store/Category">카테고리 관리</Link> 
+                <Link to="/manager/store/Delivary">배송비 관리</Link> 
                 <Link to="/manager/store/PrivacyPolicy">개인정보처리방침 관리</Link>
                 <Link to="/manager/store/Terms">이용약관 관리</Link>
                 <Link to="/manager/store/Address">주소 및 사업자 정보 관리</Link>
-                <p>개인정보 수집 및 이용 목적</p>
+                <Link to="/manager/store/Privacy">개인정보 수집 및 이용 목적</Link>
             </motion.div>
 
             <div onClick={() => toggleCategory("graph")} className={`${activeCategory === "graph" ? "display" : "category"}`}>
