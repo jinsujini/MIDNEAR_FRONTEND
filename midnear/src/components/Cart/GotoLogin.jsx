@@ -3,7 +3,6 @@ import { useNavigate, Link, useLocation } from 'react-router-dom';
 import kakao from '../../assets/img/user/login/kakao_logo.svg'
 import naver from '../../assets/img/user/login/naver_logo.svg'
 import google from '../../assets/img/user/login/google_logo.svg'
-import StepHeader from './StepHeader';
 import OrderList from './OrderList';
 
 
@@ -23,7 +22,6 @@ const GotoLogin = () => {
     
   return (
     <div className='GotoLogin'>
-    <StepHeader />
     <div className='container'>
         <div className='empty'></div>
 

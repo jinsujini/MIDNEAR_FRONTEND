@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import SortMenu from '../Shop/SortMenu'
 import search from '../../assets/img/magazine/search.svg'
 import frontImg from '../../assets/img/product/prod1.png'
 import backImg from '../../assets/img/product/prod2.png'
@@ -115,7 +114,6 @@ const MagazineList = () => {
           <div className='title'>MAGAZINE</div>
           <div className='left-el'>
               <div className={`sort  ${isClickBtn ? 'click' : ''}`}>
-                <SortMenu />
               </div>
               {!isMobile && (
               <div className='search-bar'>

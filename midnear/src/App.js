@@ -37,22 +37,20 @@ import Colligation from './components/Mypage/Cupon/Colligation';
 import CuponList from './components/Mypage/Cupon/CuponList';
 import PointList from './components/Mypage/Cupon/PointList';
 import DeliveryAddress from './components/Mypage/UserInformation/DeliveryAddress';
-import ReviewImage from './components/Shop/ReviewImage';
 import ChangeSuccess from './components/User/FindPW/ChangeSuccess';
 import OrderCancelStart from './components/Mypage/OrderList/OrderCancel/OrderCancelStart';
 import OrderCancelReaon from './components/Mypage/OrderList/OrderCancel/OrderCancelReaon';
 import OrderCancelDone from './components/Mypage/OrderList/OrderCancel/OrderCancelDone';
 import CanceledOrder from './components/Mypage/OrderList/CanceledOrder';
 import GotoLogin from './components/Cart/GotoLogin';
-import PaySucceed from './components/Cart/Pay/PaySucceed';
-import PayFailed from './components/Cart/Pay/PayFailed';
 import NoMemInfo from './components/Cart/Order/NoMemInfo';
 import MemInfo from './components/Cart/Order/MemInfo';
 import NewAddress from './components/Cart/Order/NewAddress';
 import SelectAdd from './components/Cart/Order/SelectAdd';
 import MagazineList from './components/Magazine/MagazineList';
-import MagazinDetail from './components/Magazine/MagazinDetail';
 
+import NoticeList from './components/Notice/NoticeList';
+import NoticeDetail from './components/Notice/NoticeDetail';
 
 function App() {
   const location = useLocation();
@@ -89,9 +87,8 @@ function App() {
         <Route path="/mypage/colligation/cupon" element={<CuponList/>} />
         <Route path="/mypage/colligation/point" element={<PointList/>} />
         
-        
-        <Route path='/shop/:category/:subCategory' element={<AllShop />} />
-        <Route path='/shop/:category' element={<AllShop />} />
+        <Route path='/others/notice' element={<NoticeList />} />
+        <Route path='/others/notice/detail' element={<NoticeDetail />} />
 
         <Route path="user/join" element={<Join />} />
         <Route path='user/login' element={<Login />} />
@@ -105,16 +102,12 @@ function App() {
         <Route path='/user/join/success' element={<SuccessJoin />} />
         
         <Route path='/products/detail' element={<ProdDetail />} />        
-        <Route path='/review/images' element={<ReviewImage />} />
         <Route path='/order/login' element={<GotoLogin />} />    
-        <Route path='/order/pay-succeed' element={<PaySucceed />} />    
-        <Route path='/order/pay-failed' element={<PayFailed />} />     
         <Route path='/order/delivery/no-member' element={<NoMemInfo/>} />   
         <Route path='/order/delivery/member' element={<MemInfo />} />       
         <Route path='/order/delivery/new-address' element={<NewAddress />} />   
         <Route path='/order/delivery/select-address' element={<SelectAdd />} />  
         <Route path='/others/magazine' element={<MagazineList />} />
-        <Route path='/others/magazine/detail' element={<MagazinDetail />} />
 
         {/* 관리자 페이지 */}
         <Route path="/manager/*" element={<Manager />} />

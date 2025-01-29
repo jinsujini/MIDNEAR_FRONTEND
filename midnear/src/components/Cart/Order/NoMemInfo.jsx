@@ -1,8 +1,6 @@
 import React, {useState,useEffect} from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import OrderList from '../OrderList'
-import StepHeader from '../StepHeader'
-import PrivacyModal from './PrivacyModal'
 import check from '../../../assets/img/cart/check.svg'
 
 const NoMemInfo = () => {    
@@ -44,7 +42,6 @@ const NoMemInfo = () => {
   return (
     <div className='no-member'>
     <div className='info'>
-        <StepHeader />
         <div className='container'>
             <div className='empty'></div>
             <div className='info_content'>
@@ -93,7 +90,6 @@ const NoMemInfo = () => {
                          )}
                     </label>
                     <p className='privacy' onClick={openModal}>[필수] 개인정보 수집 및 이용 동의</p>
-                    <PrivacyModal isOpen={isModalOpen} closeModal={closeModal} setIsChecked={setIsChecked} isChecked={isChecked}  />
                 </div>
                 <Link to='/order/pay-succeed' className='pay-link'>
                 <button 

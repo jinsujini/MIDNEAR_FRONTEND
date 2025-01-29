@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import OrderList from '../OrderList'
-import StepHeader from '../StepHeader'
 import Coupon from './Coupon'
 
 const MemInfo = () => {
@@ -59,7 +58,6 @@ const MemInfo = () => {
   return (
     <div className='member'>
     <div className='info'>
-        <StepHeader />
         <div className='container'>
           <div className='empty'></div>
 
