@@ -7,7 +7,7 @@ const Data = () => {
         <div className="data_wrap">
             <Graph cate={"day"} />
             <Graph cate={"week"} />
-            <Graph cate={"year"} />
+            <Graph cate={"month"} />
         </div>
     );
 };
