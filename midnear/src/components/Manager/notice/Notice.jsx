@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../../../assets/sass/manager/notice/_notice.scss';
+
 
 const NoticeTableComponent = () => {
     const [data, setData] = useState([]);
@@ -139,17 +139,22 @@ const NoticeTableComponent = () => {
             <div className="notice-header1">
                 <div className="notice-title">공지사항</div>
                 <div className="notice-controls">
-                    <select className="notice-dropdown" value={filter} onChange={handleFilterChange}>
+                <div className="dropdown-container">
+                    <select className="dropdown" value={filter} onChange={handleFilterChange}>
                         <option value="오늘">오늘</option>
                         <option value="1주일">1주일</option>
                         <option value="1개월">1개월</option>
                         <option value="3개월">3개월</option>
                         <option value="전체">전체</option>
                     </select>
+                    </div>
+                <div className="dropdown-container">
+
                     <select className="notice-dropdown" value={sortOrder} onChange={handleSortChange}>
                         <option value="최신순">최신순</option>
                         <option value="오래된순">오래된순</option>
                     </select>
+                    </div>
                     <div className="notice-search-box">
                         <div className="notice-square-box">검색</div>
                         <input
@@ -163,7 +168,7 @@ const NoticeTableComponent = () => {
             </div>
 
             <div className="notice-table-container">
-                <table className="notice-table">
+                <table className="table">
                     <thead>
                         <tr>
                             <th>제목</th>
@@ -211,8 +216,8 @@ const NoticeTableComponent = () => {
             <div className="notice-btn-group">
 
                 <div className="notice-action-buttons">
-                    <button onClick={handleSelectAll}>선택 글 고정</button>
-                    <button onClick={handleDeselectAll}>선택 글 고정 해제</button>
+                    <button >선택 글 고정</button>
+                    <button >선택 글 고정 해제</button>
                 </div>
 
                 <div className="notice-action-buttons">

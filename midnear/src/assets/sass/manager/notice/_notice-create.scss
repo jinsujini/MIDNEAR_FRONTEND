@@ -1,24 +1,20 @@
-html {
-    font-size: 12px;
-}
-
-.magazine-create-container {
+.nc-create-container {
     display: flex;
-    text-align: center;
+    text-align: flex-start;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     padding: 1.667rem;
     background-color: var(--white);
     width: 65.16vw;
     margin: 0 auto;
     height: 100%;
 
-    .magazine-create-title {
+    .nc-create-title {
         width: 100%;
         margin-bottom: 1.667rem;
         text-align: center;
 
-        .magazine-title-input {
+        .nc-title-input {
             width: 100%;
             padding: 0.833rem;
             font-size: 3.333rem;
@@ -27,23 +23,23 @@ html {
             border-bottom: 1px solid var(--white);
             outline: none;
             box-sizing: border-box;
-            // color: var(--gray900);
-            text-align: center;
+            color: var(--gray900);
+            text-align: left;
         }
 
-        .magazine-title-input::placeholder {
-            color: var(--gray300);;
+        .nc-title-input::placeholder {
+            color: var(--gray300);
         }
     }
 
-    .magazine-images {
+    .nc-images {
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         margin-bottom: 2.5rem;
 
-        .magazine-image-scroll {
+        .nc-image-scroll {
             display: flex;
             overflow-x: auto;
             width: 100%;
@@ -51,22 +47,22 @@ html {
             align-items: center;
         }
 
-        .magazine-image-container {
+        .nc-image-container {
             position: relative;
             margin-right: 1.25rem;
 
-            .magazine-image {
+            .nc-image {
                 width: 20.83vw;
                 height: 64.81vh;
                 object-fit: cover;
                 border-radius: 0.667rem;
             }
 
-            .magazine-remove-btn {
+            .nc-remove-btn {
                 position: absolute;
                 top: 0.417rem;
                 right: 0.417rem;
-                background-color: var(--white);;
+                background-color: var(--white);
                 color: var(--gray900);
                 border: 1px solid var(--gray900);
                 cursor: pointer;
@@ -81,17 +77,18 @@ html {
             }
         }
 
-        .magazine-add-image {
+        .nc-add-image {
             display: flex;
             align-items: center;
             justify-content: center;
             margin-left: 1.25rem;
 
-            .magazine-upload-btn {
-                background-color: var(--gray300);
-                color: var(--gray900);
+            .nc-upload-btn {
+                background-color: var(--gray900);
+                color: var(--white);
                 padding: 0.833rem;
                 cursor: pointer;
+                border-radius: 0.417rem;
                 font-size: 3rem;
                 border: none;
                 width: 20.83vw;
@@ -103,11 +100,11 @@ html {
         }
     }
 
-    .magazine-create-content {
+    .nc-create-content {
         width: 100%;
         margin-bottom: 1.667rem;
 
-        .magazine-content-textarea {
+        .nc-content-textarea {
             width: 100%;
             padding: 0.833rem;
             font-size: 1.333rem;
@@ -115,18 +112,18 @@ html {
             outline: none;
             height: 16.667rem;
             box-sizing: border-box;
-            // color: var(--gray900);
+            color: var(--gray900);
             text-align: left;
             resize: none;
         }
 
-        .magazine-content-textarea::placeholder {
+        .nc-content-textarea::placeholder {
             color: var(--gray900);
         }
     }
 }
 
-.mcc {
+.nc {
     display: flex;
     align-items: flex-end;
     width: 100%;
@@ -135,16 +132,24 @@ html {
     padding-left: 10vw;
 }
 
-.mcc-submit-btn {
+.nc-submit-btn {
     width: 6.667rem;
     height: 4rem;
     background-color: var(--white);
-    border: 1px solid var(--gray300); 
+    border: 1px solid var(--gray300);
     font-size: 1.167rem;
 
     &:hover {
-        background-color: var(--black); 
-        color: var(--white); 
+        background-color: var(--black);
+        color: var(--white);
         border-color: var(--black);
     }
 }
+.nc-idtime {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+

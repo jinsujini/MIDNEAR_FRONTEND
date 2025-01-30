@@ -143,22 +143,25 @@ const TableComponent = () => {
   return (
     <div className="blackuser_list container">
       <div className="header1">
-        <div className="title">판매방해고객List</div>
+        <div className="qna-title">판매방해고객List</div>
         <div className="controls">
           {/* 날짜 필터 드롭다운 */}
-          <select
-            className="dropdown"
-            value={filter}
-            onChange={handleFilterChange}
-          >
-            <option value="오늘">오늘</option>
-            <option value="1주일">1주일</option>
-            <option value="1개월">1개월</option>
-            <option value="3개월">3개월</option>
-            <option value="1년">1년</option>
-            <option value="전체">전체</option>
-          </select>
+          <div className="dropdown-container">
+    <select
+      className="dropdown"
+      value={filter}
+      onChange={handleFilterChange}
+    >
+      <option value="오늘">오늘</option>
+      <option value="1주일">1주일</option>
+      <option value="1개월">1개월</option>
+      <option value="3개월">3개월</option>
+      <option value="1년">1년</option>
+      <option value="전체">전체</option>
+    </select>
+  </div>
           {/* 정렬 옵션 드롭다운 */}
+          <div className="dropdown-container">
           <select
             className="dropdown"
             value={sortOrder}
@@ -167,6 +170,7 @@ const TableComponent = () => {
             <option value="최신순">최신순</option>
             <option value="오래된순">오래된순</option>
           </select>
+          </div>
           {/* 검색창 */}
           <div className="search-box">
             <div className="square-box">id 검색</div>
@@ -240,7 +244,7 @@ const TableComponent = () => {
   </div>
 
   {/* 전체선택, 전체선택 해제, 차단해제 버튼 */}
-  <div className="action-buttons">
+  <div className="bul-action-buttons">
     <button onClick={handleSelectAll}>전체선택</button>
     <button onClick={handleDeselectAll}>선택취소</button>
     <button onClick={handleUnblock}>해제</button>
