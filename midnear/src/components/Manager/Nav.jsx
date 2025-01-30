@@ -43,8 +43,8 @@ const Nav = () => {
                 variants={variants}
                 transition={{ duration: 0.3 }}
             >
-                <Link to="/manager/coupon/Coupon">쿠폰 지급관리</Link>
-                <Link to="/manager/coupon/Point">포인트 지급관리</Link>
+                <p>포인트 지급관리</p>
+                <p>쿠폰 지급관리</p>
             </motion.div>
 
             <div onClick={() => toggleCategory("store")} className={`${activeCategory === "store" ? "display" : "category"}`}>
@@ -68,7 +68,7 @@ const Nav = () => {
             </motion.div>
 
             <div onClick={() => toggleCategory("graph")} className={`${activeCategory === "graph" ? "display" : "category"}`}>
-                <Link to= '/manager/Graph/graph'>통계</Link>
+                <p>통계</p>
             </div>
             <motion.div
                 className="content graph"
@@ -91,7 +91,7 @@ const Nav = () => {
                 transition={{ duration: 0.3 }}
             >
                 <Link to="/manager/notice/Notice">공지사항 목록</Link>
-                <Link to="/manager/notice/Notice-create">공지사항 작성</Link>
+                <p>공지사항 작성</p>
             </motion.div>
 
             <div onClick={() => toggleCategory("magazine")} className={`${activeCategory === "magazine" ? "display" : "category"}`}>
