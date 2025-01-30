@@ -30,24 +30,7 @@ const ColorDetail = ({ name }) => {
     return (
         <div className="color_detail container">
             <div className="color_name">{name}</div>
-            <div className="thumnail">
-                <div className="title">컬러별 썸네일 이미지</div>
-                <div className="upload-section">
-                    <label htmlFor="thumnail-upload" className="upload-button">
-                        <span>첨부파일</span>
-                    </label>
-                    <input
-                        type="file"
-                        id="thumnail-upload"
-                        accept="image/*"
-                        onChange={(e) => handleThumbnailChange(URL.createObjectURL(e.target.files[0]))}
-                    />
-                    <div className="thumbnail-preview">
-                        {thumbnail&& <img src={thumbnail} alt="썸네일" /> }
-                    </div>
-                </div>
-
-            </div>
+            
             <div className="title">사이즈 및 수량</div>
             <div className="add_size">
                 <div className="size_list">
@@ -80,7 +63,7 @@ const ColorDetail = ({ name }) => {
                     <button onClick={handleAddSize}>추가</button>
                 </div>
             </div>
-            <div className="title">상품 이미지</div>
+            <div className="title">상품 이미지 <p>1번 이미지는 썸네일, 2번 이미지는 hover 이미지로 적용됩니다.</p></div>
             <div className="images">
                 <ImageUpload  onThumbnailSelect={handleThumbnailChange}/>
             </div>

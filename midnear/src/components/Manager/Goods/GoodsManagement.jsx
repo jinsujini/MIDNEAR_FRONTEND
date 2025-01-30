@@ -1,79 +1,62 @@
 import React, { useState } from 'react';
-import Search from '../../../assets/img/icon/Search.svg';
-import Semo from '../../../assets/img/icon/semo.svg';
+import Left from '../../../assets/img/icon/left_allow.svg';
+import Right from '../../../assets/img/icon/right_allow.svg';
+import DelModal from './DelModal';
+import SearchWrap from './SearchWrap';
 
 const GoodsManagement = () => {
-    const [terms, setTerms] = useState(['오늘', '1주일', '1개월', '3개월', '1년', '전체']);
-    const [sort, setSort] = useState(['최신순', '오래된 순']);
-    const [cate, setCate] = useState(['카테고리', '상품명', '색상', '판매가', '할인율', '할인가', '판매상태', '사이즈 별 재고수량', '상세설명', '등록 일시']);
-    const [select, setSelect] = useState([0, 0, 0]);
-    const [showOptions, setShowOptions] = useState([false, false, false]);
 
-    const handleSelect = (index, valueIndex) => {
-        setSelect(prev => {
-            const newSelect = [...prev];
-            newSelect[index] = valueIndex;
-            return newSelect;
-        });
-        setShowOptions(prev => {
-            const newShow = [...prev];
-            newShow[index] = false;
-            return newShow;
-        });
+    const [rows, setRows] = useState(["Row 1", "Row 2", "Row 3"]);
+    const [selectedRows, setSelectedRows] = useState([]);
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isCompleted, setIsCompleted] = useState(false);
+
+    const handleSave = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleConfirm = () => {
+        setIsCompleted(true);
+        setIsModalOpen(false);
+
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        handleDeleteSelected();
+    };
+
+   
+
+    const handleSelectAll = () => {
+        setSelectedRows(rows.map((_, index) => index));
+    };
+
+    const handleDeselectAll = () => {
+        setSelectedRows([]);
+    };
+
+    const handleDeleteSelected = () => {
+        setRows(rows.filter((_, index) => !selectedRows.includes(index)));
+        setSelectedRows([]);
+    };
+
+    const handleStatusChange = (status) => {
+        alert(`선택된 행의 상태가 '${status}'로 변경되었습니다.`);
+    };
+
+    const handleCheckboxChange = (index) => {
+        setSelectedRows(prev =>
+            prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
+        );
     };
 
     return (
         <div className='goodsManagement container'>
             <div className="hd">
                 <div className="title">상품 관리</div>
-                <div className="search_wrap">
-   
-                    <div className="terms">
-                        <div className="inner" onClick={() => setShowOptions([!showOptions[0], false, false])}>
-                            <p>{terms[select[0]]}</p>
-                            <img src={Semo} alt="" />
-                        </div>
-                        {showOptions[0] && (
-                            <div className="options">
-                                {terms.map((term, index) => (
-                                    <p key={index} onClick={() => handleSelect(0, index)}>{term}</p>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-                    
-          
-                    <div className="sort">
-                        <div className="inner" onClick={() => setShowOptions([false, !showOptions[1], false])}>
-                            <p>{sort[select[1]]}</p>
-                            <img src={Semo} alt="" />
-                        </div>
-                        {showOptions[1] && (
-                            <div className="options">
-                                {sort.map((s, index) => (
-                                    <p key={index} onClick={() => handleSelect(1, index)}>{s}</p>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-
-                    <div className="category">
-                        <div className="cate_name" onClick={() => setShowOptions([false, false, !showOptions[2]])}>
-                            <p>{cate[select[2]]}</p>
-                        </div>
-                        {showOptions[2] && (
-                            <div className="options">
-                                {cate.map((c, index) => (
-                                    <p key={index} onClick={() => handleSelect(2, index)}>{c}</p>
-                                ))}
-                            </div>
-                        )}
-                        <div className="ip_wrap">
-                            <input type="text" name="search" id="search" />
-                            <img src={Search} alt="" />
-                        </div>
-                    </div>
-                </div>
+               <SearchWrap />
             </div>
 
             <div className="table">
@@ -84,27 +67,57 @@ const GoodsManagement = () => {
                     <div className="price">판매가</div>
                     <div className="dis_persent">할인율</div>
                     <div className="dis_price">할인가</div>
-                    <div className="status"> 판매상태</div>
+                    <div className="status">판매상태</div>
                     <div className="size">사이즈 별 재고 수량</div>
                     <div className="day">등록 일시</div>
                     <div className="check">선택</div>
                 </div>
-                <div className="row">
-                    <div className="category"></div>
-                    <div className="name"></div>
-                    <div className="color">
-                        <div className="color_name"></div>
-                        <div className="dropdown_icon"></div>
+                {rows.map((row, index) => (
+                    <div key={index} className="row">
+                        <div className="category">{row}</div>
+                        <div className="name"></div>
+                        <div className="color">
+                            <div className="color_name"></div>
+                            <div className="dropdown_icon"></div>
+                        </div>
+                        <div className="price"></div>
+                        <div className="dis_persent"></div>
+                        <div className="dis_price"></div>
+                        <div className="status"></div>
+                        <div className="size"></div>
+                        <div className="day"></div>
+                        <input
+                            type='checkbox'
+                            className="check"
+                            checked={selectedRows.includes(index)}
+                            onChange={() => handleCheckboxChange(index)}
+                        />
                     </div>
-                    <div className="price"></div>
-                    <div className="dis_persent"></div>
-                    <div className="dis_price"></div>
-                    <div className="status"></div>
-                    <div className="size"></div>
-                    <div className="day"></div>
-                    <input type='checkbox' className="check" />
+                ))}
+            </div>
+            <div className="paging">
+                <img src={Left} alt="" />
+                <div className="pages">1</div>
+                <div className="pages">2</div>
+                <div className="pages">3</div>
+                <img src={Right} alt="" />
+            </div>
+            <div className="btns">
+                <div className="changes">
+                    <div className="btn" onClick={() => handleStatusChange('판매중')}>판매중으로 변경</div>
+                    <div className="btn" onClick={() => handleStatusChange('SOLD OUT')}>SOLD OUT으로 변경</div>
+                    <div className="btn" onClick={() => handleStatusChange('숨김처리')}>숨김처리로 변경</div>
+                </div>
+                <div className="select">
+                    <div className="btn" onClick={handleSelectAll}>전체 선택</div>
+                    <div className="btn" onClick={handleDeselectAll}>선택 취소</div>
+                    <div className="btn gray" onClick={handleSave}>삭제</div>
                 </div>
             </div>
+            <DelModal
+                show={isModalOpen}
+                onClose={handleCloseModal}
+                onConfirm={handleConfirm} />
         </div>
     );
 }

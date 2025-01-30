@@ -5,10 +5,8 @@
   display: flex;
   flex-direction: column;
   width: 88.13vw;
-
- 
-
 }
+
 .blackuser_list{
   input[type="checkbox"] {
     -webkit-appearance: none;
@@ -198,7 +196,6 @@ tr {
   border-right: 0.05vw solid var(--gray800);
   border-bottom: 0.05vw solid var(--gray800);
   background-color: var(--white);
-
   &:focus {
     outline: none;
   }

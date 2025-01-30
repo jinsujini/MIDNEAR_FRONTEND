@@ -94,45 +94,16 @@
     flex-direction: column;
     gap: 2rem;
     position: relative;
-    .thumnail{
-        position: absolute;
-        right: 2.5rem;
+    .title{
         display: flex;
-        flex-direction: column;
-        align-items: end;
-        justify-content: end;
-        gap: 1rem;
-        .upload-section {
-            display: flex;
-            align-items: end;
-            gap: 1rem;
-            input {
-                display: none;
-            }
-            .thumbnail-preview{
-         
-                height: 8.8rem;
-                img{
-                    height: 8.8rem;
-                }
-  
-            }
-            .upload-button {
-                border: 1px solid var(--gray300);
-                font-size: 1.4rem;
-                color: var(--gray600);
-                text-align: center;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding: 0 1rem;
-                height: 3.7rem;
-                width: 12rem;
-                cursor: pointer;
-            }
+        align-items: center;
+        p{
+            margin-left: 1rem;
+            font-size: 1rem;
+            color: #6d6d6d;
+            font-weight: 400;
         }
     }
-
     .color_name {
         border: 1px solid var(--gray300);
         font-size: 1.4rem;
