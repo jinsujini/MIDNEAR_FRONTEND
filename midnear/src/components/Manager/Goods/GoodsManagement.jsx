@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Left from '../../../assets/img/icon/left_allow.svg';
 import Right from '../../../assets/img/icon/right_allow.svg';
-import DelModal from './DelModal';
+import DelModal from '../Modals/DelModal';
 import SearchWrap from './SearchWrap';
 
 const GoodsManagement = () => {

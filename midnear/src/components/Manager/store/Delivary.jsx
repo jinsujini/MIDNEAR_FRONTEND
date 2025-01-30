@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Modal from './Modal';
+import Modal from '../Modals/Modal';
 import Selected from '../../../assets/img/store/selected.svg';
 import NoSelected from '../../../assets/img/store/noselected.svg';
 

@@ -30,7 +30,7 @@ const Nav = () => {
                 <Link to="/manager/Goods/AddGoods">상품 추가</Link>
                 <Link to="/manager/Goods/GoodsManagement">상품 관리</Link>
                 <Link to="/manager/Goods/CodyGoods">코디 상품 관리</Link>
-                <p>SHIPPING & RETURNS</p>
+                <Link to= '/manager/Goods/Shipping'>SHIPPING & RETURNS</Link>
             </motion.div>
 
             <div onClick={() => toggleCategory("cuppon")} className={`${activeCategory === "cuppon" ? "display" : "category"}`}>
@@ -68,7 +68,7 @@ const Nav = () => {
             </motion.div>
 
             <div onClick={() => toggleCategory("graph")} className={`${activeCategory === "graph" ? "display" : "category"}`}>
-                <p>통계</p>
+                <Link to= '/manager/Graph/graph'>통계</Link>
             </div>
             <motion.div
                 className="content graph"
