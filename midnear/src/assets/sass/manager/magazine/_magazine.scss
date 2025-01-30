@@ -4,6 +4,26 @@
     background-color: var(--white);
     display: flex;
     flex-direction: column;
+    
+input[type="checkbox"] {
+    width: 1.5vw;
+    height: 1vw;
+    cursor: pointer;
+
+    &:checked::after {
+        width: 1.5vw;
+        height: 1vw;
+        content: "✓";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--black);
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
 }
   
 .magazine-header1 {
@@ -150,25 +170,6 @@
     }
 }
 
-input[type="checkbox"] {
-    width: 1.5vw;
-    height: 1vw;
-    cursor: pointer;
-
-    &:checked::after {
-        width: 1.5vw;
-        height: 1vw;
-        content: "✓";
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: var(--black);
-    }
-
-    &:focus {
-        outline: none;
-    }
-}
 
 .magazine-btn-group {
     display: flex;

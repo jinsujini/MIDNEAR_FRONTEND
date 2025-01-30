@@ -1,7 +1,10 @@
 .image-uploader {
-    .upload-section{
-        input{display: none;}
-        .upload-button{
+    .upload-section {
+        input {
+            display: none;
+        }
+
+        .upload-button {
             border: 1px solid var(--gray300);
             font-size: 1.4rem;
             color: var(--gray600);
@@ -15,12 +18,14 @@
             cursor: pointer;
         }
     }
-    .btns{
+
+    .btns {
         margin: 1rem 0;
         display: flex;
         justify-content: end;
         align-items: center;
         gap: 1rem;
+
         button {
             border: 1px solid var(--gray300);
             justify-content: center;
@@ -39,6 +44,7 @@
             background-color: var(--black);
         }
     }
+
     .image-preview {
         display: flex;
         align-items: center;
@@ -64,4 +70,66 @@
 
         }
     }
+
+    .image-preview {
+        display: flex;
+        overflow-x: auto;
+        white-space: nowrap;
+
+        padding: 10px;
+        max-width: 100%;
+    }
+
+    .image-container {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .scrollbar {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        margin-top: 10px;
+
+        .circle {
+            width: 15px;
+            height: 15px;
+            background: #8b8b8b;
+            border-radius: 50%;
+            position: absolute;
+            top: calc(50% - 7.5px);
+            z-index: 0;
+
+            &.left {
+                left: calc(50% - 23rem - 15px);
+            }
+            &.right {
+                right: calc(50% - 23rem - 15px);
+            }
+        }
+    }
+
+    .scroll-slider {
+        width: 46rem;
+        z-index: 1;
+        -webkit-appearance: none;
+        appearance: none;
+        height: 1px;
+        background: var(--gray300);
+        border-radius: 5px;
+        outline: none;
+        transition: opacity 0.2s;
+    }
+
+
+    .scroll-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        background: #8b8b8b;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
 }

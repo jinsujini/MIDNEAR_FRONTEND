@@ -5,19 +5,12 @@ const ColorDetail = ({ name }) => {
     const [sizelist, setSizelist] = useState([]);
     const [newSize, setNewSize] = useState("");
     const [newQuantity, setNewQuantity] = useState("");
+    const [thumbnail, setThumbnail] = useState(""); 
 
-    const [images, setImages] = useState([]);
-
-
-    const handleImageChange = (e) => {
-        const files = Array.from(e.target.files);
-        const newImages = files.map((file) => URL.createObjectURL(file));
-        setImages((prevImages) => [...prevImages, ...newImages]);
-    };
-
-    const handleRemoveImage = (index) => {
-        setImages(images.filter((_, i) => i !== index));
-    };
+    
+    const handleThumbnailChange = (imageUrl) => {
+        setThumbnail(imageUrl);
+      };
 
     const handleAddSize = () => {
         if (newSize.trim() === "" || newQuantity.trim() === "") {
@@ -32,10 +25,12 @@ const ColorDetail = ({ name }) => {
     const handleRemoveSize = (index) => {
         setSizelist(sizelist.filter((_, i) => i !== index));
     };
+ 
 
     return (
         <div className="color_detail container">
             <div className="color_name">{name}</div>
+            
             <div className="title">사이즈 및 수량</div>
             <div className="add_size">
                 <div className="size_list">
@@ -60,7 +55,7 @@ const ColorDetail = ({ name }) => {
                         onChange={(e) => setNewSize(e.target.value)}
                     />
                     <input
-                        type="text"
+                        type="number"
                         placeholder="수량"
                         value={newQuantity}
                         onChange={(e) => setNewQuantity(e.target.value)}
@@ -68,9 +63,9 @@ const ColorDetail = ({ name }) => {
                     <button onClick={handleAddSize}>추가</button>
                 </div>
             </div>
-            <div className="title">상품 이미지</div>
+            <div className="title">상품 이미지 <p>1번 이미지는 썸네일, 2번 이미지는 hover 이미지로 적용됩니다.</p></div>
             <div className="images">
-                <ImageUpload />
+                <ImageUpload  onThumbnailSelect={handleThumbnailChange}/>
             </div>
         </div>
     );

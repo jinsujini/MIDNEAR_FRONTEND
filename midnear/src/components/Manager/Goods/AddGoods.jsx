@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ColorDetail from './ColorDetail'
 import SelectCate from './SelectCate'
 
-const Goods = () => {
+const Goods = ({detail}) => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState(" ");
   const [discount, setDiscount] = useState(false);

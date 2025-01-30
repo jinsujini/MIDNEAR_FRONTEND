@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Modal from './Modal';
+import Modal from '../Modals/Modal';
 
 const MainImage = () => {
     const [previewImage, setPreviewImage] = useState(null);

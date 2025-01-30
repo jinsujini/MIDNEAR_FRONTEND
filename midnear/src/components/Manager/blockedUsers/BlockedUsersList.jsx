@@ -141,7 +141,7 @@ const TableComponent = () => {
   };
 
   return (
-    <div className="container">
+    <div className="blackuser_list container">
       <div className="header1">
         <div className="qna-title">판매방해고객List</div>
         <div className="controls">

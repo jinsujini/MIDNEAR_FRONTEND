@@ -19,8 +19,15 @@
             width: 88.125vw;
             background-color: var(--white);
             padding: 2rem;
-            min-height: fit-content ;
+            min-height: fit-content;
             position: relative;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            font-weight: bold;
+
+
         }
     }
 

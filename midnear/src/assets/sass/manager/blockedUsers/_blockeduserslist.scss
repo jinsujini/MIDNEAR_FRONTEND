@@ -7,18 +7,48 @@
   width: 88.13vw;
 }
 
+.blackuser_list{
+  input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin-top: 15px;
+
+    &:checked::after {
+      content: "✓";
+      font-size: 16px;
+      color: var(--black);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+  .title {
+    font-size: 0.78vw;
+    font-weight: bold;
+    justify-content: flex-start;
+    white-space: nowrap;
+  }
+  
+}
 .header1 {
   display: flex;
-  justify-content: space-between; 
-  white-space: nowrap;  
+  justify-content: space-between;
+  white-space: nowrap;
 }
 
-.title {
-  font-size: 0.78vw;
-  font-weight: bold;
-  justify-content: flex-start;
-  white-space: nowrap;  
-}
 
 .controls {
   display: flex;
@@ -29,7 +59,8 @@
 // 
 }
 
-.dropdown, .search-bar {
+.dropdown,
+.search-bar {
   font-size: 0.63vw;
   border: 0.05vw solid var(--gray800);
   height: 2.5vh;
@@ -50,6 +81,7 @@
 /* 드롭다운 스타일 */
 .dropdown {
   width: 3.75vw;
+
   padding-right: 30px; /* 화살표와의 간격 */
   padding-left: 10px;
   appearance: none; /* 기본 드롭다운 화살표 숨김 */
@@ -67,11 +99,12 @@
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none; /* 클릭 방지 */
+
 }
 
 .search-bar {
   width: 9.38vw;
-  
+
   &:focus {
     outline: none;
   }
@@ -95,7 +128,9 @@
   border-collapse: collapse;
 }
 
+
 .table th, td {
+
   font-size: 0.63vw;
   height: 3.75vh;
   line-height: 3.75vh;
@@ -109,6 +144,7 @@
   font-size: 0.6vw;
 }
 
+
 .table th:nth-child(1) { width: 9.84vw; }
 .table th:nth-child(2) { width: 62.99vw; }
 .table th:nth-child(3) { width: 10.63vw; }
@@ -118,6 +154,7 @@
 .table td:nth-child(2) { width: 62.99vw; }
 .table td:nth-child(3) { width: 10.63vw; }
 .table td:nth-child(4) { width: 2.5vw; }
+
 
 .table tr {
   height: 3.75vh;
@@ -139,6 +176,7 @@
   padding: 0.26vh;
   background-color: var(--white);
   color: var(--gray900);
+
   &:focus {
     outline: none;
   }
@@ -204,33 +242,3 @@
 .table-container {
   margin-top: 0.56vh;
 }
-
-
-input[type="checkbox"] {
-  -webkit-appearance: none; 
-  -moz-appearance: none;
-  appearance: none; 
-  width: 100%;
-  height: 100%;
-  position: relative;
-  margin-top: 15px;
-
-  &:checked::after {
-    content: "✓"; 
-    font-size: 16px;
-    color: var(--black);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  &:focus {
-    outline: none;
-  }
-}
-
-
