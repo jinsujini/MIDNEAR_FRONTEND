@@ -46,6 +46,7 @@ import NewAddress from './components/Cart/Order/NewAddress';
 import SelectAdd from './components/Cart/Order/SelectAdd';
 import MagazineList from './components/Magazine/MagazineList';
 import MagazinDetail from './components/Magazine/MagazinDetail';
+import MypageMenu from './components/Mypage/MypageMenu';
 
 function App() {
   const location = useLocation();
@@ -74,6 +75,7 @@ function App() {
         <Route path="/mypage/orderlist/option/ordercancel" element={<OrderCancelReaon />} />
         <Route path="/mypage/orderlist/option/ordercancel/done" element={<OrderCancelDone />} />
         <Route path="/mypage/cancellist" element={<CanceledOrder />} />
+        <Route path="/mypage/" element={<MypageMenu />} />
 
         <Route path="/mypage/question/create" element={<Ask />} />
         <Route path="/mypage/question/list" element={<AskedList />} />
