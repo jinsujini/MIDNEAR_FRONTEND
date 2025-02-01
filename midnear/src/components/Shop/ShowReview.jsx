@@ -3,13 +3,25 @@ import { Link } from 'react-router-dom';
 import SortMenu from './SortMenu'
 import frontImg from '../../assets/img/product/prod1.png'
 import backImg from '../../assets/img/product/prod2.png'
-import star from '../../assets/img/product/star.svg'
+import emptyStar from '../../assets/img/product/star.svg'
+import fillStar from '../../assets/img/product/fillStar.svg'
 import rvDown from '../../assets/img/product/rvDown.svg'
 import rvUp from '../../assets/img/product/rvUp.svg'
 
 const ShowReview = () => {
   const [isSelected, setIsSelected] = useState(null);   
   const ref = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(()=>{
+      const checkMax =() => {
+        setIsMobile(window.innerWidth <= 500);
+        };
+        checkMax();
+        window.addEventListener("resize", checkMax);
+        return () => window.removeEventListener("resize", checkMax);
+  },[]);
+
   const showComment = (item)=>{
     setIsSelected((prev) => (prev === item ? null : item));
    };
@@ -26,6 +38,7 @@ const ShowReview = () => {
           window.removeEventListener("click", onClick);
       };
     }, []);
+
     const transUserId = (userId) => {    
       const firstPart = userId.slice(0, 3); // 앞 3글자
       const lastPart = userId.slice(-2);    // 뒤 2글자
@@ -38,7 +51,7 @@ const ShowReview = () => {
         { 
           userId: "sbukkki",          
           date: "1일 전",
-          star: "5",
+          star: 5,
           color: "RED",
           size: "M",          
           image: [frontImg, backImg,frontImg, backImg,frontImg],
@@ -48,7 +61,7 @@ const ShowReview = () => {
         { 
             userId: "maedariku",          
             date: "1일 전",
-            star: "5",
+            star: 3,
             color: "RED",
             size: "XL",          
             image: [frontImg, backImg],
@@ -58,20 +71,40 @@ const ShowReview = () => {
       ]
       const allImages = reviewList.flatMap(review => review.image);
       const topImage = allImages.length > 5 ? allImages.slice(0, 4) : allImages;
+      const mobileTopImage = allImages.length > 3 ? allImages.slice(0,2) : allImages;
+
   return (
     <div className='ShowReview'>
         <p className='title'>상품리뷰</p>
         <div className='all-image'>
-          {topImage.map((item, index)=>(
-            <img key={index} src={item} className='userImg'/>
-          ))}
-          {allImages.length > 5 && (
-          <Link to=  "/review/images">
-            <div className='moreImage'>
-                {allImages.length - 4}개<br />더보기
-            </div>
-          </Link>
-        )}
+          {!isMobile && (
+              <>
+                {topImage.map((item, index)=>(
+                  <img key={index} src={item} className='userImg'/>
+                ))}
+                {allImages.length > 5 && (
+                <Link to=  "/review/images">
+                  <div className='moreImage'>
+                      {allImages.length - 4}개<br />더보기
+                  </div>
+                </Link>
+                )}
+              </>
+            )}
+            {isMobile && allImages.length > 3 && (
+              <>
+                {mobileTopImage.map((item, index)=>(
+                  <img key={index} src={item} className='userImg'/>
+                ))}
+                {allImages.length > 3 && (
+                <Link to=  "/review/images">
+                  <div className='moreImage'>
+                      {allImages.length - 2}개<br />더보기
+                  </div>
+                </Link>
+                )}
+              </>
+            )}
         </div>
         <div className='top-el'>
             <p className='number'>총 {reviewList.length}건</p>
@@ -79,20 +112,20 @@ const ShowReview = () => {
                 <SortMenu />
             </div>
         </div>
-        {reviewList.map((item)=>(
-            <div className='review'>
+        {reviewList.map((item, index)=>(
+            <div className='review' key={index}>
                 <div className='horizon'></div>
                 <div className='nickname'>
                    <p>{transUserId(item.userId)}</p>
                    <p>{item.date}</p>
                 </div>
                 <div className='star'>
-                  <img src={star}/>
-                  <img src={star}/>
-                  <img src={star}/>
-                  <img src={star}/>
-                  <img src={star}/>
-                  <p>{item.star}</p>
+                  {Array.from({length: item.star}).map((_,index)=>
+                  <img src={fillStar} key={index} />
+                  )}
+                  {Array.from({length: 5 - item.star}).map((_,index)=>
+                  <img src={emptyStar} key={index} />
+                  )}
                 </div>
                 <div className='buyInfo'>
                    <p>{item.color}</p>
@@ -102,7 +135,7 @@ const ShowReview = () => {
                 </div>
                 <div className='userImgList'>
                    {item.image.map((_, index)=>(
-                    <img src={item.image[index]} className='userImg'/>
+                    <img src={item.image[index]} key={index} className='userImg'/>
                    ))}
                 </div>
                 <div className='comment'>

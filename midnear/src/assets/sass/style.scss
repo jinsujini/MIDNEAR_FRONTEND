@@ -11,11 +11,16 @@
 
 
 @import "mypage/userinfo";
+@import "mypage/customer";
 @import "mypage/mypagemodal";
+@import "mypage/option";
 @import "mypage/orderlist";
 @import "mypage/review";
+@import "mypage/ask";
+@import "mypage/colligation";
 @import "shop/prodList";
 @import "home/homePage";
+@import "user/check";
 @import "shop/prodList";
 @import "shop/prodDetail";
 @import "user/user";
@@ -32,6 +37,8 @@
 @import "cart/orderList";
 @import "cart/address";
 @import "cart/coupon";
+@import "magazine/magazineList";
+@import "magazine/mDetail";
 
 //manager
 @import "manager/manager";
