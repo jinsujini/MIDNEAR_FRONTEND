@@ -1,6 +1,7 @@
 .prod-detail{
     display: flex;
     height: calc(100vh - 4.63vh);
+    margin-bottom: 5rem;
     overflow: hidden;
     padding: 2.4rem 0;
 
@@ -22,44 +23,62 @@
     .right-info{
         display: flex;
         flex-direction: column;
-        justify-content: center;
         font-size: 12px;
         padding-left: 3rem;
-        
+
+        .empty{
+            flex-shrink: 0;
+            height:21vh;
+        }
         .basic{
             display: flex;
             margin-bottom: 6.9rem;
-            .name{
-                font-weight: bold;
+            .info{ 
+                width: 20rem; 
+                display: flex;
+                flex-direction: column;
             }
+            .name{ font-weight: bold; }            
+            /* 할인시 중앙 라인 표시
+            .price{text-decoration:line-through;}
+            */
+            .discount{
+                display: flex;
+                color: #FF0000;
+                .dc-price{
+                    font-weight: bold;
+                    margin-right: 0.7rem;
+                }
+            }
+            .size{
+                margin-left: 8.8rem;
+                display: flex;
+                div{
+                    margin: 0 2.1rem;
+                    cursor: pointer;
+                    &.bold {
+                        font-weight: bold; 
+                      }
+                   
+                } 
+            }
+            /* 할인표시 기본 */
+            .discount{display: none;}
         }
-        .size{
-            margin-left: 20.8rem;
-            display: flex;
-            div{
-                margin: 0 2.1rem;
-                cursor: pointer;
-                &.bold {
-                    font-weight: bold; 
-                  }
-               
-            } 
-        }
-        .color{
-            font-size: 11px;
-        }
-        .img-list{
+        
+        .color{ font-size: 11px; }
+        .other-color{
             display: flex;
             margin-top:1rem;
             margin-bottom: 1.8rem;
             img{                
-                width:40px;
-                height: auto;
-                object-fit: contain;
-                margin: 0.6rem;
+                width:4rem;
+                height: 4rem;
+                object-fit: cover;
+                margin-right: 1.2rem;
             }
         }
-        .box{
+        .soldout, .box{
             border: solid 0.1rem var(--gray500);
             width: 48.6rem;
             height: 4rem;
@@ -67,8 +86,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-shrink: 0;
+        }
+        .box:hover{
+            border: solid 0.1rem var(--black);
+            background-color: var(--black);
+            color: var(--white);            
             cursor: pointer;
         }
+
         .detail-box{
             margin-top: 1.2rem;
             
@@ -76,24 +102,53 @@
                 display: flex;
                 flex-direction: column;
                 margin-bottom: 1.8rem;
-                .title{
-                    display: flex;
-                    
+                
+                .title{ 
+                    display: flex; 
+                    align-items: center;
+                    p, .down{
+                        cursor: pointer;
+                    }
                 }
+                .title:hover{ font-weight: bold;}
 
-                p, img{cursor: pointer;}
+                
                 .bold{font-weight: bold;}
                 .down{
                     width: 0.8rem;
                     height: auto;
                     margin-left: 0.3rem;
                 }
-                .content{
-                    margin-bottom: 2.7rem;
-                    margin-top: 1rem;
-                    white-space: pre-wrap;
+                .content{ 
+                    white-space: pre-wrap; 
+                    z-index: -1;
+
+
+                    .delivery{
+                        font-weight: bold;
+                        margin-bottom: 1rem;
+                    }
+
+                    .open-modal{
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
                 }
+                
+            }
+        }
+        /* 품절 박스 기본 */
+        .soldout{display: none;}
+
+        .with-item{
+            display: flex;
+            img{
+                width: 10.6rem;
+                height: 13.1rem;
+                object-fit: cover;
+                margin-right: 2.4rem;
             }
         }
     }
+    
 }

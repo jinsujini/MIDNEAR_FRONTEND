@@ -1,21 +1,39 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom';
 import frontImg from '../../assets/img/product/prod1.png'
 import backImg from '../../assets/img/product/prod2.png'
 import down from '../../assets/img/product/down.svg'
 import up from '../../assets/img/product/up.svg'
+import ShippingModal from './ShippingModal';
+import ShowReview from './ShowReview';
 
 const ProdDetail = () => {
      const [selectSize, setSelectSize] = useState(null); 
-     const [isSelected, setIsSelected] = useState(null);
-     const ref = useRef(null);
+     const [isSelected, setIsSelected] = useState(null);     
+     const [isModalOpen, setIsModalOpen] = useState(false);
+
+     const openModal = () => setIsModalOpen(true);
+     const closeModal = () => setIsModalOpen(false);
+     
+
+     const showDetail = (item)=>{
+      setIsSelected((prev) => (prev === item.name ? null : item.name));
+     };
+
+     const variants = {
+      hidden: { height: 0, opacity: 0 },
+      visible: { height: "auto", opacity: 1,  marginBottom: "2.7rem", marginTop: "1rem", zIndex: 1},
+      };
+
      const dummyList = [
         { 
           id: 1,
           frontImg: frontImg,
           backImg: backImg,
           name: "CUTE SWEATER",
-          price: "\u20A9 39,900",
-          dcPrice: "\u20A9 35,100",
+          price: 39000,
+          dcPrice: 35100,
           coupon: "10%할인쿠폰적용가",
           soldout: "SOLD OUT"
         },
@@ -32,34 +50,36 @@ const ProdDetail = () => {
       },
       {
         name: 'SHIPPING & RETURNS',
-        content: '00택배 (1588-3223)\n\n구매하신 제품은 수령하신 날로부터 7일 이내에 접수해 주셔야 합니다.\n자세히 보기.'
+        content: (
+          <>
+          <p className='delivery'>00택배 (1588-3223)</p>
+          <p>구매하신 제품은 수령하신 날로부터 7일 이내에 접수해 주셔야 합니다.</p>
+          <p className='open-modal' onClick={openModal}>자세히 보기.</p>
+          <ShippingModal isOpen={isModalOpen} closeModal={closeModal} />
+          </>
+          )
       },
       {
         name: 'STYLED WITH',
-        content: 'NONE'
+        content: (
+          <>
+          <div className='with-item'>
+          <Link to="/products/detail"><img src={dummyList[0].frontImg} /></Link>          
+          <Link to="/products/detail"><img src={dummyList[0].backImg} /></Link>
+          </div>
+          </>
+        )
       },
       {
         name: 'REVIEW',
-        content: 'NONE'
+        content: (
+        <>
+        <ShowReview />
+        </>
+        )
       }
      ]
      
-     const showDetail = (item)=>{
-        setIsSelected((prev) => (prev === item.name ? null : item.name));
-     }
-     useEffect(() => {
-             const onClick = (e) => {            
-             if(ref.current !== null && !ref.current.contains(e.target)){
-                 setIsSelected(null);
-             }
-             };
-             if(isSelected){
-                 window.addEventListener("click", onClick);
-             }
-             return () => {
-                 window.removeEventListener("click", onClick);
-             };
-         }, []);
 
   return (
     <div className='container'>
@@ -69,42 +89,60 @@ const ProdDetail = () => {
           <img src={dummyList[0].backImg}/>
         </div>
         <div className='right-info'>
+          <div className='empty'></div>
 
           <div className='basic'>
-            <div>
+            <div className='info'>
               <p className='name'>{dummyList[0].name}</p>
-              <p className='price'>{dummyList[0].price}</p>
+              <p className='price'>&#xffe6; {dummyList[0].price.toLocaleString('ko-KR')}</p>
+              {/** 기본 display none 해당 상품이 할인 기간일 때 flex */}
+               <div className='discount'>
+                  <p className='dc-price'>&#xffe6; {dummyList[0].dcPrice.toLocaleString('ko-KR')}</p>
+                  <p className='coupon'>{dummyList[0].coupon}</p>
+              </div>
             </div>
             <div className='size'>
-              {size.map((item)=>(
-                <div className={selectSize === item ? 'bold' : ''} onClick={()=>{setSelectSize(item)}}>{item}</div>
+              {size.map((item, index)=>(
+                <div key={index} className={selectSize === item ? 'bold' : ''} onClick={() => {
+                  setSelectSize((prev) => (prev === item ? null : item));
+                }}>{item}</div>
               ))}
             </div>
           </div>
 
           <div className='color'>BLACK</div>
-          <div className='img-list'>
-            <img src={dummyList[0].frontImg} />                
-            <img src={dummyList[0].backImg} />
+          <div className='other-color'>
+            <Link to="/products/detail"><img src={dummyList[0].frontImg} /></Link>          
+            <Link to="/products/detail"><img src={dummyList[0].backImg} /></Link>
           </div>
 
+          {/** 기본 display none 해당 상품이 품절 상태면 flex */}
+          <div className='soldout'>SOLD OUT</div>
+          {/** 기본 display flex 해당 상품이 품절 상태면 none */}
           <div className='box'>구매하기</div>
           <div className='box'>장바구니 담기</div>
-
-          <div className='detail-box' ref={ref}>
-            {information.map((item)=>(
-              <div className='detail' >
+          
+          <div className='detail-box'>
+            {information.map((item, index)=>(
+              <div key={index} className='detail' >
                 <div className='title'>
-                <p className={isSelected === item.name ? 'bold' : ''} onClick={()=>showDetail(item)}>{item.name}</p>
-                <img src={isSelected === item.name ? up : down} className='down' onClick={()=>showDetail(item)}/>
+                  <p className={`${isSelected === item.name ? 'bold' : ''} ${isSelected === item.name ? 'display' : item.name}`} onClick={()=>showDetail(item)}>{item.name}</p>
+                  <img src={isSelected === item.name ? up : down}
+                    className={`down ${isSelected === item.name ? 'display' : item.name}`} onClick={()=>showDetail(item)}/>
                 </div>
-                {isSelected === item.name && (
-                  <p className='content'>{item.content}</p>
-                )}
+                <motion.div
+                    className='content'
+                    initial='hidden'
+                    animate={isSelected === item.name ? 'visible' : 'hidden'}
+                    variants={variants}
+                    transition={{duration:0.3}}
+                >
+                  <div>{item.content}</div>
+                </motion.div>
+                
               </div>
             ))}
           </div>
-
         </div>
       </div>
     </div>
