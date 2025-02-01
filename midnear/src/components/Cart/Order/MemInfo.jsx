@@ -32,7 +32,8 @@ const MemInfo = () => {
 
   const hadleIsValidate = (e) => {
     const userInput = e.target.value;
-    setInputValue(userInput.toLocaleString('ko-KR'));
+
+    setInputValue(userInput);
     setError('');
     setIsValidate(false);
     if(isNaN(userInput)) {
@@ -46,7 +47,9 @@ const MemInfo = () => {
   }
   
   const handleUseAllPoints = () => {
-    setInputValue(userPoint);
+    
+    const inputToNum = Number(userPoint);
+    setInputValue(inputToNum);
     setError('');
   };
 
@@ -128,7 +131,7 @@ const MemInfo = () => {
             <div className='s_title'>상품</div>
             <OrderList 
               productList={items}
-              point={Number(inputValue.replace(/,/g, '') || 0)}
+              point={inputValue || 0}
               selectedCoupon={selectedCoupon}
              />
           </div>

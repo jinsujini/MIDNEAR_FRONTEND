@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import SortMenu from '../Shop/SortMenu'
 import search from '../../assets/img/magazine/search.svg'
@@ -6,6 +6,8 @@ import frontImg from '../../assets/img/product/prod1.png'
 import backImg from '../../assets/img/product/prod2.png'
 
 const MagazineList = () => {
+  const [isClickBtn, setClickBtn] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const dummyList = [
     { 
       id: 1,
@@ -91,6 +93,18 @@ const MagazineList = () => {
   ]
   const topList = dummyList.filter((_, index) => index % 2 === 0);
   const bottomList = dummyList.filter((_, index) => index % 2 !== 0);
+  const clickSearchBtn = ()=>{
+    setClickBtn(!isClickBtn);
+  };
+  
+  useEffect(()=>{
+      const checkMax =() => {
+        setIsMobile(window.innerWidth <= 500);
+      };
+      checkMax();
+      window.addEventListener("resize", checkMax);
+      return () => window.removeEventListener("resize", checkMax);
+    },[]);
   
   return (
     <div className='Magazine'>
@@ -99,13 +113,22 @@ const MagazineList = () => {
         <div className='top'>
           <div className='title'>MAGAZINE</div>
           <div className='left-el'>
-          <div className='sort'>
+          <div className={`sort  ${isClickBtn ? 'click' : ''}`}>
             <SortMenu />
           </div>
-          <div className='search-bar'>
-            <input type='text' />
-            <img src={search} className='search-btn' />
-          </div>
+          
+          {!isMobile && (
+              <div className='search-bar'>
+                <input type='text' />
+                <img src={search} className='search-btn' />
+              </div>
+            )}
+            {isMobile && (
+                <div className={`search-bar ${isClickBtn ? 'click' : ''}`}>
+                <input type='text' />
+                <img src={search} className='search-btn' onClick={clickSearchBtn}/>
+              </div>
+            )}
         </div>
         </div>
 

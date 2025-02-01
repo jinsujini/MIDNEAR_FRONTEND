@@ -8,7 +8,7 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
-    z-index: 10;
+    z-index: 300;
 }
 
     .cart_content{
@@ -18,7 +18,7 @@
         position: fixed;
         top: 0;
         right: 0;
-        z-index: 100;
+        z-index: 400;
         .cart{
             width: 43.7rem;
             padding: 0 1.8rem;
@@ -31,13 +31,13 @@
                 justify-content: space-between;
                 align-items: center;                    
 
-                .close{
+                .close2{
                     width: 1.5rem;
                     height: 1.6rem;
                     cursor: pointer;
                 }
 
-                .sc2 {
+                .sc3 {
                     font-size: 1.2rem;
                     justify-content: end;
                     gap: 2.4rem;
@@ -52,6 +52,12 @@
                     .BAG{ font-weight: bold;}
                 }
             }
+        }
+        .all-list{
+            height: calc(100vh - 4.63vh);
+            display: flex;
+            flex-direction: column;
+
         }
     }
     
@@ -98,8 +104,8 @@
     }
 }
 .only-cart{
+    margin-bottom: 3rem;
     .total{
-        padding: 0 2rem;
         margin-top: 1.6rem;
         .total-price{
             display: flex;
@@ -118,7 +124,6 @@
         }
     }
     .goto-pay{
-        padding: 0 2rem;
         margin-bottom: 3rem;
         
         .box{
@@ -138,4 +143,123 @@
             cursor: pointer;
         }
     }
+}
+
+@media (max-width: 50rem){
+    .ShoppingCart{
+        margin-bottom: 10rem;
+    }
+    .cart_content{
+        width: 100%;
+        .cart{
+            padding: 0;
+            width: 100%;;
+            .cart_nav{    
+                justify-content: space-between;
+                margin:0;
+                .close2{
+                    position:absolute;
+                    left: 1.8rem;
+                    z-index: 200;
+                }
+                    
+                .header-container{
+                    width: 100%;
+                }
+                .sc3 {display: none;}
+                .header.border{z-index: 300;}
+                .header {
+                    .mobile-header {
+                        width:100%;
+                        justify-content: flex-end;
+                        .logo{display: none;}
+                        .open-ham{
+                            padding: 0 1.8rem;
+                            position: absolute;
+                            width: 10rem;
+                            display: flex;
+                            justify-content: flex-end;
+                            
+                        }
+                        .open-ham.show{
+                            position: absolute;
+                            justify-content: space-between;
+                            .close{
+                                 margin:0;
+                                 width: 1.5rem;
+                                 height: 1.6rem;
+                                }
+                            position: absolute;
+                            z-index: 300;
+                            background-color: var(--white);
+                            width: 100%;
+                        }
+                        .hamBar{ 
+                            margin:0;
+                            height: 1.4rem;
+                            width: 1.8rem;
+                        }
+                        
+                    }
+                }
+            }
+            
+            .all-list{
+                padding: 0 2rem;
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+            .prodList{
+                padding:0;
+                overflow:visible;
+                border-top: 0.1rem solid var(--gray300);
+                padding-top: 1.3rem;
+            }
+            
+        }
+    }
+        
+    .del-check{
+        margin-left: 0;
+        margin-bottom: 1rem;
+        border-bottom: none;
+        width: 100%;
+        padding: 0 2rem;
+        padding-top: 0.5rem;
+            .delete{
+                font-size: 1.1rem;
+                height: 2.3rem;
+            }
+            .check{font-size: 1.1rem;}
+            .checkbox{
+                img{
+                }
+            }
+        }
+    }
+    .only-cart{
+        min-width: 32rem;
+        .total{
+            font-size: 1.2rem;
+        }
+        .goto-pay{
+            margin-bottom: 3rem;
+            
+            .box{
+                border: solid 0.1rem var(--gray500);
+                height: 4rem;
+                margin-top: 1.6rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-shrink: 0;
+                font-size: 1.2rem;
+            }
+            .box:hover{
+                border: solid 0.1rem var(--black);
+                background-color: var(--black);
+                color: var(--white);            
+                cursor: pointer;
+            }
+        }
 }

@@ -23,9 +23,14 @@
     overflow-y: scroll;
     .prod{
         display: flex;
+        justify-content: space-between;
         width: 36.5rem;
         height: 18.74rem;
         margin: 1.7rem 0;
+        .img-info{
+            display: flex;
+            gap:1.8rem;
+        }
         .thumbnail{
             width: 13rem;
             height: 18.44rem;
@@ -35,9 +40,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            width: 21.7rem;
             height: 18.44;
-            padding-left: 1.5rem;
             .top{
                 .name{
                     font-weight: bold;
@@ -106,7 +109,7 @@
                 align-items: flex-end;
                 .dc-name{ 
                     color: #FF0000;
-                    font-size: 0.8rem;
+                    font-size: 0.9rem;
                     margin-bottom: 0.2rem;
                 }
                 .dc{
@@ -133,6 +136,7 @@
         .fee{
             border-bottom: solid 1px var(--gray500);
             margin-top: 0.7rem;
+            padding-top:0.4rem;
             align-items: flex-start;
             .ship-alt{
                 font-size: 1.1rem;
@@ -152,4 +156,36 @@
         margin:0;
         padding-bottom: 0.7rem;
     }
+}
+
+@media (max-width: 50rem){
+    .info{
+        .all-list{
+            display: flex;
+            flex-direction: column;
+        }
+        .prodList{
+            padding:0;
+            overflow:visible;
+            max-height: none;
+        }
+    }
+    .prodList{
+        width: 100%;
+        .prod{
+            width: 100%;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            .info{
+                .top{
+                    .name{font-size: 1.2rem;}
+                    .price{font-size: 1.1rem;}
+                }
+                .bottom{
+                    button{color: var(--black);}
+                }
+            }
+        }
+    }
+    
 }

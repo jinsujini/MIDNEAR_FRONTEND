@@ -18,6 +18,7 @@
     height: 100vh; 
     background-color: var(--white);
     width: 43.7rem;
+    cursor: auto;
 
 .login {
     max-width: 36.1rem;
@@ -29,6 +30,7 @@
         display: flex;
         margin-top: 1.8rem;
         justify-content: center;
+        cursor: pointer;
 
         .x {
             width: 1.5rem;
@@ -59,6 +61,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
     }
 
     .kakao_btn {
@@ -152,8 +155,8 @@
                 font-size: 1.2rem;
                 color: var(--black);
                 text-decoration: underline;
-                cursor: pointer;
                 margin: 0;
+                cursor: pointer;
                
                 &:not(:last-child) {
                     margin-bottom: 0.2rem;

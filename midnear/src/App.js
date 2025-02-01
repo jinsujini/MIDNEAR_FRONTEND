@@ -17,6 +17,13 @@ import Login from './components/User/Login';
 import FindID from './components/User/FindID';
 import FindPW from './components/User/FindPW';
 import ChangePW from './components/User/ChangePW';
+
+import Successful from './components/User/FindID/Successful';
+import Failed from './components/User/FindID/Failed';
+import UntilChange from './components/User/FindPW/UntilChange';
+import ChangeSuccess from './components/User/FindPW/ChangeSuccess';
+import SuccessJoin from './components/User/Join/SuccessJoin';
+
 import AllShop from './components/Shop/AllShop';
 import ProdDetail from './components/Shop/ProdDetail';
 import SelectContents from './components/Mypage/OrderList/SelectContents';
@@ -32,11 +39,6 @@ import CuponList from './components/Mypage/Cupon/CuponList';
 import PointList from './components/Mypage/Cupon/PointList';
 import DeliveryAddress from './components/Mypage/UserInformation/DeliveryAddress';
 import ReviewImage from './components/Shop/ReviewImage';
-import ChangeSuccess from './components/User/FindPW/ChangeSuccess';
-import OrderCancelStart from './components/Mypage/OrderList/OrderCancel/OrderCancelStart';
-import OrderCancelReaon from './components/Mypage/OrderList/OrderCancel/OrderCancelReaon';
-import OrderCancelDone from './components/Mypage/OrderList/OrderCancel/OrderCancelDone';
-import CanceledOrder from './components/Mypage/OrderList/CanceledOrder';
 import GotoLogin from './components/Cart/GotoLogin';
 import PaySucceed from './components/Cart/Pay/PaySucceed';
 import PayFailed from './components/Cart/Pay/PayFailed';
@@ -93,10 +95,13 @@ function App() {
         <Route path='user/find/id' element={<FindID />} />
         <Route path='user/find/pw' element={<FindPW />} />
         <Route path='user/change/pw' element={<ChangePW />} />
-        <Route path='/products/detail' element={<ProdDetail />} />        
-        <Route path='/review/images' element={<ReviewImage />} />
+        <Route path='user/find/id/showid' element={<Successful />} />
+        <Route path='user/find/id/nonid' element={<Failed />} />
+        <Route path='user/find/pw/change' element={<UntilChange />} />
         <Route path='/user/change/success' element={<ChangeSuccess />} />
-
+        <Route path='/user/join/success' element={<SuccessJoin />} />
+        
+        <Route path='/products/detail' element={<ProdDetail />} />        
         <Route path='/review/images' element={<ReviewImage />} />  
         <Route path='/order/login' element={<GotoLogin />} />    
         <Route path='/order/pay-succeed' element={<PaySucceed />} />    

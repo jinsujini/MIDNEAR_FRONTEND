@@ -1,8 +1,6 @@
 /* 회원 비회원 공통*/
 .member,
 .no-member {
-
-
     .info {
         display: flex;
         justify-content: center;
@@ -69,7 +67,7 @@
             }
         }
 
-        .check {
+        .check2 {
             width: 36.1rem;
             height: 3rem;
             display: flex;
@@ -127,104 +125,110 @@
         }
     }
 
-    /* 비회원만 */
-    .no-member {
-        .info_content {
-            .btn {
-                margin-top: 3rem;
+    input {
+        outline: none;
+    }
+}
+
+/* 비회원만 */
+.no-member {
+    .info_content {
+        .btn {
+            margin-top: 3rem;
+        }
+    }
+}
+
+/* 회원만 */
+.member {
+    .info_content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .add-btn {
+            margin-top: 2.5rem;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #333333;
+                color: var(--white);
             }
+        }
+
+        .btn {
+            margin-top: 0;
         }
     }
 
-    /* 회원만 */
-    .member {
-        .info_content {
+    .point {
+        display: flex;
+        flex-direction: column;
+        height: 20.3rem;
+
+        .use-coupon {
             display: flex;
-            flex-direction: column;
+            margin-bottom: 2.2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .mid_text_ex {
+            font-size: 1.2rem;
+            color: var(--gray700);
+        }
+
+        .use-point {
+            display: flex;
             justify-content: space-between;
+            margin: 0.3rem 0;
 
-            .add-btn {
-                margin-top: 2.5rem;
-                cursor: pointer;
-
-                &:hover {
-                    background-color: #333333;
-                    color: var(--white);
-                }
-            }
-
-            .btn {
-                margin-top: 0;
-            }
-        }
-
-        .point {
-            display: flex;
-            flex-direction: column;
-            height: 20.3rem;
-
-            .use-coupon {
-                display: flex;
-                margin-bottom: 2.2rem;
-                position: relative;
-                z-index: 10;
-            }
-
-            .mid_text_ex {
+            .use-text {
+                width: 28.4rem;
+                height: 2.5rem;
+                border: solid 0.1rem var(--gray1100);
+                padding: 1rem;
                 font-size: 1.2rem;
-                color: var(--gray700);
             }
 
-            .use-point {
+            .use-btn {
+                width: 7.1rem;
+                height: 2.5rem;
+                background-color: #333333;
                 display: flex;
-                justify-content: space-between;
-                margin: 0.3rem 0;
-
-                .use-text {
-                    width: 28.4rem;
-                    height: 2.5rem;
-                    border: solid 0.1rem var(--gray1100);
-                    padding: 1rem;
-                    font-size: 1.2rem;
-                }
-
-                .use-btn {
-                    width: 7.1rem;
-                    height: 2.5rem;
-                    background-color: #333333;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    color: var(--white);
-                    font-size: 1.2rem;
-                    padding-top: 0.2rem;
-                    cursor: pointer;
-                }
-            }
-
-            .error {
-                min-height: 2rem;
-                padding-left: 0.5rem;
-                font-size: 1.1rem;
-                color: #FF0000;
+                justify-content: center;
+                align-items: center;
+                color: var(--white);
+                font-size: 1.2rem;
+                padding-top: 0.2rem;
+                cursor: pointer;
             }
         }
 
-        .info .only-order .fee {
-            border: none;
-        }
-
-        .info .only-order .use-point {
-            display: flex;
-            border-bottom: solid 1px var(--gray500);
+        .error {
+            min-height: 2rem;
+            padding-left: 0.5rem;
+            font-size: 1.1rem;
+            color: #FF0000;
         }
     }
+
+    .info .only-order .fee {
+        border: none;
+    }
+
+    .info .only-order .use-point {
+        display: flex;
+        border-bottom: solid 1px var(--gray500);
+    }
+
+        
 
     .default_add {
         margin-left: 0.5rem;
         width: 35.1rem;
         height: 19.4rem;
-        background-color: var(--gray1100);
+        background-color: #F8F8F8;
         padding: 1.6rem;
         margin-top: 2.4rem;
         display: flex;
@@ -250,7 +254,7 @@
             font-size: 1.2rem;
             width: 31.9rem;
             height: 2.7rem;
-            border: solid 0.1rem var(--gray700);
+            border: solid 0.1rem var(--gray1100);
             background-color: var(--white);
             display: flex;
             align-items: center;
@@ -267,7 +271,7 @@
                 width: 6.3rem;
                 height: 2.8rem;
                 border-radius: 0.5rem;
-                border: solid 0.1rem var(--gray700);
+                border: solid 0.1rem var(--gray1100);
                 background-color: var(--white);
                 color: var(--gray700);
                 display: flex;
@@ -280,8 +284,58 @@
         }
 
     }
+}
 
-    input {
-        outline: none;
+@media (max-width: 50rem){
+    .member, .no-member{
+        width: 100%;
+        margin-bottom: 10rem;
+        .info{
+            .check{
+                width: 7rem;
+                justify-content: space-between;
+            }
+            .container{
+                flex-direction: column;
+                gap: 0;
+                padding: 0 3.6rem;
+            }
+            .empty{display: none;}
+            .info_content, .order_content{
+                width: 100%;
+                min-width: 32rem;
+            }
+            .order_content{
+                margin-top: 5rem;
+                margin-bottom: 5rem;
+                .title, .s_title{margin-left: 1rem;}
+            }
+            .min_text{
+                width: 100%;
+            }
+                
+            .btn{
+                width: 100%;
+                min-width: 32rem;
+            }
+        }
+        .default_add{
+            width: 100%;
+            margin-left: 0;
+            min-width: 32rem;
+            height: 21rem;
+            .b_txt{font-size: 1.3rem;}
+            .g_txt, .m_txt{font-size: 1.2rem;}
+            .memo{width: 100%;}
+        }
+        .point{
+            min-width: 32rem;
+            height: auto;
+            margin-bottom: 1rem;
+            .use-point{
+                gap: 1rem;
+                .use-text{width: 100%;}
+            }
+        }
     }
 }

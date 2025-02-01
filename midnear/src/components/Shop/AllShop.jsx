@@ -40,6 +40,36 @@ const AllShop = () => {
       coupon: "10%할인쿠폰적용가",
       soldout: "SOLD OUT"
     },
+    { 
+      id: 4,
+      frontImg: frontImg,
+      backImg: backImg,
+      name: "CUTE SWEATER",
+      price: 39000,
+      dcPrice: 35100,
+      coupon: "10%할인쿠폰적용가",
+      soldout: "SOLD OUT"
+    },
+    { 
+      id: 5,
+      frontImg: frontImg,
+      backImg: backImg,
+      name: "CUTE SWEATER",
+      price: 39000,
+      dcPrice: 35100,
+      coupon: "10%할인쿠폰적용가",
+      soldout: "SOLD OUT"
+    },
+    { 
+      id: 6,
+      frontImg: frontImg,
+      backImg: backImg,
+      name: "CUTE SWEATER",
+      price: 39000,
+      dcPrice: 35100,
+      coupon: "10%할인쿠폰적용가",
+      soldout: "SOLD OUT"
+    },
     
   ]
 
