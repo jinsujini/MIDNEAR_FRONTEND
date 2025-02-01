@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom'; 
+import {motion, AnimatePresence} from 'framer-motion';
 import logo from "../../assets/img/logo/header_logo.svg";
+import ShoppingCart from '../Cart/ShoppingCart';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -8,7 +10,8 @@ const Header = () => {
   const [activeSub2, setActiveSub2] = useState(false);
   const [activeSubCate1, setActiveSubCate1] = useState(false);
   const [activeSubCate2, setActiveSubCate2] = useState(false);
-
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  
   const goHome = () => {
      navigate('/'); 
   };
@@ -28,8 +31,22 @@ const Header = () => {
     setActiveSubCate2(!activeSubCate2);
   };
 
+  const toggleCart = () => {
+    setIsCartOpen((prev)=>!prev);
+  }
+  const cartVariants = {
+    hidden: { x: "43.7rem" },
+    visible: { x: 0 },
+    exit: { x: "43.7rem",  transition: { duration: 1, ease: "easeInOut" }  } 
+  };
+  const backgroundVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.5, ease: "easeInOut" } },
+    exit: { opacity: 0, transition: { duration: 0.5, ease: "easeInOut" } }
+  };
 
   return (
+    <div className='header-container'>
     <div className="header">
       <div className="logo" onClick={goHome}>
         <img src={logo} alt="logo" />
@@ -80,10 +97,34 @@ const Header = () => {
         <p className="SEARCH">SEARCH</p>
         <Link to='user/login' className="LOGIN">LOGIN</Link>
         <p className="ACCOUNT">ACCOUNT</p>
-        <p className="BAG">
+        <p className="BAG" onClick={toggleCart}>
           BAG <span>(1)</span>
         </p>
       </div>
+    </div>
+    <AnimatePresence>
+        {isCartOpen && (
+          <>
+          <motion.div
+            className="ShoppingCart"
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={backgroundVariants}
+          />
+          <motion.div
+          className={`cart_content ${isCartOpen ? 'open' : ''}`}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={cartVariants}
+            transition={{ type: "tween", duration: 1, }} 
+          >
+            <ShoppingCart toggleCart={toggleCart} />
+          </motion.div>
+          </>
+        )}        
+      </AnimatePresence>
     </div>
   );
 };

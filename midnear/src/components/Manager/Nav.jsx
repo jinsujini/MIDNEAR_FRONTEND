@@ -130,7 +130,7 @@ const Nav = () => {
                 variants={variants}
                 transition={{ duration: 0.3 }}
             >
-                <p>주문 통합 검색</p>
+                <Link to="/manager/Sales/Search">주문 통합 검색</Link>
                 <p>주문확인/배송관리</p>
                 <p>구매확정 내역</p>
                 <p>취소관리</p>

@@ -1,0 +1,17 @@
+.GotoLogin{
+    display: flex;
+    justify-content: center;
+    .step-header{
+        .login{
+            color: var(--black);
+            border-bottom: 1px solid var(--black);
+        }
+    }
+    .container{gap: 12.5rem;}
+    .login_content{width: 36.1rem;}
+    .empty, .login_content, .order_content{width: 29.4rem;}
+    .no-member{
+        .min_text_ex, .mid_text{margin-left: 0;}
+    }
+    
+}
