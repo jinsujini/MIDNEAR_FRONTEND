@@ -49,9 +49,14 @@ import NoMemInfo from './components/Cart/Order/NoMemInfo';
 import MemInfo from './components/Cart/Order/MemInfo';
 import NewAddress from './components/Cart/Order/NewAddress';
 import SelectAdd from './components/Cart/Order/SelectAdd';
+
+import EditAdd from './components/Cart/Order/EditAdd';
+import None from './components/Sections/None';
+import Detail from './components/Manager/Goods/Detail';
 import MagazineList from './components/Magazine/MagazineList';
 import MagazinDetail from './components/Magazine/MagazinDetail';
 import MypageMenu from './components/Mypage/MypageMenu';
+
 
 function App() {
   const location = useLocation();
@@ -117,7 +122,11 @@ function App() {
         <Route path='/others/magazine/detail' element={<MagazinDetail />} />
 
         {/* 관리자 페이지 */}
-        <Route path="/manager/*" element={<Manager />} />
+
+        <Route path="/manager/*" element={<Manager />}/>
+        <Route path="/manager/Goods/Detail/:name" element={<Detail />} />
+        <Route path='*' element={<None />}/>
+
       </Routes>
       <Footer />
     </>

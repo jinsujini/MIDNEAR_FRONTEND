@@ -173,6 +173,14 @@ const mobileCart = () => {
                 </div>
               </div>
 
+
+      <div className="sc2">
+        <p className="SEARCH">SEARCH</p>
+        <Link to='user/login' className="LOGIN">LOGIN</Link>
+        <p className="ACCOUNT">ACCOUNT</p>
+        <p className="BAG" onClick={toggleCart}>
+          BAG <span>(1)</span>
+        </p>
               <div className="OTHERS">
                 <p className={` ${activeSub2 ? 'bold' : ''}`} onClick={openCate2}>
                   OTHERS
@@ -211,6 +219,7 @@ const mobileCart = () => {
             </motion.div>
           )}
         </AnimatePresence>
+
       </div>
 
 
