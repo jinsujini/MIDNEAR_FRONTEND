@@ -1,8 +1,8 @@
 .ShippingModal{
     position: fixed;
-    top:0;
+    top:4.8rem;
     left: 0;
-    height: 100vh;
+    height: calc(100vh - 4.8rem);
     width: 100%;
     display: flex;
     justify-content: center;
@@ -46,7 +46,14 @@
             justify-content: center;
             padding: 2.4rem 0;
 
-             p{white-space: pre-wrap; width: 110.4rem;}
+             p{
+                white-space: pre-wrap; 
+                width: 110.4rem; 
+                letter-spacing: 0.1rem;
+                font-size: 1.2rem;
+                font-weight: 500;
+                line-height: 1.7;
+            }
         }
     }
 }
@@ -91,7 +98,7 @@
             font-size: 1.3rem;
             color: var(--black);
         }
-        div{
+        .del-btn{
             display: flex;
             justify-content: center;
             align-items: center;
@@ -105,7 +112,108 @@
             position: absolute;
             right: 1.5rem;
             bottom: 1.5rem;
+            cursor: pointer;
         }
     }
         }
+}
+
+.modal-open {
+    pointer-events: none; /* 전체 배경 클릭 차단 */
+  }
+  
+/* 모달 자체는 클릭 가능 */
+.modal-open{ 
+    .ShippingModal, .PrivacyModal, .DelModal {
+        pointer-events: all; /* 모달 내부는 클릭 가능 */
+        cursor: default;
+    }
+}
+
+@media (max-width: 50rem){
+    .ShippingModal{
+        position: absolute;
+        height: auto;
+        top: 4.63vh;
+        align-items: flex-start;
+        padding: 1rem 0;
+        background-color: var(--white);
+        .modal{
+            padding: 0 1.5rem;
+            justify-content: flex-start;
+            height: 100%;
+            width: 100%;
+            border: none;
+            .modal-top{
+                width: 100%;
+                align-items: center;
+                margin: 1.5rem 0;
+                height: auto;
+                h2{
+                    margin:0;
+                }
+            }
+            .content{
+                min-height: auto;
+                width: 100%;
+                border: var(--none);
+                overflow-y: auto;
+                margin-top:1rem;
+                margin-bottom: 3rem;
+                p{  
+                    width: 100%;
+                    font-size: 1rem;
+                    line-height: 1.5;                     
+                    padding: 0 1rem;
+                }
+            }
+        }
+    }
+        
+    .PrivacyModal{
+        position: absolute;
+        top:1.5rem;
+        left:0;
+        background-color: var(--white);
+        .modal .modal-bottom div{ font-size: 1.2rem; }
+        .ShippingModal{
+            width: 100vw;
+            height:calc(100vh - 5rem);
+        }
+    }
+        
+    .DelModal{
+        position: absolute;
+        z-index: 999;
+        top:0;
+        left: 0;
+        .ShippingModal{
+            width: 100vw;
+            height: 100vh;
+            align-items: center;
+            .modal{
+                width: 32rem;
+                padding: 1.5rem;
+                justify-content: space-between;
+                p{margin-top: 4rem;}
+                .del-btn{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: relative;
+                    bottom: 0;
+                    right: 0;
+                }
+            }
+            
+            .del-outer{
+                display: flex;
+                padding-right: 1.5rem;
+                width: 32rem;
+                height: 3rem;
+                align-items: flex-end;
+                justify-content: flex-end;
+            }
+        }
+    }
 }

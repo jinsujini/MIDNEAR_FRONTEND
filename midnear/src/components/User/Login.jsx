@@ -1,23 +1,28 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import kakao from '../../assets/img/user/login/kakao_logo.svg'
 import naver from '../../assets/img/user/login/naver_logo.svg'
 import google from '../../assets/img/user/login/google_logo.svg'
 import cancel from '../../assets/img/user/login/cancel.svg'
 
-const Login = () => {
+const Login = ({ onClose }) => {
     const navigate = useNavigate();
 
-    const goToFindID = () => {
-        navigate('/user/find/id');
-    };
-    
-    const goToJoin = () => {
-        navigate('/user/join');
-    };
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [isEmailValid, setIsEmailValid] = useState(true);
+    const [isPasswordValid, setIsPasswordValid] = useState(true);
 
-    const Back = () => {
-        navigate('/');
+    const handleLogin = () => {
+        const isEmailEmpty = email.trim() === '';
+        const isPasswordEmpty = password.trim() === '';
+
+        setIsEmailValid(!isEmailEmpty);
+        setIsPasswordValid(!isPasswordEmpty);
+
+        if (!isEmailEmpty && !isPasswordEmpty) {
+            navigate('/');
+        }
     };
 
   return (
@@ -25,7 +30,7 @@ const Login = () => {
         <div className='login_content'>
             <div className='login'>
                 <div className='login_nav'>
-                    <img src={cancel} className='x' onClick={Back}/>
+                    <img src={cancel} className='x' onClick={onClose}/>
 
                     <div className="sc2">
                         <p className="SEARCH">SEARCH</p>
@@ -39,9 +44,21 @@ const Login = () => {
                 <div className='mid_text'>LOGIN</div>
                 <p className='min_text_ex'>별표(*)로 표시된 필드가 필수 필드입니다.</p>
 
-                <input type='text' className='min_text' placeholder='이메일*' />
+                <input type='text' 
+                className={`min_text ${isEmailValid ? '' : 'invalid'}`} 
+                placeholder='아이디 or 이메일*' 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)} />
 
-                <input type='password' className='min_text' placeholder='비밀번호*' />
+                {!isEmailValid && <p className="error_message">아이디 or 이메일 입력은 필수입니다.</p>}
+
+                <input type='password' 
+                className={`min_text ${isPasswordValid ? '' : 'invalid'}`}
+                placeholder='비밀번호*'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)} />
+
+                {!isPasswordValid && <p className="error_message">비밀번호 입력은 필수입니다.</p>}
 
                 <div className='button_container'>
                     <button className='kakao_btn'>
@@ -59,7 +76,7 @@ const Login = () => {
                     </button>
                 </div>
 
-                <button className='user_btn'>LOGIN</button>
+                <button className='user_btn' onClick={handleLogin}>LOGIN</button>
 
                 <div className='option_content'>
                     <div className='check_field'>
@@ -67,8 +84,8 @@ const Login = () => {
                         <p>로그인 상태 유지</p>
                     </div>
                     <div className='option'>
-                        <p className='option_text' onClick={goToFindID}>아이디 / 비밀번호를 잊으셨나요?</p>
-                        <p className='option_text' onClick={goToJoin}>회원가입하기</p>
+                        <Link to='/user/find/id' className='option_text'>아이디 / 비밀번호를 잊으셨나요?</Link>
+                        <Link to='/user/join' className='option_text'>회원가입하기</Link>
                     </div>
                 </div>
             </div>
