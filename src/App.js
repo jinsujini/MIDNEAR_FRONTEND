@@ -132,7 +132,7 @@ function App() {
 }
 
 const RootApp = () => (
-  <BrowserRouter>
+  <BrowserRouter basename="/">
     <App />
   </BrowserRouter>
 );
